@@ -1,0 +1,613 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Slab', serif;
+    box-sizing: border-box;
+       
+}
+.header{
+   
+    height: 180px;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    
+}
+svg{
+  display: none;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    background: white;
+    
+    
+  }
+  .logo{
+    margin: 35px 80px;
+    top:10px;
+    right:10px;
+    position: absolute;
+  }
+  .logo span{
+    display: inline;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    outline: none;
+    left: 25px;
+   
+    position: absolute;
+  }
+  .demo-para{
+    display: none;
+  }
+  .logo img{
+   
+    width: 35px;
+    height: 35px;
+  }
+  nav .navbtn{
+    margin: 20px;
+    top:10px;
+    right:50px;
+    position: absolute;
+  }
+  
+  nav .hero-btn2{
+    display: inline-block;
+    text-decoration: none;
+    background: black;
+    color: white;
+    margin-left: 15px;
+    padding: 10px 25px;
+    font-size: 18px;
+    margin-top: 10px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    
+  }
+  nav .hero-btn2 i{
+    padding: 10px;
+  }
+  nav .hero-btn2:hover{
+  
+   background: rgb(212, 211, 211);
+  }
+  nav .heronew{
+    background: transparent;
+    color: black;
+  }
+  nav .heronew:hover{
+    background: transparent;
+  
+  }
+  nav .heronew::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: black;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+  }
+  nav .heronew:hover::after{
+    width: 100%;
+  }
+  nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 40px ;
+    
+  }
+  nav ul li a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+  
+  }
+  
+  nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+  }
+  nav ul li a:hover::after{
+    width: 100%;
+  }
+  
+  nav .fas{
+    display: none;
+  }
+  nav ul{
+    display: none;
+  }
+
+
+
+
+.contact{
+    width: auto;
+    padding: 0 100 80 100;
+   text-align: center;
+  
+
+  
+    
+}
+.contact .row{
+    margin-top: 0%;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.contact h3{
+  display: none;
+}
+.login-para{
+  display: none;
+}
+.login-label{
+  display: none;
+}
+.invalid-credential{
+  display: none;
+}
+
+.contact-col{
+    margin: 10px;
+    padding: 10px  20px;
+    flex-basis: 50%;
+    text-align: center;
+    border-radius: 10px;
+    
+   
+}
+.contact .newlogin{
+   background: linear-gradient(#4c0db1,#482b7c);
+}
+.contact-col h1{
+
+    font-size:40px;
+    text-align: center;
+    padding: 40px 0;
+
+}
+.contact-col p{
+    font-size: 20px;
+    padding: 25px;
+    text-align: justify;
+    font-family:system-ui;
+    color: white;
+    border-radius: 20px;
+    margin-top: 30px;
+    
+  
+}
+
+form input,form textarea{
+    width: 80%;
+    border: 0;
+    outline: none;
+    border: 1px solid #482b7c;
+    padding: 15px;
+    margin: 15px 0;
+    color:#251742;
+    background: none;
+    font-size: 20px;
+    border-radius: 10px;
+    
+}
+
+form .btn2{
+    padding: 14px 60px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+    width: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background:linear-gradient(#251742,#482b7c) ;
+    border: none;
+}
+form .btn2:hover{
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+#entry{
+    justify-content: center;
+}
+
+@media(max-width:800px){
+
+
+    body{
+      background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    }
+    .header{
+   
+        height: 60px;
+    }
+    .logo{
+      margin:15px;
+      top:10px;
+      right:10px;
+      position: absolute;
+
+    }
+    .logo img{
+     
+      width: 35px;
+      height: 35px;
+    }
+    .text-box{
+        width:100%;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        padding-left: 0px;
+       
+    
+    }
+    
+    .text-box h1{
+        font-size: 80px;
+        font-family: system-ui;
+    }
+    .text-box h4{
+        font-size: 25px;
+        text-align: center;
+        padding: 15px 35px;
+        font-weight: 100;
+        font-family: system-ui;
+        
+        
+      
+    }
+    
+    .text-box p{
+        color: white;
+        font-size: 16px;
+        padding: 0px 35px;
+        font-weight: 100;
+        font-family: system-ui;
+    }
+    
+        
+    .row{
+        
+        flex-direction: column;
+    }
+    .text-box .hero-btn{
+        
+        padding: 16px 32px 16px 12px;
+        font-size: 14px;
+        margin-left: 5px;
+        font-family: system-ui;
+       
+      }
+      .text-box .hero-btn2{
+        
+        display: none;
+        
+      }
+      
+    .text-box .hero-btn:hover{
+        border-left: 30px solid #482b7c;
+        background: #482b7c;
+       color: white;
+       
+    }
+    .overview{
+        width: auto;
+        padding: 0;
+       text-align: center;
+      
+        
+    }
+   
+    
+    .contact{
+        width: auto;
+        padding: 0 5 50 5;
+        height: 100nvh;
+       text-align: center;
+      
+      
+    
+      
+        
+    }
+    .contact .row{
+        margin-top: 0%;
+        display: flex;
+        justify-content: space-around;
+        
+    }
+    .contact-col{
+        margin: 0px;
+        padding: 0px 10px;
+        
+        
+       
+    }
+    .login-label{
+      text-align: left;
+      display: block;
+      font-size: 15px;
+      padding: 0 5px;
+      margin:  0 15px;
+      color: #251742;
+    }
+    .login-pass{
+      margin-top: 10px;
+    }
+    .invalid-credential{
+      background: rgb(111, 37, 37);
+      border-radius: 10px;
+      text-align: center;
+      display: block;
+      padding: 0px ;
+      font-size: 13px;
+      margin: 0 20px;
+      cursor: pointer;
+  
+      
+    }
+    
+    .invalid-credential i {
+      padding-left: 15px ;
+
+    }
+    svg{
+      display: inline;
+      width: 250px;
+      height: 250px;
+    
+    }
+    
+    .contact-col p{
+      font-size: 18px;
+      padding: 10px;
+      font-family:system-ui;
+      color: black;
+      border-radius: 0px;
+      margin-top: 0px;
+      
+    
+  }
+    .contact-col h1{
+        display: none;
+    
+    }
+    .contact-col h3{
+      color: black;
+      display: block;
+      font-weight: 200;
+      font-size: 25px;
+      position: relative;
+      text-align: left;
+      padding: 10px;
+      margin: 10px;
+    }
+    .login-para {
+      color: black;
+      display: block;
+      font-weight: 300;
+      font-size: 20px;
+      position: relative;
+      text-align: left;
+      padding: 10px;
+      margin: 10px;
+    }
+    .newlogin {
+      visibility: hidden;
+      display: none;
+    }
+    
+    
+   
+    .contact h1{
+        
+        font-size: 40px;
+        text-align: center;
+        padding: 40px 15px;
+    }
+    .contact form input{
+       
+       
+        
+        width: 90%;
+        background: #171d4214;
+    }
+    .contact form textarea{
+      
+        width: 90%;
+
+    }
+    .contact form .btn2{
+        padding: 10px ;
+        margin-top: 30px;
+        font-size: 20px;
+        font-weight: 300;
+        font-family: system-ui;
+        width: 90%;
+       
+    }
+    nav ul{
+        display: block;
+      }
+      nav .fa-solid{
+        display: block;
+        font-size: 25px;
+        margin: 30px;  
+        padding-left: 80%; 
+        color: black;
+        z-index: 1;
+        cursor: pointer;
+    }
+   
+    nav .fa-times{
+      display: block;
+      font-size: 25px;
+      margin: 20px;  
+      color: white;
+      z-index: 2;
+      cursor: pointer;
+    }
+    nav .hero-btn2{
+      display: none;
+    }
+    nav ul{
+        background:linear-gradient(#251742,#482b7c) ;
+        position: fixed;
+        top: 0;
+        right: -80%;
+        width: 80%;
+        text-align: center;
+        height: 100vh;
+        padding-top: 10px;
+        z-index: 2;
+        transition: right 0.5s;
+        cursor: pointer;
+        text-align: left;
+    
+    }
+    nav #sidemenu .fa-solid{
+        margin: 3px;
+    }
+    #sidemenu li i{
+        color: white;
+      }
+      #sidemenu hr{
+        color: white;
+        height: 1px;
+      }
+      #sidemenu p{
+        margin-top: 20px;
+        padding: 30px;
+        color: white;
+        text-align: left;
+        font-family: system-ui;
+        font-size: 20px;
+      }
+      .loginpage{
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        justify-content: space-evenly;
+      }
+      #sidemenu .login{
+        background-color: white;
+        color: black;
+        font-size: 20px;
+        padding: 10px 25px;
+        border-radius: 10px;
+        text-align: center;
+        display: block;
+        font-weight: 600;
+      }
+      #sidemenu .join{
+        background:#1d1233;
+        color: white;
+      }
+    nav ul li{
+        display: block;
+        margin: 10px;
+        padding: 5px;
+        font-size: 10px;
+       
+        
+          
+    }
+    nav ul li a:hover::after{
+      width: 0%;
+    }
+    nav ul li :hover{
+   
+      color: black;
+    }
+    nav ul li a{
+         color: white;
+         font-weight: 400;
+         font-size: 20px;
+        font-family: system-ui;
+        
+    }
+    nav ul .fas{
+        position: absolute;
+        top: 25px;
+        padding: 20px;
+        left: 300px;
+        cursor: pointer;
+        color: white;
+    }
+    
+    #sidemenu form{
+      padding-top: 60px;
+    }
+    
+    .contact form input{
+       
+       
+        
+      width: 90%;
+      height: 40px;
+      font-size: 15px;
+      padding: 20px;
+      margin: 10px;
+      border: 2px solid #482b7c;
+      border-radius: 5px;
+      
+  }
+  
+
+  
+  .contact form .btn1{
+      padding: 15px;
+      margin: 20px;
+      font-size: 20px;
+      font-weight: 300;
+      font-family: system-ui;
+      width: 90%;
+      border-radius: 10px;
+     
+  }
+    form .btn1:hover{
+      background: black;
+      color: white;
+      
+    }
+      
+    
+    
+    
+}
+
+/* This is the css property for savedata  */
+.data p{
+ color: black;
+ font-size: 15px;
+ padding: 5px;
+ margin: 10px;
+}
+
+
+ 

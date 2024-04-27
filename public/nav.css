@@ -1,0 +1,76 @@
+.icons-header{
+  display: none;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5;
+  border: none;
+  outline: none;
+  background-color: #1d1233;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #4c0db1 ;
+}
+@media only screen and (max-width:800px) {
+  
+  #myBtn {
+    display: none;
+    position: fixed;
+    top: 87%;
+    right: 5%;
+    bottom: 7%;
+    z-index:5;
+    border: none;
+    outline: none;
+    background-color: #1d1233;
+    color:white;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    font-family: system-ui;
+    font-weight: 600;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+  
+  .icons-header{
+ 
+
+      display: grid;
+      gap: 5px;
+      grid-template-columns: auto auto auto auto auto auto;
+      font-size: 20px;
+      position: absolute;
+      bottom: 35px;
+      right: 10px;
+      padding: 0 20px;
+      margin: 0 2px;
+      color: white;
+      z-index: 1;
+      
+      cursor: pointer;
+
+  }
+  .header .icons-header a{
+    text-decoration: none;
+    color: white;
+  }
+  .header .icons-header .fa-solid{
+    padding: 10px;
+    position: sticky;
+    background: #1d1233;
+    border-radius: 50%;
+    
+  }
+ 
+ 
+}

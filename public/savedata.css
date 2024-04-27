@@ -1,0 +1,697 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+  box-sizing: border-box;
+     
+}
+.header{
+ 
+  height: 130px;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  
+}
+
+.delete {
+  padding: 19px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: auto;
+  flex-basis: 15%;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  background:linear-gradient(#251742,#482b7c) ;
+  border: none;
+}
+.delete i{
+  
+  color: white;
+  font-size: 18px;
+  align-items: center;
+  text-align: center;
+}
+#overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1d1233c8;
+  z-index: 99;
+  display: none;
+}
+.popup-content{
+  padding: 10px;
+  margin: 10px;
+}
+.popup-inner a{
+  text-decoration: none;
+  color: black;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.popup-inner i{
+  
+  color: #1d1233;
+  font-size: 16px;
+}
+.popup-onload{
+  margin: 0 auto;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  margin-top: -130px;
+  margin-left: -250px;
+}
+.popup-inner{
+  width: 500px;
+  z-index: 101;
+  background:linear-gradient(#25174280,#482b7c) ;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+
+}
+.popup-inner p{
+  color: white;
+  padding: 5px;
+}
+.popup-inner h2{
+  color: white;
+  padding: 10px;
+}
+
+.alert-description{
+  display: block;
+  font-size: 16px;
+    padding: 10px;
+    margin: 0px;
+    font-family:system-ui;
+    text-align: left;
+   
+
+}
+
+.alert-description li{
+  
+    font-size: 20px;
+    padding: 5px;
+    font-family:'Montserrat', sans-serif;
+    font-weight: 500;
+    text-align: left;
+    color: white;
+    list-style-type: disc;
+    
+
+}
+
+nav .hero-btn2{
+  display: inline-block;
+  text-decoration: none;
+  background: black;
+  color: white;
+  margin-left: 15px;
+  padding: 10px 25px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  
+}
+nav .hero-btn2 i{
+  padding: 10px;
+}
+nav .hero-btn2:hover{
+
+ background: rgb(212, 211, 211);
+}
+nav .heronew{
+  background: transparent;
+  color: black;
+}
+nav .heronew:hover{
+  background: transparent;
+
+}
+nav .heronew::after{
+  content: '';
+  width: 0;
+  height: 3px;
+  background: black;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav .heronew:hover::after{
+  width: 100%;
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin: 10px 40px ;
+  
+}
+nav ul li a{
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+
+}
+
+nav ul li a::after{
+  content: '';
+  width: 0;
+  height: 3px;
+  background: white;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav ul li a:hover::after{
+  width: 100%;
+}
+
+nav .fas{
+  display: none;
+}
+nav ul{
+  display: none;
+}
+
+
+.overview{
+  width: auto;
+  padding: 0 20;
+ text-align: center;
+
+  
+}
+.view-change{
+  display: inline;
+}
+svg{
+  display: none;
+}
+
+.overview .row{
+  margin-top: 0%;
+  display: flex;
+  justify-content: space-around;
+  
+}
+.overview-col{
+  padding: 0px 150px 15px 150px;
+  text-align: center;
+  
+ 
+}
+.overview h1{
+  
+  font-size: 50px;
+  text-align: center;
+  padding: 18px 0;
+}
+.overview-col p{
+  font-size: 25px;
+  padding: 25px;
+  font-family:system-ui;
+  color: rgb(31, 30, 30);
+
+}
+.overview-btn{
+  
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgb(4, 54, 74);
+  padding: 14px 34px;
+  font-size: 18px;
+  border-radius: 30px;
+  background: rgb(4, 54, 74);
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  
+  
+ 
+}
+.overview-btn:hover{
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+.overview svg{
+  display: none;
+}
+
+
+.contact{
+  padding: 10 50;
+ text-align: center;
+ 
+
+
+
+  
+}
+.contact .row{
+  margin-top: 0%;
+  display: flex;
+  justify-content: space-around;
+  
+}
+.contact-col{
+  margin: 20px 20px;
+  padding: 20px  40px;
+  flex-basis: 50%;
+  text-align: center;
+  border-radius: 10px;
+  
+ 
+}
+.savedata{
+
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3); 
+  
+}
+.contact h1{
+  font-size: 35px;
+  margin: 10px ;
+  padding: 10px;
+}
+
+.data {
+  color: black;
+  padding: 10px 60px;
+  border-radius: 10px;
+  margin: 0 10px;
+  text-align: left;
+  
+ 
+ }
+ svg{
+  margin: 10px auto;
+  padding: 10px auto;
+  height: 500px ;
+  width: 500px;
+ }
+ .data img{
+  height: 230px;
+  width: 230px;
+  border-radius: 10px;
+ }
+.data p{
+  font-size: 18px;
+  padding: 10px;
+ 
+     
+}
+
+.contact .newlogin{
+  background:linear-gradient(#251742,#482b7c) ;
+}
+.contact-col h1{
+
+  font-size:40px;
+  text-align: center;
+  padding: 40px 0;
+
+}
+.contact-col p{
+  font-size: 20px;
+  padding: 25px 25px;
+  text-align: justify;
+  font-family:system-ui;
+  color: white;
+  border-radius: 20px;
+  margin-top: 30px;
+  
+
+}
+
+form input,form textarea{
+  width: 80%;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid black;
+  padding: 15px;
+  margin: 15px 0;
+  color:black;
+  font-size: 20px;
+  border-radius: 5px;
+  
+}
+
+form .btn2{
+  padding: 14px 60px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+  width: 80%;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  background:linear-gradient(#251742,#482b7c) ;
+  border: none;
+}
+
+form .btn2:hover{
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.savedata{
+
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3); 
+  
+  
+}
+.file-upload{
+  background: #1d1233;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline-flex;
+  margin: 10px 25%;
+  text-align: center;
+  
+  
+  
+}
+
+#entry{
+  justify-content: center;
+}
+
+@media(max-width:800px){
+
+  .header{
+    background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(store.jpeg);
+    height: 350px;
+    
+    
+}
+.save-delete{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gap: 5px;
+}
+.popup-onload{
+  margin: 0 auto;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 10%;
+  top: 20%;
+}
+.popup-inner{
+  width: 90%;
+}
+
+  
+  .row{
+      
+      flex-direction: column;
+  }
+  .overview{
+    width: auto;
+    padding: 0;
+   text-align: center;
+  
+    
+}
+
+.overview-col{
+    padding: 5px;
+    text-align: center;
+    
+   
+}
+.overview h1{
+    
+    font-size: 25px;
+    text-align: center;
+    padding: 18px 0;
+}
+.overview-col p{
+    font-size: 16px;
+    padding: 25px;
+    font-family:system-ui;
+    text-align: center;
+    
+  
+}
+
+  svg{
+    height: 310px;
+    width: 310px;
+    padding: 0px;
+    margin: 0;
+   }
+   .overview svg{
+    display: inline;
+  }
+  .contact svg{
+    display: none;
+  }
+   .view-desk{
+    display: none;
+   }
+   .view-change{
+    display: inline;
+   }
+ 
+  .overview{
+      width: auto;
+      padding: 0;
+     text-align: center;
+    
+      
+  }
+ 
+  
+  .contact{
+    
+    padding: 10;
+   text-align: center;
+  
+
+  
+    
+}
+.contact .contact-row{
+    
+    margin: 10px ;
+    width: 90%;
+    
+    
+}
+.contact h1{
+    font-size: 30px;
+    margin: 10px ;
+    padding: 10px;
+}
+.contact-col{
+  margin: 0px;
+  padding: 10px ;
+  flex-basis: 50%;
+  text-align: center;
+  border-radius: 10px;
+  
+ 
+}
+
+.data {
+  color: black;
+  padding: 30px;
+  
+ 
+ }
+
+  nav ul{
+      display: block;
+    }
+    nav .fa-solid{
+      display: block;
+      font-size: 25px;
+      margin: 30px;  
+      padding-left: 80%; 
+      color: white;
+      z-index: 1;
+      cursor: pointer;
+  }
+ 
+  nav .fa-times{
+    display: block;
+    font-size: 25px;
+    margin: 20px;  
+    color: white;
+    z-index: 2;
+    cursor: pointer;
+  }
+  nav .hero-btn2{
+    display: none;
+  }
+  nav ul{
+      background:linear-gradient(#251742,#482b7c) ;
+      position: fixed;
+      top: 0;
+      right: -80%;
+      width: 80%;
+      text-align: center;
+      height: 100vh;
+      padding-top: 10px;
+      z-index: 2;
+      transition: right 0.5s;
+      cursor: pointer;
+      text-align: left;
+  
+  }
+  nav #sidemenu .fa-solid{
+      margin: 3px;
+  }
+  #sidemenu li i{
+      color: white;
+    }
+    #sidemenu hr{
+      color: white;
+      height: 1px;
+    }
+    #sidemenu p{
+      margin-top: 20px;
+      padding: 30px;
+      color: white;
+      text-align: left;
+      font-family: system-ui;
+      font-size: 20px;
+    }
+    .loginpage{
+      display: flex;
+      flex-direction: row;
+      margin: 10px;
+      justify-content: space-evenly;
+    }
+    #sidemenu .login{
+      background-color: white;
+      color: black;
+      font-size: 20px;
+      padding: 10px 25px;
+      border-radius: 10px;
+      text-align: center;
+      display: block;
+      font-weight: 600;
+    }
+    #sidemenu .join{
+      background:#1d1233;
+      color: white;
+    }
+  nav ul li{
+      display: block;
+      margin: 10px;
+      padding: 5px;
+      font-size: 10px;
+     
+      
+        
+  }
+  nav ul li a:hover::after{
+    width: 0%;
+  }
+  nav ul li :hover{
+ 
+    color: black;
+  }
+  nav ul li a{
+       color: white;
+       font-weight: 400;
+       font-size: 20px;
+      font-family: system-ui;
+      
+  }
+  nav ul .fas{
+      position: absolute;
+      top: 25px;
+      padding: 20px;
+      left: 300px;
+      cursor: pointer;
+      color: white;
+  }
+  
+  #sidemenu form{
+    padding-top: 60px;
+  }
+  
+  form input,form textarea{
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    color: #1d1233;
+    background: rgb(247, 243, 243);
+    
+  
+  }
+  
+  form .btn2{
+    width: 100%;
+   }
+   .data{
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+   }
+   .savedata{
+    padding: 0 15px;
+   }
+   .alert-description{
+    display: block;
+    font-size: 16px;
+      padding: 10px;
+      margin: 0px;
+      font-family:system-ui;
+      text-align: left;
+     
+
+  }
+  
+  .alert-description li{
+    
+      font-size: 18px;
+      padding: 5px;
+      font-family:'Montserrat', sans-serif;
+      font-weight: 500;
+      text-align: left;
+      color: white;
+      list-style-type: disc;
+      
+
+  }
+ 
+  
+      
+}
+
+.data p{
+color: black;
+font-size: 15px;
+padding: 5px;
+margin: 10px;
+}
+
+
+
+
+

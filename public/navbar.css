@@ -1,0 +1,281 @@
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  
+  
+}
+
+.logo{
+  margin: 35px 80px;
+  top:10px;
+  left:10px;
+  position: absolute;
+}
+
+.logo img{
+ 
+  width: auto;
+  height: 30px;
+  filter: grayscale(100%) brightness(1000%);
+}
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+
+  
+  
+}
+nav .navbtn{
+  margin: 20px;
+  top:10;
+  right:10;
+  position: absolute;
+}
+nav .hero-btn2{
+  display: inline-block;
+  text-decoration: none;
+  background: white;
+  color: black;
+  margin-left: 15px;
+  padding: 10px 25px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  
+}
+
+nav .hero-btn2 i{
+  padding: 10px;
+}
+nav .hero-btn2:hover{
+
+ background: rgb(212, 211, 211);
+}
+nav .heronew{
+  background: transparent;
+  color: white;
+}
+nav .heronew:hover{
+  background: transparent;
+
+}
+nav .heronew::after{
+  content: '';
+  width: 0;
+  height: 3px;
+  background: white;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav .heronew:hover::after{
+  width: 100%;
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin: 10px 40px ;
+  
+}
+nav ul li a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+
+}
+
+nav ul li a::after{
+  content: '';
+  width: 0;
+  height: 3px;
+  background: white;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav ul li a:hover::after{
+  width: 100%;
+}
+
+nav .fas{
+  display: none;
+}
+nav ul{
+  display: none;
+}
+
+@media only screen and (max-width:800px) {
+  
+  .logo{
+    margin: 20px 10px;
+    top:10px;
+    left:10px;
+    position: absolute;
+  }
+  .logo img{
+   
+    width: 150px;
+    height: 21.8px;
+    filter: grayscale(100%) brightness(1000%);
+  }
+    
+  nav ul{
+    display: block;
+  }
+  nav .fa-solid{
+    display: block;
+    font-size: 25px;
+    margin: 30px;  
+    padding-left: 80%; 
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+}
+nav .fa-times{
+  display: block;
+  font-size: 25px;
+  margin: 20px;  
+  color: white;
+  z-index: 2;
+  cursor: pointer;
+}
+nav .hero-btn2{
+  display: none;
+}
+
+nav ul li{
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  font-size: 10px;
+ 
+  
+    
+}
+nav ul{
+  background:linear-gradient(#251742,#482b7c) ;
+  position: fixed;
+  top: 0;
+  right: -80%;
+  width: 80%;
+  text-align: center;
+  height: 100vh;
+  padding-top: 10px;
+  z-index: 2;
+  transition: right 0.5s;
+  cursor: pointer;
+  text-align: left;
+
+}
+nav #sidemenu .fa-solid{
+  margin: 3px;
+}
+#sidemenu li i{
+  color: white;
+}
+#sidemenu hr{
+  color: white;
+  height: 1px;
+}
+#sidemenu p{
+  margin-top: 20px;
+  padding: 30px;
+  color: white;
+  text-align: left;
+  font-family: system-ui;
+  font-size: 20px;
+}
+.loginpage{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  justify-content: space-evenly;
+}
+#sidemenu .login{
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-align: center;
+  display: block;
+  font-weight: 600;
+}
+#sidemenu .join{
+  background:#1d1233;
+  color: white;
+}
+nav ul li a{
+     color: white;
+     font-weight: 400;
+     font-size: 20px;
+    font-family: system-ui;
+    
+}
+nav ul .fas{
+    position: absolute;
+    top: 25px;
+    padding: 20px;
+    left: 300px;
+    cursor: pointer;
+    color: white;
+}
+
+
+form input,form textarea{
+  
+  width: 300px;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  color:black;
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: system-ui;
+  
+}
+form .btn1{
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 10px;
+  width: 300px;
+  border: none;
+  width: 140;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  background: white;
+  font-family: system-ui;
+}
+form .btn1:hover{
+  background: black;
+  color: white;
+  
+}
+nav ul li a:hover::after{
+  width: 0%;
+}
+nav ul li :hover{
+
+  color: black;
+}
+
+
+
+  
+}
