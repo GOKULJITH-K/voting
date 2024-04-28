@@ -170,7 +170,32 @@
                             <input id="housename"  name="housename" placeholder="House Name" value="<%= housename %>" required>
                             <p style="padding: 20 0;font-weight: bold;">Voter ID :</p>
                             <input id="idno" name="idno" placeholder="ID Card No" value="<%= idno %>"  required>
-                            
+                            <p style="padding: 20 0;font-weight: bold;">Booth No :</p>
+                            <input id="boothno" name="boothno" placeholder="Booth No" value="<%= boothno %>"  required>
+                            <p style="padding: 20 0;font-weight: bold;">Squad No :</p>
+                            <select class="selection-btn" id="squad-btn">
+                                <option value="1">Squad 1</option>
+                              <option value="2">Squad 2</option>
+                              <option value="3">Squad 3</option>
+                              <option value="4">Squad 4</option>
+                              <option value="5">Squad 5</option>
+                              
+                            </select>
+                            <p style="padding: 20 0;font-weight: bold;">Availability :</p>
+                            <select class="selection-btn" id="availability-btn">
+                                <option value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
+                            <p style="padding: 20 0;font-weight: bold;">Open Vote :</p>
+                            <select class="selection--btn" id="open-btn">
+                                <option value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
+                            <p style="padding: 20 0;font-weight: bold;">Postal Vote :</p>
+                            <select class="selection--btn" id="postal-btn">
+                                <option value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
                             
                             
                             </div>
@@ -178,12 +203,7 @@
                            
                         
                         </div>
-                        <div class="votestat">
-                            <p></p>
-                            <a class="total-vote">Total Vote <br><h2 > count %></h2></a>
-                            <a class="vote-complete">Voted <br><h2 > count1 %></h2></a>
-                            <a class="vote-incomplete">Not Voted <br><h2 >count2 %></h2></a>
-                           </div>
+                        
                     
                             <button type="submit" class="btn btn2">Update</button>
                            
@@ -200,13 +220,18 @@
             document.getElementById('update-voter').addEventListener('submit', function(event){
 
                 const form = event.target;
+                const squadno=document.getElementById("squad-btn").value.toLowerCase();
+                const availability=document.getElementById("availability-btn").value.toLowerCase();
+                const openvote=document.getElementById("open-btn").value.toLowerCase();
+                const postalvote=document.getElementById("postal-btn").value.toLowerCase();
+                const boothno = document.getElementById('boothno').value;
                 const serialnumber = document.getElementById('serialnumber').value;
                 const votername= document.getElementById('votername').value;
                 const houseno= document.getElementById('houseno').value;
                 const housename= document.getElementById('housename').value;
                 const idno= document.getElementById('idno').value;
                 const id = `<%= id %>`; 
-                form.action = `/voteredit1/update/${id}/${serialnumber}/${votername}/${houseno}/${housename}/${idno}`;
+                form.action = `/voteredit1/update/${id}/${serialnumber}/${votername}/${houseno}/${housename}/${idno}/${availability}/${openvote}/${postalvote}/${boothno}/${squadno}`;
             });
            </script>
            
