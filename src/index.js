@@ -179,9 +179,9 @@ app.get("/138squad1",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:1}).sort({ serialno: 1 }).exec();
 
-    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
-    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:1}).countDocuments();
@@ -191,9 +191,9 @@ app.get("/138squad2",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:2}).sort({ serialno: 1 }).exec();
 
-    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
-    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:2}).countDocuments();
@@ -203,9 +203,9 @@ app.get("/138squad3",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:3}).sort({ serialno: 1 }).exec();
 
-    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
-    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:3}).countDocuments();
@@ -215,9 +215,9 @@ app.get("/138squad4",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:4}).sort({ serialno: 1 }).exec();
 
-    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
-    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:4}).countDocuments();
@@ -227,9 +227,9 @@ app.get("/138squad5",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:5}).sort({ serialno: 1 }).exec();
 
-    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
-    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:5}).countDocuments();
@@ -363,6 +363,7 @@ app.get("/voteredit1/:id",async(req,res)=>{
      const houseno= voterdata.housename;
      const housename=voterdata.housename;
      const idno=voterdata.idno;
+     const boothno=voterdata.boothno;
      
 
     if(req.cookies.token){
@@ -376,6 +377,7 @@ app.get("/voteredit1/:id",async(req,res)=>{
         houseno:houseno,
         housename:housename,
         idno:idno,
+        boothno:boothno,
        
     });
         
@@ -390,7 +392,7 @@ app.get("/voteredit1/:id",async(req,res)=>{
 }) 
    
 
-app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:idno",async(req,res)=>{
+app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:idno/:availability/:postalvote/:openvote/:boothno/:squadno",async(req,res)=>{
 
                       
     if(req.cookies.token){
@@ -401,6 +403,12 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let houseno= req.params.housename;
         let housename=req.params.housename;
         let idno=req.params.idno;
+        let boothno=req.params.boothno;
+        let availability=req.params.availability;
+        let openvote=req.params.openvote;
+        let postalvote=req.params.postalvote;
+        let squadno=req.params.squadno;
+
         
       
          
@@ -411,6 +419,11 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
             houseno:houseno,
             housename:housename,
             idno:idno,
+            boothno:boothno,
+            squadno:squadno,
+            availability:availability,
+            openvote:openvote,
+            postalvote:postalvote,
             
         });
         
