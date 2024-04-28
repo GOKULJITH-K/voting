@@ -1,11 +1,11 @@
 <html>
      <head>
          <meta name="viewport" content="width=device-width,initial-scale=1.0">
-         <title>CPM ELECTION</title>
+         <title>REVIVE</title>
          
          <link rel="stylesheet" href="/welcome.css">
-         <link rel="stylesheet" href="/farmer.css">
          <script src="/navbar.js" defer></script>
+         <link rel="stylesheet" href="/nav.css">
          <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,13 +14,14 @@
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-         <link rel="manifest" href="/site.webmanifest">
+         
         </head>
      <body>
-       
+        <div id="myBtn2">
+            <a  href="/" class="topbtn2" title="more"><i class="fa-solid fa-house"></i></a>
+            <a  onclick="openmenu()" id="nav" class="topbtn2" title="more"><i class="fa-solid fa-circle-dot"></i></a>
+            <a   class="topbtn2" title="more"><i class="fa-solid fa-user"></i></a>
+            </div>
         
          <section class="header" >
             
@@ -28,27 +29,13 @@
 
             <nav >
                 
-                
-               
-                    
-                <a href="/" class="logo" style="font-size: 20px;
-                font-family: 'Montserrat', sans-serif;
-                color: #af0303;text-decoration: none;font-weight: 800;">CPIM KOSHORMOOLA</a>
-        
-                
-                        <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
-            
-    
-                       <div class="navbtn">
-                       <a  class="hero-btn2 heronew"> Home </a>
-                       <a class="hero-btn2 heronew"> Product </a>
-                       <a class="hero-btn2 heronew"> About </a>
-                       <a class="hero-btn2 heronew"> Contact </a>
-                       <a class="hero-btn2 heronew"> Subscription </a>
-                       <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
-                       </div>
-    
-                
+               <div class="navbtn">
+                <a href="/" class="hero-btn2 heronew"> Home </a>
+                <a href="#product" class="hero-btn2 heronew"> Product </a>
+                <a href="#about" class="hero-btn2 heronew"> About </a>
+                <a href="#contact" class="hero-btn2 heronew"> Contact </a>
+                <a href="/" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
+                </div>
                 
             
                 <ul id="sidemenu">
@@ -63,115 +50,111 @@
                         <li><a href="#contact">Contact</a></li>
                         <hr>
                         <p>
-                            Thank you for choosing Telinso. We value your trust and support. Please free to Contact us anytime
+                            Thank you for choosing Revive. We value your trust and support. Please free to Contact us anytime
                         </p>
                        
-                        <li><a href="/logout" class="login">Logout</a></li>
+                        <li><a href="/" class="login">Logout</a></li>
                         <li><a href="" class="login join">Subscription</a></li>
                    
                                
                 </ul>
-                
-                
+                <a class="logo"><img src="logo.png"></a>
+                <i class="fa-solid fa-bars fas" onclick="openmenu()"></i>
             </nav>
             
              
          </section>
-         
-            <section class="overview" >
-             
-                <div class="row">
-                   <div class="overview-col">
-                       <div class="welcome-text">
-                       <h1>WELCOME TO TELINSO</h1>
-                        <h2>Hello <span>Comrade</span></h2>
-                       <h2 id="greeting"></h2>
-                       
-                       </div>
-                       <img src="welcome.png" alt="">
+         <section class="overview">
+         <div class="row">
+            <div class="overview-col">
+                <div class="welcome-text">
+                <h1>WELCOME TO TERONO</h1>
+                 <h2>Hello <span>Gokuljith</span></h2>
+                <h2 id="greeting"></h2>
+                
+                </div>
+                <img src="welcom.png" alt="">
+                <h2 id="day"></h2>
+                <h2>Enter Terono's Green Initiative. <i class="fa-solid fa-heart-circle-plus"></i></h2>
+                
+                <div class="Date-time">
+                <div class="location">
+                 <i class="fa-solid fa-location-dot"></i>
+                 <div class="location-date">
+                     <h2 >Location</h2>
+                     <h2>India</h2>
+                 </div>
+                 
+                </div>
+                <hr>
+                <div class="location">
+                 <i class="fa-solid fa-calendar-days"></i>
+                 <div class="location-date">
+                     <h2 >Date</h2>
+                     <h2 id="dateNumber"></h2>
+                 </div>
+                </div>
+
+                 </div>
+                 
+                
+
+ 
+                
+               
+                
+             <P>
+
+                 Soil health and crop productivity are crucial factors in agriculture, playing a pivotal role in maintaining a sustainable environment.
+                  The primary cause of soil degradation is the excessive use of fertilizers. Therefore, it is essential to conduct soil testing before 
+                  initiating agriculture. Soil testing holds significance for various reasons: optimizing crop production, improving the nutritional 
+                  balance of the growing media, and saving money and energy by applying only the necessary amount of fertilizer. Our solution is designed 
+                  to assist farmers comprehensively, including monitoring soil conditions and nutrients. Data collected from the monitoring system will be
+                   stored on a cloud server for analysis. The primary objective is to keep track of nutrient levels in the soil.
+                  Having knowledge of their soil before commencing farming will aid farmers in precise cultivation planning.
+             </P>
                     
-                       <h2>Workers of the world, unite! <i class="fa-solid fa-heart-circle-plus"></i></h2>
-                       
-                       <div class="Date-time">
-                       <div class="location">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div class="location-date">
-                            <h2 >Location</h2>
-                            <h2>Kannur</h2>
-                        </div>
-                        
-                       </div>
-                       <hr>
-                       <div class="location">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <div class="location-date">
-                            <h2 >Date</h2>
-                            <h2 id="dateNumber"></h2>
-                        </div>
-                       </div>
-
-                        </div>
-                        
-                       
-
-        
-                       
-                      
-                       
-                    <P>
-   
-                        Soil health and crop productivity are crucial factors in agriculture, playing a pivotal role in maintaining a sustainable environment.
-                         The primary cause of soil degradation is the excessive use of fertilizers. Therefore, it is essential to conduct soil testing before 
-                         initiating agriculture. Soil testing holds significance for various reasons: optimizing crop production, improving the nutritional 
-                         balance of the growing media, and saving money and energy by applying only the necessary amount of fertilizer. Our solution is designed 
-                         to assist farmers comprehensively, including monitoring soil conditions and nutrients. Data collected from the monitoring system will be
-                          stored on a cloud server for analysis. The primary objective is to keep track of nutrient levels in the soil.
-                         Having knowledge of their soil before commencing farming will aid farmers in precise cultivation planning.
-                    </P>
-                           
-                        
-                   </div>
-                     
-               </div>
+                 
+            </div>
               
-           </section>
+        </div>
            
               
               <section class="product">
                <div class="row1">
-                <a href="/savedata" class="class1">
-                    <div class="product-col " >
+                <a href="/platformx">
+                    <div class="product-col" >
                         
-                        <i class="fa-solid fa-user-plus"></i>
+                        <i class="fa-solid fa-calendar-days"></i>
                             <div>
-                                <h3>Voters Creation</h3>
+                                <h3>Platform-X</h3>
                                 
-                            <p>Function to store and retrieve voters.</p>
+                            <p>Streamline Events with Powerful Management Tools.</p>
                                         
                             </div>
                                 
                             </div>
                          </a>
-                   <a href="/booth138" class="class2">
+                   <a href="/reporting">
                    <div class="product-col" >
                        
-                    <i class="fa-brands fa-slack"></i>
+                            <i class="fa-solid fa-comments"></i>
                             <div>
-                            <h3>Booth 138</h3>
+                            <h3>Reporting</h3>
                             
-                            <p>The voting pattern and management of voters.</p>
+                            <p>Insightful Reporting for Informed Decision-Making.</p>
                             </div>        
                         
                                
                            </div>
                            </a>
-                           <a href="/booth139" class="class3">    
+                           <a href="/reward">    
                             <div class="product-col"  >
-                                <i class="fa-brands fa-algolia"></i>
+                                <i class="fa-solid fa-handshake-angle"></i>
                                     <div>
-                                    <h3>Booth 139</h3>
+                                    <h3>Reward</h3>
                                     
-                                    <p>The voting pattern and management of voters.</p>
+                                    <p>Incentivize Engagement with Exciting Reward.</p>
                                     </div>      
                                         
                             </div>
@@ -182,29 +165,39 @@
                </div>
               <div class="row2">
                
-              <a href="/booth140" class="class4">
-               <div class="product-col "  >
-                <i class="fa-brands fa-stack-overflow"></i>
+              <a href="/polls">
+               <div class="product-col"  >
+                <i class="fa-solid fa-square-poll-vertical"></i>
                         <div>
-                        <h3>Booth 140</h3>
+                        <h3>Polls & Survey</h3>
                         
-                        <p>The voting pattern and management of voters..</p>
+                        <p>Gather Insights Through Interactive Surveys.</p>
                         
                     </div>   
                 </div>
             </a>
-            <a href="/soilhealth" class="class5">    
+            <a href="/binfinder">    
                 <div class="product-col"  >
-                    <i class="fa-solid fa-book"></i>
+                    <i class="fa-solid fa-location-dot"></i>
                         <div>
-                        <h3>Voters List </h3>
+                        <h3>Bin Finder</h3>
                         
-                        <p>Review complete voters details and improve outcomes.</p>
+                        <p>Locate Bins Easily with User-Friendly Tools.</p>
                         </div>     
                             
                 </div>
              </a>  
-             
+             <a href="/resources">    
+                <div class="product-col"  >
+                    <i class="fa-solid fa-book-open-reader"></i>
+                        <div>
+                        <h3>Resources</h3>
+                        
+                        <p>Access Valuable Resources for Sustainable Practices.</p>
+                        </div>      
+                            
+                </div>
+             </a>    
                 
                 
             
@@ -233,10 +226,8 @@
                 </div>
                 <div class="contact-col">
                   
-                    <p>We are a team of electronics and communication engineering students who are
-                     passionate about internet of things and agriculture. Our project, Telinso, 
-                     is an IoT-based solution that aims to provide soil health data to farmers and agriculture enthusiasts. Telinso consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, farmers can access real-time and accurate information about their soil health, and get customized recommendations on how to improve their crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help farmers
-                     optimize their farming practices and achieve sustainable agriculture.
+                    <p>Revive is a waste management solution engineered by our passionate team of electronics and communication engineering students. It offers a sophisticated suite of software and hardware designed to revolutionize waste collection and management. With real-time monitoring capabilities and advanced data analytics, Revive empowers municipalities and waste management companies to optimize collection routes, minimize operational costs, and enhance environmental sustainability. Its user-friendly interface provides actionable insights and customizable recommendations, enabling communities to make informed decisions for efficient waste management practices. Revive is scalable, cost-effective, and committed to fostering a cleaner, greener future through innovative technology and sustainable solutions.
+
                 </p>
                    
                      </div>
@@ -250,10 +241,10 @@
        
             <div class="row">
                 <div class="footer-col1" >
-                    <p>Soil Analysis</p>
-                    <p>Visualization</p>
-                    <p>Farmer Assist</p>
-                    <p>Weather Forecast</p>
+                    <p>Event Management</p>
+                    <p>Bin Locator</p>
+                    <p>Reporting</p>
+                    <p>Polls & Survey</p>
                    
                   
                         </div>
@@ -267,10 +258,10 @@
                                     </div>
                                     <hr>
                 <div class="footer-col1"  >
-                   <p>Empowernment</p>
-                   <p>Innovation</p>
-                   <p>Possibilities</p>
-                   <p>Collaboration</p>
+                   <p>Transformation</p>
+                   <p>Sustainability</p>
+                   <p>Community</p>
+                   <p>Efficiency</p>
                     
                 </div>
                 <hr>
@@ -287,14 +278,14 @@
     </div>
             <div class="footer-col" style="text-align: center;" >     
                    <p>
-                    Telinso is an IoT-based solution that provides soil health data to farmers and agriculture enthusiasts. It consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, you can access real-time and accurate information about your soil health, and get customized recommendations on how to improve your crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help you optimize your farming practices and achieve sustainable agriculture. Learn more about Telinso and how it can benefit you. Contact us today
-                </p>
+                    Revive is a waste management solution engineered by our passionate team of electronics and communication engineering students. It offers a sophisticated suite of software and hardware designed to revolutionize waste collection and management. With real-time monitoring capabilities and advanced data analytics, Revive empowers municipalities and waste management companies to optimize collection routes, minimize operational costs, and enhance environmental sustainability. Its user-friendly interface provides actionable insights and customizable recommendations, enabling communities to make informed decisions for efficient waste management practices. Revive is scalable, cost-effective, and committed to fostering a cleaner, greener future through innovative technology and sustainable solutions. 
+                 </p>
             </div>
             <div class="footer-col" style="text-align: center;" >     
                 <p>
                     <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-square-x-twitter"></i>
                    <br>
-                   <p > 	&copy; TEAM TELINSO</p>
+                   <p > 	&copy; TEAM REVIVE</p>
                 </p>
             </div>
    </section>
@@ -323,7 +314,7 @@
    
     document.getElementById("greeting").innerHTML = greeting;
     document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
-    document.getElementById("day").innerHTML = "Let's Make "+day+" Fruitfull";
+    document.getElementById("day").innerHTML = "How's Your "+day+" Going";;
   </script>
   
                          

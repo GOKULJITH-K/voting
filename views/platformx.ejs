@@ -1,0 +1,297 @@
+<html>
+     <head>
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <title>REVIVE</title>
+         
+         <link rel="stylesheet" href="/savedata.css">
+         <script src="/navbar.js" defer></script>
+         <script src="/savedata.js" defer></script>
+         <script src="/topbtn.js" defer></script>
+         <link rel="stylesheet" href="/footer.css">
+         <link rel="stylesheet" href="/nav.css">
+         <link rel="stylesheet" href="/overview.css">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
+         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+         <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+         <link rel="manifest" href="/site.webmanifest">
+        </head>
+     <body>
+        <div id="myBtn2">
+            <a  href="/" class="topbtn2" title="more"><i class="fa-solid fa-house"></i></a>
+            <a  onclick="openmenu()" id="nav" class="topbtn2" title="more"><i class="fa-solid fa-circle-dot"></i></a>
+            <a   class="topbtn2" title="more"><i class="fa-solid fa-user"></i></a>
+            </div>
+              
+               <section class="header">
+                  
+                  <div class="container">
+      
+                  <nav >
+                  
+                     <div class="navbtn">
+                      <a href="/" class="hero-btn2 heronew"> Home </a>
+                      <a class="hero-btn2 heronew"> Product </a>
+                      <a class="hero-btn2 heronew"> About </a>
+                      <a class="hero-btn2 heronew"> Contact </a>
+                    
+                      <a href="/login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
+                      </div>
+                      
+                      <a class="logo"><img src="logo.png"></a>
+                      
+                      <ul id="sidemenu">
+                      
+                          <li><a href="/">Home</a></li>
+                          <hr>
+                              <li><a href="#about">Product</a></li>
+                          <hr>
+                              <li><a href="#about">About</a></li>
+                              <hr>
+                              <li><a href="#contact">Contact</a></li>
+                              <hr>
+                              <p>
+                                  Thank you for choosing Revive. We value your trust and support. Please free to Contact us anytime
+                              </p>
+                             
+                              <li><a href="login" class="login">Logout</a></li>
+                              <li><a href="/" class="login join">Subscription</a></li>
+                         
+                              
+                      </ul>
+                      
+                      
+                  </nav>
+                 
+                   
+               </section>
+         <section class="overview" >
+            <!--
+            <div class="popup-onload">
+                <div class="popup-inner">
+                    <div class="popup-content">
+                        <h2 id="timer"></h2>
+
+                        <p> </p>
+                        <span class="alert-description">
+                            <ul class="alert-description">
+
+                              <li> Read this message before using the sensor.</li>
+                              <li> Press the delete icon to clear previous soil data. After that, you can use the sensor.</li>
+                              <li> Do this each time before using the sensor. Click close to go back or wait for the timer.</li>
+                            </ul>
+                        </span>
+                        <a href="/delete-data" class="delete"><i class="fa-solid fa-trash"></i></a>
+                        <a href="" class="close">Close</a>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="row">
+               <div class="overview-col">
+                   <h1>PLATFORM-X</h1>
+                   <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Capture your soil health journey with Telinso's innovative data storage. Seamlessly record soil details with accompanying pictures. Track changes, monitor trends, and make informed decisions for optimal health. This tool ensures a comprehensive archive, 
+                    empowering users with a visual timeline. Simplify soil health monitoring and enhance farming experiences for a thriving future. 
+                   
+                </span>
+                
+                    
+                   
+                   <P>
+                    Capture the essence of your soil's health journey with Telinso's innovative feature 
+                    data storage with soil detail pictures. Seamlessly record and preserve vital information about your soil, 
+                    accompanied by visual snapshots. Effortlessly track changes, monitor trends, and make informed decisions for
+                     optimal soil health. This powerful tool ensures a comprehensive archive for future reference, empowering users with 
+                     a visual timeline of their soil's evolution. Telinso simplifies the complexity of soil health monitoring, bringing
+                      precision and clarity to your agricultural practices. Enhance your farming experience by preserving the past for 
+                      a thriving future.
+                </P>
+                   
+                       
+                    
+               </div>
+                 
+           </div>
+           
+       </section>
+       
+           <section class="contact">
+            <h1>Soil Data</h1>
+            
+            <div class="row">
+                
+            <div id="map" class="view-change" style="height: 400px;width: 90%;margin: 0 auto;"></div>
+                
+               
+                    <div class="contact-col ">
+                  
+                    <form action="/savedata" method="POST" enctype="multipart/form-data">
+                        
+                        
+                        
+                        <div class="data savedata" style=" padding: 15px;">
+                            
+                        
+                            
+                            <p id="coordinates">coordinates : </p>
+                            
+                            <input type="text" name="coordinates1" placeholder="Soil Detail" required>
+                            <input type="text" name="coordinates2" placeholder="Soil Detail" required>
+                            <input type="text" name="coordinates3" placeholder="Soil Detail" required>
+                            <input type="text" name="coordinates4" placeholder="Soil Detail" required>
+                            <input type="text" name="coordinates5" placeholder="Soil Detail" required>
+                            
+                            <!--
+                            <label for="image-upload" class="file-upload">
+                                Upload image
+                            </label>
+                            
+                            <input type="file" style="display: none;" name="image" style="border: none;" >
+                            -->
+                            
+                        
+                        </div>
+                        
+                        <div class="save-delete">
+                            <button type="submit" class="btn btn2">Save</button>
+                            <a href="/delete" class="delete"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                        
+                        
+                    </form> 
+
+                 
+                </div>
+                
+                  
+           </div>
+           
+           
+           
+       </section>
+
+       <section class="footer">
+          
+        <div class="row">
+           
+                <div class="footer-col" >
+                    <p>Soil Analysis</p>
+                    <p>Visualization</p>
+                    <p>Farmer Assist</p>
+                    <p>Weather Forecast</p>
+                  
+                        </div>
+                        <hr>
+                <div class="footer-col"  >
+                      <p>Data Analytics</p>
+                      <p>Cloud computing</p>
+                      <p>Internet of things</p>
+                      <p>Artificial intelligence</p>
+                           
+                                    </div>
+                                    <hr>
+                <div class="footer-col"  >
+                   <p>Empowernment</p>
+                   <p>Innovation</p>
+                   <p>Possibilities</p>
+                   <p>Collaboration</p>
+                    
+                </div>
+            
+            <hr>
+           
+            <div class="footer-col"  >
+                
+                
+                <p>Home</p>
+                <p>Product</p>
+                <p>About</p>
+                <p>Contact</p>
+            </div>
+            <hr>
+         </div>
+            <div class="footer-col" style="text-align: center;" >     
+                   <p>
+                    Telinso is an IoT-based solution that provides soil health data to farmers and agriculture enthusiasts. It consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, you can access real-time and accurate information about your soil health, and get customized recommendations on how to improve your crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help you optimize your farming practices and achieve sustainable agriculture. Learn more about Telinso and how it can benefit you. Contact us today
+                </p>
+            </div>
+            <div class="footer-col" style="text-align: center;" >     
+                <p>
+                    <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-square-x-twitter"></i>
+                   <br>
+                   <p > 	&copy; TEAM TELINSO</p>
+                </p>
+            </div>
+   </section>
+   
+   <script>
+    // Get current date and time
+    var now = new Date();
+  
+    // Extract date, time, and day
+    var months = now.toLocaleDateString(undefined, { month: 'long', });
+    var dateNumber = now.getDate();
+    
+    
+  
+   
+  
+    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
+    var date = dateNumber + " " + months;
+   document.querySelector("input[name='date']").value = date;
+/*
+   remtime = 90;
+   const timer = document.getElementById('timer');
+   const interval = setInterval(() =>{
+    timer.textContent = `${remtime}`;
+
+    if(remtime<=0){
+        clearInterval(interval);
+        timer.textContent="There you go!";
+    }
+    remtime--;
+   },1000);
+
+   $(function(){
+    
+    const overlay=$('<div id="overlay"></div>');
+    overlay.show();
+    overlay.appendTo(document.body);
+    $('.popup-onload').show();
+    $('.close').click(function(){
+        $('.popup-onload').hide();
+        overlay.appendTo(document.body).remove();
+        return false;
+    });
+    
+   
+    $('.x').click(function(){
+        $('.popup').hide();
+        overlay.appendTo(document.body).remove();
+        return false;
+
+    });
+    
+
+   });*/
+    
+  </script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&v=weekly"
+  defer
+></script>
+
+              
+         </body>
+</html>

@@ -1,0 +1,308 @@
+<html>
+     <head>
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <title>REVIVE</title>
+         
+         <link rel="stylesheet" href="/analysis.css">
+         <script src="/navbar.js" defer></script>
+         <link rel="stylesheet" href="/nav.css">
+         <script src="/topbtn.js" defer></script>
+         <link rel="stylesheet" href="/overview.css">
+         <link rel="stylesheet" href="/footer.css">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
+         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+         <link rel="manifest" href="/site.webmanifest">
+         <script>
+
+         </script>
+         
+        </head>
+     <body>
+      <button onclick="topFunction()" id="myBtn" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+        
+         <section class="header" >
+            
+            <div class="container">
+
+            <nav >
+              <a href="welcome" class="logo"><img src="/back.png"></a>
+               <div class="navbtn">
+                <a href="/" class="hero-btn2 heronew"> Home </a>
+                <a class="hero-btn2 heronew"> Product </a>
+                <a class="hero-btn2 heronew"> About </a>
+                <a class="hero-btn2 heronew"> Contact </a>
+                <a class="hero-btn2 heronew"> Subscription </a>
+                <a href="login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
+                </div>
+                
+            
+                <ul id="sidemenu">
+                    <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+                    <hr>
+                    <li><a href="/">Home</a></li>
+                    <hr>
+                        <li><a href="#about">Product</a></li>
+                    <hr>
+                        <li><a href="#about">About</a></li>
+                        <hr>
+                        <li><a href="#contact">Contact</a></li>
+                        <hr>
+                        <p>
+                            Thank you for choosing Revive. We value your trust and support. Please free to Contact us anytime
+                        </p>
+                       
+                        <li><a href="login" class="login">Log out</a></li>
+                        <li><a href="/" class="login join">Subscription</a></li>
+                   
+                               
+                </ul>
+                
+                
+            </nav>
+          
+             
+         </section>
+         <section class="overview" >
+             
+          <div class="row">
+             <div class="overview-col">
+                 <h1>REPORTING</h1>
+                 <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Embark on your soil analysis journey with Telinso's innovative soil analytics. Seamlessly record soil samples with accompanying analyses. Track changes, monitor trends, and make informed decisions for optimal soil health. This tool ensures a comprehensive archive, empowering users with a visual timeline. 
+                    Simplify soil analysis and enhance farming experiences for a thriving future. </span>
+                 
+                
+                 
+                 <P>
+                  Elevate your agricultural practices with Telinso's dynamic soil analysis feature. Uncover the intricacies of your soil's
+                   composition as Telinso meticulously analyzes various parameters. Receive detailed insights on crucial factors, assessing
+                    their suitability for diverse cultivation types. The platform doesn't stop there it goes a step further by presenting visually
+                     intuitive analyses. Witness your soil's health unfold through interactive visualizations, making complex data easily digestible.
+                      Telinso empowers users to make informed decisions, ensuring that every planting choice aligns seamlessly with the unique needs of 
+                      their soil.
+                   Explore the world beneath the surface and cultivate success with Telinso's comprehensive soil analysis and visualization capabilities.
+              </P>
+                 
+                     
+                  
+             </div>
+               
+         </div>
+        
+
+     </section>
+         
+              <section class="product">
+                <h1>Analysis</h1>
+               <div class="row1">
+                <span class="description"> User Instructions</span>
+                <span class="overview-description">
+                 <ul class="overview-description">
+                   <li> Presenting the current analysis results of the soil sample.</li>
+                   <li> Anticipate changes upon evaluation of new samples.</li>
+                   <li> Validate results against researched ideal parameters for both vegetable and field crops.</li>
+                 </ul>
+                </span>
+                <div class="product-col" >
+                        
+                    <div class="data">
+                       
+                        <h3>Nitrogen</h3>
+                        
+                         <p><%= nitrogenmsg %> </p>
+                      </div>
+                </div>
+                      
+                   <div class="product-col" >
+                       
+                       
+                      
+                       <h3>Phosphorus</h3>
+                       
+                     <p><%= phosphorusmsg %></p>
+                               
+                   
+                               
+                           </div>
+                        
+                   <div class="product-col"  >
+                       
+                                   <h3>Potassium</h3>
+                                   <p><%= potassiummsg %></p>
+                                           
+                   
+                                      
+                   </div>
+                
+                
+                  
+               </div>
+              <div class="row2">
+                  
+                    <div class="product-col"  >
+                       
+                        <h3>pH</h3>
+                        
+                         <p><%= pHmsg %></p>
+                                
+                                
+                    </div>
+                
+               <div class="product-col"  >
+                   
+                   <h3>Temperature</h3>
+                   
+                 <p><%= temperaturemsg %></p>
+                           
+                </div>
+                <div class="product-col"  >
+                   
+                  <h3>Humidity</h3>
+                  
+                <p><%= humiditymsg %></p>
+                          
+               </div>
+            
+            
+              </div>
+              <div class="row2">
+                <div class="product-col"  >
+                   
+                  <h3>Electrical Conductivity</h3>
+                  
+                <p><%= electrical_conductivitymsg %></p>
+                          
+               </div>
+              </div>
+              <h1 >Visualization</h1>
+              <div class="row1">
+                <span class="description" style="color: white;"> User Instructions</span>
+                <span class="overview-description">
+                 <ul class="overview-description" style="color: white;">
+                   <li> Display the current visualization of soil sample data.</li>
+                   <li> Expect visual changes with the evaluation of new samples.</li>
+                   <li> Validate visualizations against researched ideal parameters for vegetables and field crops.</li>
+                 </ul>
+                </span>
+                <div class="product-col" >
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="product-col" >
+                    <canvas id="doughChart" ></canvas>
+                </div>
+              </div>
+
+               </section>
+               
+              
+         
+          
+
+       <section class="footer">
+          
+       
+            <div class="row">
+                <div class="footer-col" >
+                    <p>Soil Analysis</p>
+                    <p>Visualization</p>
+                    <p>Farmer Assist</p>
+                    <p>Weather Forecast</p>
+                   
+                  
+                        </div>
+                        <hr>
+                <div class="footer-col"  >
+                      <p>Data Analytics</p>
+                      <p>Cloud computing</p>
+                      <p>Internet of things</p>
+                      <p>Artificial intelligence</p>
+                           
+                                    </div>
+                                    <hr>
+                <div class="footer-col"  >
+                   <p>Empowernment</p>
+                   <p>Innovation</p>
+                   <p>Possibilities</p>
+                   <p>Collaboration</p>
+                    
+                </div>
+                <hr>
+            
+            
+           
+            <div class="footer-col"  >
+                
+                
+                <p>Home</p>
+                <p>Product</p>
+                <p>About</p>
+                <p>Contact</p>
+            </div>
+            <hr>
+    </div>
+            <div class="footer-col" style="text-align: center;" >     
+                   <p>
+                    Telinso is an IoT-based solution that provides soil health data to farmers and agriculture enthusiasts. It consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, you can access real-time and accurate information about your soil health, and get customized recommendations on how to improve your crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help you optimize your farming practices and achieve sustainable agriculture. Learn more about Telinso and how it can benefit you. Contact us today
+                </p>
+            </div>
+            <div class="footer-col" style="text-align: center;" >     
+                <p>
+                    <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-square-x-twitter"></i>
+                   <br>
+                   <p > 	&copy; TEAM TELINSO</p>
+                </p>
+            </div>
+   </section>
+   <script>
+    var xValues = ["Occupied", "unoccupied"];
+    var yValues = [`<%= nitrogen %>`, ];
+    var barColors = ["red", "blue"];
+    
+    new Chart("barChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Soil Sample - Bar Graph"
+        }
+      }
+    });
+    new Chart("doughChart", {
+    type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Soil Sample - Doughnut Graph"
+        }
+      }
+    });
+   </script>
+
+         </body>
+</html>

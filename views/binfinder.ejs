@@ -1,0 +1,451 @@
+<html>
+     <head>
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <title>REVIVE</title>
+         
+         <link rel="stylesheet" href="/overview.css">
+         <link rel="stylesheet" href="/soilhealth.css">
+         <script src="/navbar.js" defer></script>
+         <script src="/topbtn.js" defer></script>
+        <link rel="stylesheet" href="/footer.css">
+        <link rel="stylesheet" href="/nav.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="/soilhealth.js" defer></script>
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
+         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+         <link rel="manifest" href="/site.webmanifest">
+        </head>
+     <body>
+      <div id="myBtn2">
+      <a  href="/" class="topbtn2" title="more"><i class="fa-solid fa-house"></i></a>
+      <a  onclick="openmenu()" id="nav" class="topbtn2" title="more"><i class="fa-solid fa-circle-dot"></i></a>
+      <a   class="topbtn2" title="more"><i class="fa-solid fa-user"></i></a>
+      </div>
+        
+         <section class="header">
+            
+            <div class="container">
+
+            <nav >
+            
+               <div class="navbtn">
+                <a href="/" class="hero-btn2 heronew"> Home </a>
+                <a class="hero-btn2 heronew"> Product </a>
+                <a class="hero-btn2 heronew"> About </a>
+                <a class="hero-btn2 heronew"> Contact </a>
+              
+                <a href="/login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
+                </div>
+                
+                <a class="logo"><img src="logo.png"></a>
+                
+                <div id="sidemenu">
+                
+                  <p>
+                    Thank you for choosing Terono. We value your trust and support. Please free to Contact us anytime
+                </p>
+
+                  <div class="sidemenu-icons">
+                    <a><i class="fa-solid fa-headset"></i></a>
+                    <a><i class="fa-solid fa-calendar-days"></i></a>
+                    <a><i class="fa-solid fa-handshake-angle"></i></a>
+                    <a><i class="fa-solid fa-square-poll-vertical"></i></a>
+                    <a><i class="fa-solid fa-comments"></i></a>
+                    <a><i class="fa-solid fa-book-open-reader"></i></a>
+                    <a><i class="fa-solid fa-envelope"></i></a>
+                    <a><i class="fa-solid fa-right-from-bracket"></i></a>
+                  </div>
+                        
+                       
+                    
+                   
+                        
+                  </div>
+                
+                
+            </nav>
+           
+             
+         </section>
+         <section class="overview" >
+             
+            <div class="row">
+               <div class="overview-col">
+                   <h1>BIN FINDER</h1>
+                   <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Revive transforms waste management with BinFinder. Locate nearby disposal bins effortlessly, optimizing waste disposal for efficiency and sustainability. Say goodbye to wasted time searching and hello to streamlined practices. With BinFinder, ensure proper waste disposal, contributing to a cleaner, greener future. Join the revolution with Revive today.
+                   </span>
+                  
+                   
+                   <P>
+                    Empower your agricultural planning with Telinso's Weather Forecast feature. Gain a competitive edge by accessing real time weather
+                     predictions along with a comprehensive 5-day forecast. This invaluable tool equips farmers with the foresight needed to make informed 
+                     decisions, optimizing crop management and resource allocation. Stay ahead of weather fluctuations, mitigate risks, and enhance yield potential.
+                      Telinso simplifies the complexities of farming by delivering accurate and timely weather insights, ensuring that your agricultural operations
+                       align seamlessly with the conditions ahead. 
+                    Elevate your farming experience with Telinso's Weather Forecast feature, where precision meets productivity for a thriving harvest.
+                </P>
+                   
+                       
+                    
+               </div>
+                 
+           </div>
+           
+           <img src="binfind.png">
+           
+       </section>
+           <section class="contact">
+            <h1>Bin Location Data</h1>
+            <span class="description"> User Instructions</span>
+                   <span class="overview-description">
+                    <ul class="overview-description">
+                      <li>Click on 'Show Data' to view the stored data.</li>
+                      <li>Utilize the search bar to find soil data with specific details and by month.</li>
+                      <li>View marked locations on the map for easy reference.</li>
+                      <li>Utilize analytics, crop selection features, and data deletion options for enhanced usability.</li>
+                    </ul>
+                   </span>
+                   <gmp-map
+           id="marker-click-event-example"
+           center="11.9858056 , 75.3811667 "
+           zoom="17"
+           map-id="REVIVE_MAP_ID"
+         >
+         
+           <gmp-advanced-marker
+             position="11.9853032, 75.3816390"
+             title=" Library "
+             
+             gmp-clickable
+           ></gmp-advanced-marker>
+           <gmp-advanced-marker
+           position="11.9868804, 75.3810530"
+           title=" Canteen "
+           
+           gmp-clickable
+         ></gmp-advanced-marker>
+         <gmp-advanced-marker
+         position="11.9858660, 75.3816739"
+         title=" Portico "
+         
+         gmp-clickable
+       ></gmp-advanced-marker>
+       <gmp-advanced-marker
+       position="11.9846061, 75.3820591"
+       title=" Auditorium "
+       
+       gmp-clickable
+     ></gmp-advanced-marker>
+     <gmp-advanced-marker
+     position="11.9864484, 75.3809859"
+     title=" Ground "
+     
+     gmp-clickable
+   ></gmp-advanced-marker>
+ 
+           <gmp-advanced-marker
+            id="current-location"
+            position = "0,0"
+            title="current Location"
+
+            gmp-clickable
+           ></gmp-advanced-marker>
+           
+         </gmp-map>
+         <button class="overview-btn " onclick="Center()"><i class="fa-solid fa-location-crosshairs"></i><span>Current Location</span></button>
+         
+
+           
+           
+               
+            <div class="contact-row" >
+            
+               
+                        <div class="data" id="myUL">
+                          <div class="soilname-date">
+                          <p class="soil-search"><span>Canteen</span></p>
+                            <p id="month-search" class="month-search" ><span><h2 id="dateNumber"></h2></span></p>
+                            </div>
+                            <button class="Showmore" onclick="Showmore('canteen-bin')">Show more <strong>&#x25BD; </strong></button>
+                            <div class="product-col" id="canteen-bin" style="display: none;">
+                              <canvas id="canteen"></canvas>
+                            </div>
+                           
+                            
+                          
+                            
+                        </div>
+                        
+                 
+            
+               
+                    <div class="data" id="myUL">
+                      <div class="soilname-date">
+                         <p class="soil-search"><span>Ground</span></p>
+                          <p id="month-search" class="month-search" ><span><h2 id="dateNumber"></h2></span></p>
+                        </div>
+                        <button class="Showmore" onclick="Showmore('ground-bin')">Show more <strong>&#x25BD; </strong></button>
+                        <div class="product-col" id="ground-bin" style="display: none;">
+                          <canvas id="ground"></canvas>
+                        </div>
+                        
+                       
+                        
+                    </div>
+                    
+             
+            
+               
+                <div class="data" id="myUL">
+                  <div class="soilname-date">
+                     <p class="soil-search"><span>Portico</span></p>
+                      <p id="month-search" class="month-search" ><span><h2 id="dateNumber"></h2></span></p>
+                    </div>
+                    <button class="Showmore" onclick="Showmore('portico-bin')">Show more <strong>&#x25BD; </strong></button>
+                    <div class="product-col" id="portico-bin" style="display: none;">
+                      <canvas id="portico"></canvas>
+                    </div>
+                    
+                 
+                    
+                </div>
+                
+           </div>
+           <div class="contact-row" >
+            
+               
+            <div class="data" id="myUL">
+              <div class="soilname-date">
+                 <p class="soil-search"><span>Library</span></p>
+                  <p id="month-search" class="month-search" ><span><h2 id="dateNumber"></h2></span></p>
+                </div>
+                <button class="Showmore" onclick="Showmore('library-bin')">Show more <strong>&#x25BD; </strong></button>
+                <div class="product-col" id="library-bin" style="display: none;">
+                  <canvas id="library"></canvas>
+                </div>
+                
+                
+                
+            </div>
+            
+      
+               
+        <div class="data" id="myUL">
+          <div class="soilname-date">
+             <p class="soil-search"><span>Auditorium</span></p>
+              <p id="month-search" class="month-search" ><span><h2 id="dateNumber"></h2></span></p>
+            </div>
+            <button class="Showmore" onclick="Showmore('auditorium-bin')">Show more <strong>&#x25BD; </strong></button>
+            <div class="product-col" id="auditorium-bin" style="display: none;">
+              <canvas id="auditorium"></canvas>
+            </div>
+           
+            
+            
+        </div>
+        
+   </div>
+   
+       
+           
+               
+                   
+                
+                   
+           
+       </section>
+
+       <section class="footer">
+          
+        <div class="row">
+           
+                <div class="footer-col" >
+                    <p>Soil Analysis</p>
+                    <p>Visualization</p>
+                    <p>Farmer Assist</p>
+                    <p>Weather Forecast</p>
+                  
+                        </div>
+                        <hr>
+                <div class="footer-col"  >
+                      <p>Data Analytics</p>
+                      <p>Cloud computing</p>
+                      <p>Internet of things</p>
+                      <p>Artificial intelligence</p>
+                           
+                                    </div>
+                                    <hr>
+                <div class="footer-col"  >
+                   <p>Empowernment</p>
+                   <p>Innovation</p>
+                   <p>Possibilities</p>
+                   <p>Collaboration</p>
+                    
+                </div>
+            
+            <hr>
+           
+            <div class="footer-col"  >
+                
+                
+                <p>Home</p>
+                <p>Product</p>
+                <p>About</p>
+                <p>Contact</p>
+            </div>
+            <hr>
+         </div>
+            <div class="footer-col" style="text-align: center;" >     
+                   <p>
+                    Telinso is an IoT-based solution that provides soil health data to farmers and agriculture enthusiasts. It consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, you can access real-time and accurate information about your soil health, and get customized recommendations on how to improve your crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help you optimize your farming practices and achieve sustainable agriculture. Learn more about Telinso and how it can benefit you. Contact us today
+                </p>
+            </div>
+            <div class="footer-col" style="text-align: center;" >     
+                <p>
+                    <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-square-x-twitter"></i>
+                   <br>
+                   <p > 	&copy; TEAM TERONO</p>
+                </p>
+            </div>
+   </section>
+   <script
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
+   defer></script>
+   
+  <script>
+    function Showmore(id){
+
+const showdata = document.getElementById(id);
+if (showdata.style.display === 'none') {
+  showdata.style.display = 'grid';
+  showdata.previousElementSibling.innerHTML="Show less <strong>&#x25B3;</strong>";
+  
+} else {
+  showdata.style.display = 'none';
+  showdata.previousElementSibling.innerHTML="Show more <stron>&#x25BD;</strong>";
+}
+    }
+    let unoccupied = 100 - `<%= canteen %>`;
+     var xValues = ["Occupied", "unoccupied"];
+    var yValues1 = [`<%= canteen %>`, unoccupied];
+    var barColors = ["rgb(221, 87, 70)", "rgb(65, 176, 110)"];
+    
+    new Chart("canteen", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues1
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Waste Bin Occupancy"
+        }
+      }
+    });
+    let unoccupied2 = 100 - `<%= ground %>`;
+
+    var yValues2 = [`<%= ground %>`, unoccupied2];
+    var barColors = ["rgb(221, 87, 70)", "rgb(65, 176, 110)"];
+    
+    new Chart("ground", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues2
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Waste Bin Occupancy"
+        }
+      }
+    });
+    let unoccupied3 = 100 - `<%= portico %>`;
+   
+    var yValues3 = [`<%= portico %>`, unoccupied3];
+    var barColors = ["rgb(221, 87, 70)", "rgb(65, 176, 110)"];
+    
+    new Chart("portico", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues3
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Waste Bin Occupancy"
+        }
+      }
+    });
+    let unoccupied4 = 100 - `<%= library %>`;
+    var yValues4 = [`<%= library %>`, unoccupied4];
+    var barColors = ["rgb(221, 87, 70)", "rgb(65, 176, 110)"];
+    
+    new Chart("library", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues4
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Waste Bin Occupancy"
+        }
+      }
+    });
+    let unoccupied5 = 100 - `<%= auditorium %>`;
+    var yValues5 = [`<%= auditorium %>`, unoccupied5];
+    var barColors = ["rgb(221, 87, 70)", "rgb(65, 176, 110)"];
+    
+    new Chart("auditorium", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues5
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Visualization of Waste Bin Occupancy"
+        }
+      }
+    });
+   </script>
+
+
+         </body>
+</html>
