@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const { createObjectCsvStringifier } = require('csv-writer');
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const {loginmodel,savemodel} = require("./config");
@@ -139,6 +140,323 @@ app.get("/squadlist",async(req,res)=>{
     
     res.render("squadlist");
 })
+app.get("/booth138/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+
+app.get("/booth138voted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,votestatus:"voted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138voted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,votestatus:"voted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138voted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/booth138notvoted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,votestatus:"notvoted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138notvoted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/booth138avail/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,availability:"no"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138unavailable.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,availability:"no"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138avail",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/booth138open/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138open.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138open",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/booth138postal/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,postalvote:"yes"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138postal.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,postalvote:"yes"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138postal",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/division33/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+            { id: 'boothno', title: 'Booth No' },
+        ],
+    });
+    const data = await savemodel.find({}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Division33.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({}).countDocuments();
+    res.render("soilhealth",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+
+app.get("/booth138notvoted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/booth138voted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,votestatus:"voted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138voted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/booth138avail",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,availability:"no"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138avail",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+
+app.get("/booth138open",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,openvote:"no"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138open",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+
+app.get("/booth138postal",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,postalvote:"yes"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    res.render("booth138postal",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
 app.get("/voterlist",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
@@ -174,6 +492,246 @@ app.get("/voterlist3",async(req,res)=>{
     const count1 = await savemodel.find({boothno:140}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:140}).countDocuments();
     res.render("voterlist3",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/squad1notvoted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,squadno:1,votestatus:"notvoted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=squad1notvoted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,squadno:1,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
+    const count  =  await savemodel.find({boothno:138,squadno:1}).countDocuments();
+    res.render("squad1notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/squad2notvoted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,squadno:2,votestatus:"notvoted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=squad2notvoted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,squadno:2,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
+    const count  =  await savemodel.find({boothno:138,squadno:2}).countDocuments();
+    res.render("squad2notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/squad3notvoted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,squadno:3,votestatus:"notvoted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=squad3notvoted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,squadno:3,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
+    const count  =  await savemodel.find({boothno:138,squadno:3}).countDocuments();
+    res.render("squad3notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/squad4notvoted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,squadno:4,votestatus:"notvoted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=squad4notvoted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,squadno:4,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
+    const count  =  await savemodel.find({boothno:138,squadno:4}).countDocuments();
+    res.render("squad4notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/squad5notvoted/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,squadno:5,votestatus:"notvoted"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=squad5notvoted.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,squadno:5,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
+    const count  =  await savemodel.find({boothno:138,squadno:5}).countDocuments();
+    res.render("squad5notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+})
+app.get("/squad1notvoted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,squadno:1,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138,squadno:1}).countDocuments();
+    res.render("squad1notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/squad2notvoted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,squadno:2,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138,squadno:2}).countDocuments();
+    res.render("squad2notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/squad3notvoted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,squadno:3,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138,squadno:3}).countDocuments();
+    res.render("squad3notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/squad4notvoted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,squadno:4,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138,squadno:4}).countDocuments();
+    res.render("squad4notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+}) 
+app.get("/squad5notvoted",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,squadno:5,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+
+    const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138,squadno:5}).countDocuments();
+    res.render("squad5notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
 }) 
 app.get("/138squad1",async(req,res)=>{
     
@@ -237,7 +795,7 @@ app.get("/138squad5",async(req,res)=>{
 })
 app.get("/soilhealth",async(req,res)=>{
     
-    const soildatas = await savemodel.find().sort({ serialno: -1 }).exec();
+    const soildatas = await savemodel.find().sort({ serialno: 1 }).exec();
     const count5 = await savemodel.find().countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find().countDocuments({openvote: "yes"});
     const count3 = await savemodel.find().countDocuments({availability: "no"});
@@ -302,7 +860,7 @@ app.get("/alert/:id",async(req,res)=>{
     const alertdata = await savemodel.findById(id);
     const votername= alertdata.votername;
     const serialno = alertdata.serialno;
-    const message = "Press the delete button";
+    
     if(req.cookies.token){
 
         res.render("alert",
@@ -310,7 +868,7 @@ app.get("/alert/:id",async(req,res)=>{
           votername:votername,
           serialno:serialno,
           id:id,
-          message:message
+          
       });  
         
     }else{
@@ -334,15 +892,8 @@ app.get("/alert/delete/:id",async(req,res)=>{
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
     if(req.cookies.token){
   
-        const message = "Successfully deleted press this message to go back";
-        res.render("alert",
-        {
-            votername:votername,
-            serialno:serialno,
-            id:id,
-            message:message
-
-        });
+        
+        res.render("booth138");
         
     }else{
  
