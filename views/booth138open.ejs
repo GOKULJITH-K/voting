@@ -23,9 +23,17 @@
          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
          <link rel="manifest" href="/site.webmanifest">
+         <style>
+           .header{
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(138.jpeg);
+        height: 350px;
+        
+    }
+         </style>
         </head>
      <body>
-      <button onclick="topFunction()" id="myBtn" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button> 
+      <a  id="myBtn" href="/voterlist" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a> 
+     
         
          <section class="header">
             
@@ -34,8 +42,8 @@
             <nav >
              
               <a href="/" class="logo" style="font-size: 20px;
-              font-family: 'Montserrat', sans-serif;
-              color: white;text-decoration: none;font-weight: 800;">CPIM KOSHORMOOLA</a>
+                font-family: 'Montserrat', sans-serif;
+                color: white;text-decoration: none;font-weight: 800;">CPIM KOSHORMOOLA</a>
              
                 
               <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
@@ -63,7 +71,7 @@
                         <li><a href="#contact">Contact</a></li>
                         <hr>
                         <p>
-                            Thank you for choosing my platform. I value your trust and support. Please free to Contact me anytime
+                          Thank you for choosing my platform. I value your trust and support. Please free to Contact me anytime
                         </p>
                        
                         <li><a href="login" class="login">Log out</a></li>
@@ -88,17 +96,16 @@
              
             <div class="row">
                <div class="overview-col">
-                   <h1>SQUAD 1 LIST</h1>
+                   <h1>OPEN VOTE LIST 138</h1>
                    <span class="description"> Description </span>
                    <span class="overview-description">
-                    Manage elections more effectively with the comprehensive voter database feature for squad 1. Explore a detailed map with every house marked for easy navigation and identification. Access and download complete voter information for each house,
-                     streamlining your election planning and execution. Enhance your election strategy with precise, location-based data for squad 1.</span>
-                   
-                     <div class="votestat">
-                    <a class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
-                    <a class="vote-complete">Voted <br><h2 > <%= count1 %></h2></a>
-                    <a href="/squad1notvoted" class="vote-incomplete">Not Voted <br><h2 > <%= count2 %></h2></a>
-                    <a class="vote-availability">Unavailable <br><h2 > <%= count3 %></h2></a>
+                    Manage elections more effectively with the comprehensive voter database feature for booth 138. Explore a detailed map with every house marked for open voting, allowing for real-time monitoring. Access and download complete information for each house participating in open voting, streamlining your
+                     election planning and execution. Enhance your election strategy with precise, location-based data for open voting in booth 138.</span>
+                   <div class="votestat">
+                    <a  class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
+                    <a  class="vote-complete">Voted <br><h2 > <%= count1 %></h2></a>
+                    <a  class="vote-incomplete">Not Voted <br><h2 > <%= count2 %></h2></a>
+                    <a   class="vote-availability">Unavailable <br><h2 > <%= count3 %></h2></a>
                     <a class="vote-open">Open Vote <br><h2 > <%= count5 %></h2></a>
                     <a class="vote-postal">Postal Vote <br><h2 > <%= count5 %></h2></a>
                    </div>
@@ -143,9 +150,12 @@
            ></gmp-advanced-marker>
            
          </gmp-map>
-         <button class="overview-btn " onclick="Center()"><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138/generate-pdf/totalvote">Download List</a></button>
+         <button class="overview-btn " onclick="Center()"><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138open/generate-pdf/totalvote">Download List</a></button>
+         
+         
+
             <div>
-              <input type="text" id="myInput" onkeyup="searchData()" placeholder="&#128269; Name | House name | Serial No" title="Type in a name">
+                <input type="text" id="myInput" onkeyup="searchData()" placeholder="&#128269; Name | House name | Serial No" title="Type in a name">
             </div>
            
                
@@ -155,15 +165,15 @@
                
                         <div class="data <%= row.votestatus %>" id="myUL">
                           <div class="soilname-date">
-                          <p class="soil-search"><span><%= row.votername %></span></p>
-                            <p id="month-search" class="month-search" ><span><%= row.serialno %></span></p>
+                          <p class="name-search"><span><%= row.votername %></span></p>
+                            <p id="serial-search" class="serial-search" ><span><%= row.serialno %></span></p>
                             </div>
                             <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
                             <div class="soildata" style="display: none;" id="<%= index %>">
                             
                            
                             <p>House no :<%= row.houseno %> </p>
-                            <p>House name : <%= row.housename %> </p>
+                            <p id="house-search" class="house-search">House name : <%= row.housename %> </p>
                             <p>ID Card No : <%= row.idno %></p>
                             <p>Booth no : <%= row.boothno %></p>
                           
@@ -186,26 +196,38 @@
        </section>
 
        <section class="footer">
-          <div class="footer-col" style="text-align: center;" >     
-             <p > 	&copy; Gokuljith k</p>
-          </div>
-        </section>
+          
+        <div class="footer-col" style="text-align: center;" >     
+         
+               <p > 	&copy; Gokuljith k</p>
+           
+        </div>
+      </section>
    <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
    defer></script>
     <script>
+
+     const downloadLink = document.getElementById('download-link');
+        downloadLink.addEventListener('click', function() {
+          
+        });
+
+
       function searchData() {
           
           var input = document.getElementById("myInput").value.toLowerCase();
-          var elements = document.getElementsByClassName("soil-search");
-          var elements2 = document.getElementsByClassName("month-search");
+          var elements = document.getElementsByClassName("serial-search");
+          var elements2 = document.getElementsByClassName("name-search");
+          var elements3 = document.getElementsByClassName("house-search");
 
          
           for (var i = 0; i < elements.length; i++) {
               
               var textContent = elements[i].textContent.toLowerCase();
               var textContent2 = elements2[i].textContent.toLowerCase();
-              if (textContent.includes(input)||textContent2.includes(input)) {
+              var textContent3 = elements3[i].textContent.toLowerCase();
+              if (textContent.includes(input)||textContent2.includes(input)||textContent3.includes(input)) {
                   
                   elements[i].parentElement.parentElement.style.display = "flex";
               } else {
