@@ -13,7 +13,12 @@
   width: 100%;
   
 }
-
+.save-delete{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .delete {
   padding: 19px;
   font-size: 20px;
@@ -112,6 +117,43 @@
 
 }
 
+.logo{
+  margin: 35px 80px;
+  top:10px;
+  left:10px;
+  position: absolute;
+}
+.logo span{
+  display: inline;
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+  outline: none;
+  left: 25px;
+ 
+  position: absolute;
+}
+.logo img{
+ 
+  width: 35px;
+  height: 35px;
+}
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  background: white;
+  
+  
+}
+nav .navbtn{
+  margin: 20px;
+  top:10;
+  right:10;
+  position: absolute;
+}
 nav .hero-btn2{
   display: inline-block;
   text-decoration: none;
@@ -290,7 +332,9 @@ svg{
   margin: 10px ;
   padding: 10px;
 }
-
+.image{
+  padding:20px;
+}
 .data {
   color: black;
   padding: 10px 60px;
@@ -399,8 +443,8 @@ form .btn2:hover{
 @media(max-width:800px){
 
   .header{
-    background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(store.jpeg);
-    height: 350px;
+    background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(store.jpg);
+    height: 150px;
     
     
 }
@@ -421,7 +465,54 @@ form .btn2:hover{
   width: 90%;
 }
 
+  .logo{
+    margin: 15px;
+    top:10px;
+    left:10px;
+    position: absolute;
+  }
+  .logo img{
+   
+    width: 35px;
+    height: 35px;
+  }
+  .text-box{
+      width:100%;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      padding-left: 0px;
+     
   
+  }
+  
+  .text-box h1{
+      font-size: 80px;
+      font-family: system-ui;
+  }
+  .text-box h4{
+      font-size: 25px;
+      text-align: center;
+      padding: 15px 35px;
+      font-weight: 100;
+      font-family: system-ui;
+      
+      
+    
+  }
+
+  
+  .text-box p{
+      color: white;
+      font-size: 16px;
+      padding: 0px 35px;
+      font-weight: 100;
+      font-family: system-ui;
+  }
+  
+      
   .row{
       
       flex-direction: column;
@@ -473,7 +564,26 @@ form .btn2:hover{
    .view-change{
     display: inline;
    }
- 
+  .text-box .hero-btn{
+      
+      padding: 16px 32px 16px 12px;
+      font-size: 14px;
+      margin-left: 5px;
+      font-family: system-ui;
+     
+    }
+    .text-box .hero-btn2{
+      
+      display: none;
+      
+    }
+    
+  .text-box .hero-btn:hover{
+      border-left: 30px solid #482b7c;
+      background: #482b7c;
+     color: white;
+     
+  }
   .overview{
       width: auto;
       padding: 0;
@@ -522,7 +632,7 @@ form .btn2:hover{
  }
 
   nav ul{
-      display: block;
+      display: none;
     }
     nav .fa-solid{
       display: block;
@@ -546,7 +656,7 @@ form .btn2:hover{
     display: none;
   }
   nav ul{
-      background:linear-gradient(#251742,#482b7c) ;
+    
       position: fixed;
       top: 0;
       right: -80%;
@@ -613,6 +723,7 @@ form .btn2:hover{
   nav ul li :hover{
  
     color: black;
+    color: rgb(207, 4, 4);
   }
   nav ul li a{
        color: white;
