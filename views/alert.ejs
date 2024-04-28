@@ -4,6 +4,7 @@
          <title>TELINSO</title>
          
          <link rel="stylesheet" href="/soilhealth.css">
+         <link rel="stylesheet" href="/overview.css">
          <script src="/navbar.js" defer></script>
          <script src="/topbtn.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
@@ -40,15 +41,21 @@
             <div class="container">
 
             <nav >
-                <a href="/" class="logo"><img src="/logo.png"><span>elinso</span></a>
+                
+                <a href="/" class="logo"><img src="/logo.png"></a>
+             
+                
+                <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
+    
+
                <div class="navbtn">
-                <a href="/" class="hero-btn2 heronew"> Home </a>
-                <a class="hero-btn2 heronew"> Product </a>
-                <a class="hero-btn2 heronew"> About </a>
-                <a class="hero-btn2 heronew"> Contact </a>
-                <a class="hero-btn2 heronew"> Subscription </a>
-                <a href="/login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
-                </div>
+               <a  class="hero-btn2 heronew"> Home </a>
+               <a class="hero-btn2 heronew"> Product </a>
+               <a class="hero-btn2 heronew"> About </a>
+               <a class="hero-btn2 heronew"> Contact </a>
+               <a class="hero-btn2 heronew"> Subscription </a>
+               <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
+               </div>
                 
             
                 <ul id="sidemenu">
@@ -72,7 +79,7 @@
                         
                 </ul>
                 
-                <i class="fa-solid fa-user fas" onclick="openmenu()"></i>
+              
             </nav>
             
              
@@ -117,13 +124,18 @@
            
         <div class="contact-row" >
             
-           
+                    <p onclick="goback()" > <%= message %> </p>
+                    <script>
+                        function goback() {
+                            window.history.back();
+                        } 
+                    </script>
                     <div class="data" id="myUL" style="flex-direction: row;">
                         <div class="soildata" style="grid-template-columns: auto;">
-                        <p><%= soilname %></p>
-                        <P><%= date %></P>
+                        <p><%= votername %></p>
+                        <P><%= serialno %></P>
                         </div>
-                        <div class="feature-archive">
+                        <div class="feature-archive" style="margin: 5px;">
                         <a href="/alert/delete/<%=id%>"><i class="fa-solid fa-trash"></i></a>
                         
                         </div>

@@ -5,9 +5,7 @@
          
          <link rel="stylesheet" href="/admin.css">
          <script src="/navbar.js" defer></script>
-         <link rel="stylesheet" href="/footer.css">
-         <link rel="stylesheet" href="/nav.css">
-         <link rel="stylesheet" href="/overview.css">
+         <link rel="stylesheet" href="/footer.css">        
          <script src="/topbtn.js" defer></script>
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,92 +21,111 @@
         </head>
      <body>
        
-        
-         <section class="header" >
-            
-            <div class="container">
+          <section class="header" >
+           
+           <div class="container">
 
-            <nav >
-                <a href="/" class="logo"><img src="/logo.png"><span style="color: black;">elinso</span></a>
-               <div class="navbtn">
-                <a href="/" class="hero-btn2 heronew"> Home </a>
-                <a class="hero-btn2 heronew"> Product </a>
-                <a class="hero-btn2 heronew"> About </a>
-                <a class="hero-btn2 heronew"> Contact </a>
-                <a class="hero-btn2 heronew"> Subscription </a>
-                <a href="login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
-                </div>
-                
+           <nav >
+             
+             <a href="/" class="logo"><img src="/logo.png"></a>
             
-                <ul id="sidemenu">
-                    <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
-                    <hr>
-                    <li><a href="/">Home</a></li>
-                    <hr>
-                        <li><a href="#about">Product</a></li>
-                    <hr>
-                        <li><a href="#about">About</a></li>
-                        <hr>
-                        <li><a href="#contact">Contact</a></li>
-                        <hr>
-                        <p>
-                            Thank you for choosing Telinso. We value your trust and support. Please free to Contact us anytime
-                        </p>
-                       
-                        <li><a href="login" class="login">Log out</a></li>
-                        <li><a href="/" class="login join">Subscription</a></li>
-                   
-                               
-                </ul>
-                
-                <i class="fa-solid fa-user fas" onclick="openmenu()" style="color: black;"><a href="/index"></a></i>
-            </nav>
-            
+               
+             <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
+ 
+
+            <div class="navbtn">
+            <a  class="hero-btn2 heronew"> Home </a>
+            <a class="hero-btn2 heronew"> Product </a>
+            <a class="hero-btn2 heronew"> About </a>
+            <a class="hero-btn2 heronew"> Contact </a>
+            <a class="hero-btn2 heronew"> Subscription </a>
+            <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
+            </div>
+               
+           
+               <ul id="sidemenu">
+                   <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+                   <hr>
+                   <li><a href="/">Home</a></li>
+                   <hr>
+                       <li><a href="#about">Product</a></li>
+                   <hr>
+                       <li><a href="#about">About</a></li>
+                       <hr>
+                       <li><a href="#contact">Contact</a></li>
+                       <hr>
+                       <p>
+                           Thank you for choosing Telinso. We value your trust and support. Please free to Contact us anytime
+                       </p>
+                      
+                       <li><a href="login" class="login">Log out</a></li>
+                       <li><a href="/" class="login join">Subscription</a></li>
+                  
+                              
+               </ul>
+               
+               
+           </nav>
              
          </section>
-         
-            <section class="overview" >
+         <section class="overview" >
              
-                <div class="row">
-                    <div class="overview-col">
-                        <h1>WELCOME TO TELINSO</h1>
-                        <div class="welcome-text">
-                        
-                        <h2>Hello <span> Telinso</span></h2>
-                        <h2 id="greeting"></h2>
-                        
-                        
-                        </div>
-                        <h2>Empowering farmers, sustaining tomorrow, reflecting today.<i class="fa-solid fa-notes-medical"></i></h2>
-                        
-                        <div class="Date-time">
-                        
-                         <h2 id="day"></h2>
-                        
-                         <h2 id="dateNumber"></h2>
- 
-                         </div>
-                       
-                      
-                       
-                       <P>
-   
-                           Soil health and crop productivity are one of the main issues in agriculture as they may lead 
-                           to an unhealthy environment. The main cause of this is the use of excessive fertilizers in 
-                           the soil. Therefore, it is necessary to conduct soil testing before starting agriculture.
-                            A soil test is important for several reasons: to optimize crop production, to improve the
-                             nutritional balance of the growing media and to save money and conserve energy by applying 
-                             only the amount of fertilizer needed. Our solution is designed to aid a farmer in all aspects,
-                              including monitoring soil conditions and nutrients. The data collected from the monitoring system will be stored on a cloud server for analysis. The main objective is to keep track of the level of nutrients in the soil. Knowing their soil 
-                           before starting farming will assist farmers in planning cultivation with precision.</P>
-                       
-                           
-                        
+            <div class="row">
+               <div class="overview-col">
+                   <div class="welcome-text">
+                   <h1>WELCOME TO TELINSO</h1>
+                    <h2>Hello <span>Gokuljith</span></h2>
+                   <h2 id="greeting"></h2>
+                   
                    </div>
-                     
+                   <img src="welcome.png" alt="">
+                   <h2 id="day"></h2>
+                   <h2>Empowering farmers, sustaining tomorrow, reflecting today.<i class="fa-solid fa-notes-medical"></i></h2>
+                   
+                   <div class="Date-time">
+                   <div class="location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="location-date">
+                        <h2 >Location</h2>
+                        <h2>India</h2>
+                    </div>
+                    
+                   </div>
+                   <hr>
+                   <div class="location">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="location-date">
+                        <h2 >Date</h2>
+                        <h2 id="dateNumber"></h2>
+                    </div>
+                   </div>
+
+                    </div>
+                    
+                   
+
+    
+                   
+                  
+                   
+                <P>
+
+                    Soil health and crop productivity are crucial factors in agriculture, playing a pivotal role in maintaining a sustainable environment.
+                     The primary cause of soil degradation is the excessive use of fertilizers. Therefore, it is essential to conduct soil testing before 
+                     initiating agriculture. Soil testing holds significance for various reasons: optimizing crop production, improving the nutritional 
+                     balance of the growing media, and saving money and energy by applying only the necessary amount of fertilizer. Our solution is designed 
+                     to assist farmers comprehensively, including monitoring soil conditions and nutrients. Data collected from the monitoring system will be
+                      stored on a cloud server for analysis. The primary objective is to keep track of nutrient levels in the soil.
+                     Having knowledge of their soil before commencing farming will aid farmers in precise cultivation planning.
+                </P>
+                       
+                    
                </div>
-              
-           </section>
+                 
+           </div>
+          
+       </section>
+          
            
               
               <section class="product">
@@ -241,7 +258,7 @@
    
     document.getElementById("greeting").innerHTML = greeting;
     document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
-    document.getElementById("day").innerHTML =  day;
+    document.getElementById("day").innerHTML = "How's Your "+day+" Going";
   </script>
          </body>
 </html>
