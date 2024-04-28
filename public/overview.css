@@ -151,11 +151,11 @@ nav .navbtn{
     
     text-decoration: none;
     color: white;
-    border: 1px solid rgb(4, 54, 74);
+    border: 1px solid rgb(0, 0, 0);
     padding: 14px 34px;
     font-size: 18px;
-    border-radius: 30px;
-    background: rgb(4, 54, 74);
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
     text-align: center;
     position: relative;
     cursor: pointer;
