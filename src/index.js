@@ -1002,6 +1002,7 @@ app.get("/138squad3",async(req,res)=>{
 app.get("/138squad4",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:4}).sort({ serialno: 1 }).exec();
+     
 
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
@@ -1014,6 +1015,7 @@ app.get("/138squad4",async(req,res)=>{
 app.get("/138squad5",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:5}).sort({ serialno: 1 }).exec();
+    
 
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
@@ -1188,30 +1190,9 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let availability=req.params.availability;
         let openvote=req.params.openvote;
         let postalvote=req.params.postalvote;
-        let squadno= req.params.squadno;
+        let coordinates = req.params.coordinates;
+        let squadno = req.params.squadno;
         
-
-
-        
-        const locationdata = await savemodel.find({housename:req.params.housename});
-        let coordinates;
-        
-       
-       
-        
- 
-        if ( locationdata.length > 0){
-
-         coordinates = locationdata[0].coordinates;
-      
- 
-        }
-        else {
-         coordinates = req.params.coordinates;
-   
-
-        }
-         
    
         await savemodel.findById(id).updateMany({
             serialno:serialno,
@@ -1433,30 +1414,14 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
         availability:req.body.availability,
         openvote:req.body.openvote,
         postalvote:req.body.postalvote,
+        squadno : req.body.squadno,
+        coordinates : req.body.coordinates,
         //image: imageBuffer 
            
     }
    
-       const locationdata = await savemodel.find({housename:req.body.housename});
-       const address = locationdata.housename;
-       let coordinates;
-       let squadno;
       
-      
-       
-
-       if ( locationdata.length > 0){
-        coordinates = locationdata[0].coordinates;
-        squadno = locationdata[0].squadno;
-
-       }
-       else {
-        coordinates = req.body.coordinates;
-        squadno = req.body.squadno
-       }
-       userdata.coordinates = coordinates;
-       userdata.squadno = squadno;
-        const savedata=await savemodel.insertMany([userdata]);
+        const savedata=await savemodel.insertMany(userdata);
         console.log(savedata);
        
         
