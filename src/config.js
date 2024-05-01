@@ -37,7 +37,7 @@ const loginmodel = mongoose.model("users",LoginSchema);
 // schema savedata
 const saveSchema = new mongoose.Schema({
     serialno:{
-        type: String,
+        type: Number,
         required: true,
         
         
