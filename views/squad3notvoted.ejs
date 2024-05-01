@@ -219,7 +219,7 @@
 
       function searchData() {
           
-          var input = document.getElementById("myInput").value.toLowerCase();
+        var input = document.getElementById("myInput").value.toLowerCase();
           var elements = document.getElementsByClassName("serial-search");
           var elements2 = document.getElementsByClassName("name-search");
           var elements3 = document.getElementsByClassName("house-search");
@@ -230,7 +230,11 @@
               var textContent = elements[i].textContent.toLowerCase();
               var textContent2 = elements2[i].textContent.toLowerCase();
               var textContent3 = elements3[i].textContent.toLowerCase();
-              if (textContent.includes(input)||textContent2.includes(input)||textContent3.includes(input)) {
+              var searchRegex = new RegExp(`\\b${input}\\b`);
+              var matchFound = searchRegex.test(textContent) ;
+
+
+              if (matchFound || textContent2.includes(input)||textContent3.includes(input)) {
                   
                   elements[i].parentElement.parentElement.style.display = "flex";
               } else {
