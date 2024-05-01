@@ -69,7 +69,7 @@ const saveSchema = new mongoose.Schema({
     }, 
     squadno:{
         type: String,
-        required: true
+        
         
     }, 
     votestatus:{
