@@ -4,6 +4,7 @@ const { createObjectCsvStringifier } = require('csv-writer');
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const {loginmodel,savemodel} = require("./config");
+const csvtojson = require('csvtojson');
 const multer =require("multer");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
@@ -37,7 +38,7 @@ const verifyToken = async(req,res)=>{
     catch(err){
         return res.status(401).json({message:'Unauthorized'});
     }
-};
+}; 
 const extractToken = (req,res)=>{
     const token = req.headers['authorization'];
     if(token){
@@ -55,8 +56,7 @@ const storage=multer.diskStorage ({
     },
     });
 
-const upload = multer({ storage:storage });
-
+    const upload = multer({ storage: multer.memoryStorage() });
 
 
    
@@ -91,21 +91,10 @@ app.get("/logout", (req, res) => {
 });
 app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
 
-    const farmerdata = await farmermodel.find().sort({_id:-1}).limit().exec();
-    res.render("welcome",{farmerdata:farmerdata});
+ 
+    res.render("welcome");
   
 })  
-app.get("/weather",(req,res)=>{
-
-    if(req.cookies.token){
-
-        res.render("weather");
-
-    }else{
-
-        res.render("index");
-    }
-})
 
 app.get("/savedata",async(req,res)=>{
     
@@ -136,6 +125,65 @@ app.get("/booth140",async(req,res)=>{
     
     res.render("booth140");
 })
+app.get("/votercreation",async(req,res)=>{
+    
+    res.render("votercreation");
+})
+app.get("/automatic",async(req,res)=>{
+    
+    res.render("automatic");
+})
+app.get("/format/generate-pdf",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'serialno' },
+            { id: 'votername', title: 'votername' },
+            { id: 'houseno', title: 'houseno' },
+            { id: 'housename',title:'housename'},
+            {id:'idno' , title:'idno' },
+            {id: 'boothno', title: "boothno"},
+            {id:'squadno',title:'squadno'},
+            {id:'votestatus',title:'votestatus'},
+            {id:'date',title:'date'},
+            {id:'coordinates',title:'coordinates'},
+            {id:'availability',title:'availability'},
+            {id:'openvote',title:'openvote'},
+            {id:'postalvote',title:'postalvote'},
+        ],
+    }); 
+    const data = await savemodel.find().sort({_id:-1}).limit(1);
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=format.csv');
+
+        res.send(csvData);    
+    
+
+    res.render("automatic");
+})
+app.post('/upload', upload.single('csvFile'), async (req, res) => {
+ 
+        
+      const csvDataBuffer = req.file.buffer.toString();
+      const jsonArray = await csvtojson().fromString(csvDataBuffer);
+      console.log(jsonArray);
+      await savemodel.insertMany(jsonArray);
+
+      res.render("welcome");
+   
+     
+  })
+  
 app.get("/squadlist",async(req,res)=>{
     
     res.render("squadlist");
@@ -1125,7 +1173,7 @@ app.get("/voteredit1/:id",async(req,res)=>{
 }) 
    
 
-app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:idno/:availability/:postalvote/:openvote/:boothno/:squadno",async(req,res)=>{
+app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:idno/:availability/:postalvote/:openvote/:boothno/:squadno/:coordinates",async(req,res)=>{
 
                       
     if(req.cookies.token){
@@ -1141,6 +1189,7 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let openvote=req.params.openvote;
         let postalvote=req.params.postalvote;
         let squadno=req.params.squadno;
+        let coordinates=req.params.coordinates;
 
         
       
@@ -1157,6 +1206,7 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
             availability:availability,
             openvote:openvote,
             postalvote:postalvote,
+            coordinates:coordinates,
             
         });
         
