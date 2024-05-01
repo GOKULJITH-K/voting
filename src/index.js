@@ -856,7 +856,7 @@ app.get("/squad4notvoted/generate-pdf/totalvote",async(req,res)=>{
 
         res.send(csvData);    
     
-
+ 
     const soildatas = await savemodel.find({boothno:138,squadno:4,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
 
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
@@ -1188,13 +1188,14 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let availability=req.params.availability;
         let openvote=req.params.openvote;
         let postalvote=req.params.postalvote;
+        let squadno= req.params.squadno;
         
 
 
         
         const locationdata = await savemodel.find({housename:req.params.housename});
         let coordinates;
-        let squadno;
+        
        
        
         
@@ -1202,12 +1203,12 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         if ( locationdata.length > 0){
 
          coordinates = locationdata[0].coordinates;
-         squadno = locationdata[0].squadno;
+      
  
         }
         else {
          coordinates = req.params.coordinates;
-         squadno = req.params.squadno
+   
 
         }
          
