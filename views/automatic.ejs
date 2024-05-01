@@ -4,7 +4,7 @@
          <title>CPM ELECTION</title>
          
          <link rel="stylesheet" href="/overview.css">
-         <link rel="stylesheet" href="/savedata.css">
+         <link rel="stylesheet" href="/soilhealth.css">
          <script src="/navbar.js" defer></script>
          <script src="/savedata.js" defer></script>
          <script src="/topbtn.js" defer></script>
@@ -24,6 +24,15 @@
          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
          <link rel="manifest" href="/site.webmanifest">
+         <style>
+            .header{
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(138.jpeg);
+        height: 350px;
+        background-position: center;
+        background-size: cover;
+        
+    }
+         </style>
         </head>
      <body>
        
@@ -139,73 +148,30 @@
        </section>
        
            <section class="contact">
-            <h1>Update Details</h1>
+            <h1>Create Voters</h1>
             
-            <div class="row">
-                <div id="map" class="view-change" style="height: 400px; width: 90%;margin: 0 auto;"></div>
-               <div class="product-col">
-                    
-                </div>
+           
+        
                
-                    <div class="contact-col ">
+                    <div class="contact-col " style="padding: 0;margin: 0;">
                   
-                    <form id="update-voter"  method="POST" enctype="multipart/form-data">
-                        
-                        
-                        
-                        <div class="data savedata" style=" padding: 15px;">
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                            <span class="description"> User Instructions</span>
+                            <span class="overview-description">
+                                <ul class="overview-description">
+                                <button class="overview-btn " ><i class="fa-solid fa-download"></i><a  id="download-link" href="/format/generate-pdf">Download Format</a></button>
+         
+                                  <li>Click on 'download format' to view the format of data.</li>
+                                  <li>Upload the voters list of above format using browse button. </li>
+                                  
+                                  <input style="border: none;padding: 5px;" type="file" name="csvFile" accept=".csv" required></form>
                             
+                          
+                                  <li>Click the Create button for uploading the voters list .</li>
+                                  <button type="submit" class="btn btn2">Create</button>
+                                  </ul>
+                               </span>
                             
-                            
-                            <input type="hidden" id="coordinateValue" name="coordinates" value="" >
-                            <p id="coordinates">coordinates : </p>
-                            <div style="display: grid; grid-template-columns: auto auto;">
-                            <p style="padding: 20 0;font-weight: bold;">Serial No :</p>
-                            <input id="serialnumber" name="serialnumber" placeholder="Serial no" value="<%= serialno %>" required >
-                            <p style="padding: 20 0;font-weight: bold;">Voter Name :</p>
-                            <input id="votername"  name="votername" placeholder="voter name" value="<%= votername %>" required >
-                            <p style="padding: 20 0;font-weight: bold;">House No :</p>
-                            <input id="houseno" name="houseno" placeholder="House No." value="<%= houseno %>" required >
-                            <p style="padding: 20 0;font-weight: bold;">House Name :</p>
-                            <input id="housename"  name="housename" placeholder="House Name" value="<%= housename %>" required>
-                            <p style="padding: 20 0;font-weight: bold;">Voter ID :</p>
-                            <input id="idno" name="idno" placeholder="ID Card No" value="<%= idno %>"  required>
-                            <p style="padding: 20 0;font-weight: bold;">Booth No :</p>
-                            <input id="boothno" name="boothno" placeholder="Booth No" value="<%= boothno %>"  required>
-                            <p style="padding: 20 0;font-weight: bold;">Squad No :</p>
-                            <select class="selection-btn" id="squad-btn">
-                                <option value="1">Squad 1</option>
-                              <option value="2">Squad 2</option>
-                              <option value="3">Squad 3</option>
-                              <option value="4">Squad 4</option>
-                              <option value="5">Squad 5</option>
-                              
-                            </select>
-                            <p style="padding: 20 0;font-weight: bold;">Availability :</p>
-                            <select class="selection-btn" id="availability-btn">
-                                <option value="yes">Yes</option>
-                              <option value="no">No</option>
-                            </select>
-                            <p style="padding: 20 0;font-weight: bold;">Open Vote :</p>
-                            <select class="selection--btn" id="open-btn">
-                                <option value="yes">Yes</option>
-                              <option value="no">No</option>
-                            </select>
-                            <p style="padding: 20 0;font-weight: bold;">Postal Vote :</p>
-                            <select class="selection--btn" id="postal-btn">
-                                <option value="yes">Yes</option>
-                              <option value="no">No</option>
-                            </select>
-                            
-                            
-                            </div>
-                            
-                           
-                        
-                        </div>
-                        
-                    
-                            <button type="submit" class="btn btn2">Update</button>
                            
                         
                         
@@ -233,82 +199,13 @@
         </div>
 </section>
    
-   <script>
-    
-            document.getElementById('update-voter').addEventListener('submit', function(event){
-
-                const form = event.target;
-                const squadno=document.getElementById("squad-btn").value.toLowerCase();
-                const availability=document.getElementById("availability-btn").value.toLowerCase();
-                const openvote=document.getElementById("open-btn").value.toLowerCase();
-                const postalvote=document.getElementById("postal-btn").value.toLowerCase();
-                const boothno = document.getElementById('boothno').value;
-                const serialnumber = document.getElementById('serialnumber').value;
-                const votername= document.getElementById('votername').value;
-                const houseno= document.getElementById('houseno').value;
-                const housename= document.getElementById('housename').value;
-                const idno= document.getElementById('idno').value;
-                const coordinates= document.getElementById('coordinateValue').value;
-                const id = `<%= id %>`; 
-                form.action = `/voteredit1/update/${id}/${serialnumber}/${votername}/${houseno}/${housename}/${idno}/${availability}/${openvote}/${postalvote}/${boothno}/${squadno}/${coordinates}`;
-            });
-          
-    // Get current date and time
-    var now = new Date();
   
-    // Extract date, time, and day
-    var months = now.toLocaleDateString(undefined, { month: 'long', });
-    var dateNumber = now.getDate();
-    
-    
-  
-   
-  
-    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
-    var date = dateNumber + " " + months;
-   document.querySelector("input[name='date']").value = date;
-/*
-   remtime = 90;
-   const timer = document.getElementById('timer');
-   const interval = setInterval(() =>{
-    timer.textContent = `${remtime}`;
 
-    if(remtime<=0){
-        clearInterval(interval);
-        timer.textContent="There you go!";
-    }
-    remtime--;
-   },1000);
-
-   $(function(){
-    
-    const overlay=$('<div id="overlay"></div>');
-    overlay.show();
-    overlay.appendTo(document.body);
-    $('.popup-onload').show();
-    $('.close').click(function(){
-        $('.popup-onload').hide();
-        overlay.appendTo(document.body).remove();
-        return false;
-    });
-    
-   
-    $('.x').click(function(){
-        $('.popup').hide();
-        overlay.appendTo(document.body).remove();
-        return false;
-
-    });
-    
-
-   });*/
-    
-  </script>
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&v=weekly"
-  defer
-></script>
 
               
          </body>
 </html>
+
+              
+             
+                
