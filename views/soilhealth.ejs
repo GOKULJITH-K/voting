@@ -156,19 +156,19 @@
               
                 <% soildatas.forEach((row,index) => { %>
                
-                        <div class="data <%= row.votestatus %>" id="myUL">
-                          <div class="soilname-date">
-                          <p class="soil-search"><span><%= row.votername %></span></p>
-                            <p id="month-search" class="month-search" ><span><%= row.serialno %></span></p>
-                            </div>
-                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
-                            <div class="soildata" style="display: none;" id="<%= index %>">
-                            
-                           
-                            <p>House no :<%= row.houseno%> </p>
-                            <p>House name : <%= row.housename %> </p>
-                            <p>ID Card No : <%= row.idno %></p>
-                            <p>Booth no : <%= row.boothno%></p>
+                  <div class="data <%= row.votestatus %>" id="myUL">
+                    <div class="soilname-date">
+                    <p class="name-search"><span><%= row.votername %></span></p>
+                      <p id="serial-search" class="serial-search" ><span><%= row.serialno %></span></p>
+                      </div>
+                      <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
+                      <div class="soildata" style="display: none;" id="<%= index %>">
+                      
+                     
+                      <p>House no :<%= row.houseno %> </p>
+                      <p id="house-search" class="house-search">House name : <%= row.housename %> </p>
+                      <p>ID Card No : <%= row.idno %></p>
+                      <p>Booth no : <%= row.boothno %></p>
                           
                           
                             </div>
@@ -202,6 +202,7 @@
     <script>
       function searchData() {
           
+        
         var input = document.getElementById("myInput").value.toLowerCase();
           var elements = document.getElementsByClassName("serial-search");
           var elements2 = document.getElementsByClassName("name-search");
@@ -220,6 +221,7 @@
               if (matchFound || textContent2.includes(input)||textContent3.includes(input)) {
                   
                   elements[i].parentElement.parentElement.style.display = "flex";
+
               } else {
                   
                   elements[i].parentElement.parentElement.style.display = "none";
