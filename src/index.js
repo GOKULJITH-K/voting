@@ -1188,11 +1188,28 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let availability=req.params.availability;
         let openvote=req.params.openvote;
         let postalvote=req.params.postalvote;
-        let squadno=req.params.squadno;
-        let coordinates=req.params.coordinates;
+        
+
 
         
-      
+        const locationdata = await savemodel.find({housename:req.params.housename});
+        let coordinates;
+        let squadno;
+       
+       
+        
+ 
+        if ( locationdata.length > 0){
+
+         coordinates = locationdata[0].coordinates;
+         squadno = locationdata[0].squadno;
+ 
+        }
+        else {
+         coordinates = req.params.coordinates;
+         squadno = req.params.squadno
+
+        }
          
    
         await savemodel.findById(id).updateMany({
@@ -1410,7 +1427,6 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
         housename:req.body.housename,
         idno:req.body.idno,
         boothno:req.body.boothno,
-        squadno:req.body.squadno,
         votestatus:req.body.votestatus,
         date:req.body.date,
         availability:req.body.availability,
@@ -1423,14 +1439,22 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
        const locationdata = await savemodel.find({housename:req.body.housename});
        const address = locationdata.housename;
        let coordinates;
+       let squadno;
+      
+      
+       
 
        if ( locationdata.length > 0){
         coordinates = locationdata[0].coordinates;
+        squadno = locationdata[0].squadno;
+
        }
        else {
         coordinates = req.body.coordinates;
+        squadno = req.body.squadno
        }
        userdata.coordinates = coordinates;
+       userdata.squadno = squadno;
         const savedata=await savemodel.insertMany([userdata]);
         console.log(savedata);
        
