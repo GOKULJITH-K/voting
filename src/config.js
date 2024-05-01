@@ -80,7 +80,6 @@ const saveSchema = new mongoose.Schema({
    
     date:{
         type: String,
-        required: true
         
     }, 
     coordinates:{  
