@@ -1,0 +1,137 @@
+<html>
+     <head>
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <title>TELINSO</title>
+         
+         <link rel="stylesheet" href="/savedata.css">
+         <script src="/navbar.js" defer></script>
+         <link rel="stylesheet" href="/footer.css">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
+         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        </head>
+     <body>
+       
+        
+         <section class="header">
+            
+            <div class="container">
+
+            <nav >
+               <div class="navbtn">
+                <a href="/" class="hero-btn2 heronew"> Home </a>
+                <a class="hero-btn2 heronew"> Product </a>
+                <a class="hero-btn2 heronew"> About </a>
+                <a class="hero-btn2 heronew"> Contact </a>
+                <a href="login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
+                </div>
+                
+            
+                <ul id="sidemenu">
+                    <li><a href="/">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <form action="/signup" method="POST">
+                            
+                            <input type="text" name="username" placeholder="Your Name" >
+                            <input type="email" name="password" placeholder="Your Email">
+                            
+                            <button type="submit" class="btn btn1">Login now</a></button>
+                            
+                            
+                        </form> 
+                        <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;">Close Window</a></li>
+                           
+                </ul>
+                
+                <i class="fa-solid fa-user fas" onclick="openmenu()"></i>
+            </nav>
+            
+             
+         </section>
+         
+           <section class="contact">
+            <div class="row">
+               <div class="contact-col">
+                  
+                   
+                  
+                   <h1>User Login</h1>
+                
+                    <form action="/test" method="POST">
+                        
+                        <input type="text" name="nitrogen" placeholder="nitrogen" required>
+                        <input type="text" name="phosphorous" placeholder="phosphorus" required>
+                        <input type="text" name="potassium" placeholder="potassium" required>
+                        <input type="text" name="ph" placeholder="pH" required>
+                        <input type="text" name="temperature" placeholder="temperature" required>
+                        <input type="text" name="humidity" placeholder="humidity" required>
+                        <input type="text" name="electrical_conductivity" placeholder="electrical conductivity" required>
+                        
+                        
+                        <button type="submit" class="btn btn2">Send</a></button>
+                    </form> 
+
+                 
+                </div>
+                
+           </div>
+           
+       </section>
+
+       <section class="footer">
+          
+            <div class="row">
+                <div class="footer-col" >
+                    <p>Soil Analysis</p>
+                    <p>Visualization</p>
+                    <p>Farmer Assist</p>
+                    <p>Weather Forecast</p>
+                  
+                        </div>
+                <div class="footer-col"  >
+                      <p>Data Analytics</p>
+                      <p>Cloud computing</p>
+                      <p>Internet of things</p>
+                      <p>Artificial intelligence</p>
+                           
+                                    </div>
+                <div class="footer-col"  >
+                   <p>Empowernment</p>
+                   <p>Innovation</p>
+                   <p>Possibilities</p>
+                   <p>Collaboration</p>
+                    
+                </div>
+            
+            
+           
+            <div class="footer-col"  >
+                
+                
+                <p>Home</p>
+                <p>Product</p>
+                <p>About</p>
+                <p>Contact</p>
+            </div>
+    </div>
+            <div class="footer-col" style="text-align: center;" >     
+                   <p>
+                    Telinso is an IoT-based solution that provides soil health data to farmers and agriculture enthusiasts. It consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, you can access real-time and accurate information about your soil health, and get customized recommendations on how to improve your crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help you optimize your farming practices and achieve sustainable agriculture. Learn more about Telinso and how it can benefit you. Contact us today
+                </p>
+            </div>
+            <div class="footer-col" style="text-align: center;" >     
+                <p>
+                    <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-square-x-twitter"></i>
+                   <br>
+                   <p > 	&copy; TEAM TELINSO</p>
+                </p>
+         </div>
+   </section>
+              
+         </body>
+</html>
