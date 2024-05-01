@@ -664,7 +664,7 @@ app.get("/booth138avail",async(req,res)=>{
 
 app.get("/booth138open",async(req,res)=>{
     
-    const soildatas = await savemodel.find({boothno:138,openvote:"no"}).sort({ serialno: 1 }).exec();
+    const soildatas = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).exec();
 
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
