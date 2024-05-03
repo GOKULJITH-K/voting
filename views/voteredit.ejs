@@ -187,12 +187,19 @@
                               <option value="no">No</option>
                             </select>
                             <p style="padding: 20 0;font-weight: bold;">Open Vote :</p>
-                            <select class="selection--btn" id="open-btn">
+                            <select class="selection-btn" id="open-btn">
+                                <option value="no">No</option>
                                 <option value="yes">Yes</option>
-                              <option value="no">No</option>
+                              
                             </select>
                             <p style="padding: 20 0;font-weight: bold;">Postal Vote :</p>
-                            <select class="selection--btn" id="postal-btn">
+                            <select class="selection-btn" id="postal-btn">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                              
+                            </select>
+                            <p style="padding: 20 0;font-weight: bold;">Favoured Vote :</p>
+                            <select class="selection-btn" id="favoured-btn">
                                 <option value="yes">Yes</option>
                               <option value="no">No</option>
                             </select>
@@ -249,8 +256,9 @@
                 const housename= document.getElementById('housename').value;
                 const idno= document.getElementById('idno').value;
                 const coordinates= document.getElementById('coordinateValue').value;
+                const favoured= document.getElementById('favoured-btn').value;
                 const id = `<%= id %>`; 
-                form.action = `/voteredit1/update/${id}/${serialnumber}/${votername}/${houseno}/${housename}/${idno}/${availability}/${openvote}/${postalvote}/${boothno}/${squadno}/${coordinates}`;
+                form.action = `/voteredit1/update/${id}/${serialnumber}/${votername}/${houseno}/${housename}/${idno}/${availability}/${openvote}/${postalvote}/${boothno}/${squadno}/${coordinates}/${favoured}`;
             });
           
     // Get current date and time

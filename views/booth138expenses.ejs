@@ -25,10 +25,8 @@
          <link rel="manifest" href="/site.webmanifest">
          <style>
            .header{
-        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(Kerala.jpg);
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(kodiyeri.jpeg);
         height: 350px;
-        background-size: cover;
-       background-position: center;
         
     }
          </style>
@@ -98,16 +96,16 @@
              
             <div class="row">
                <div class="overview-col">
-                   <h1>NOT VOTED LIST</h1>
+                   <h1>EXPENSES LIST</h1>
                    <span class="description"> Description </span>
                    <span class="overview-description">
-                    Manage elections more effectively with the comprehensive voter database feature for squad 4. Explore a detailed map with every house marked for easy navigation and identification. Access and download complete voter information for each house,
-                     streamlining your election planning and execution. Enhance your election strategy with precise, location-based data for squad 4.</span>
+                    Manage elections more effectively with the comprehensive voter database feature for booth 138. Explore a detailed map with every house marked, highlighting voters who have already cast their votes. Access and download complete information for each house with voters who have voted, streamlining your election planning and execution.
+                     Enhance your election strategy with precise, location-based data for voters who have already voted in booth 138     
+                </span>
                    <div class="votestat">
-                    <a  class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
-                    <a  class="vote-complete">Voted <br><h2 > <%= count1 %></h2></a>
-                    <a  class="vote-incomplete">Not Voted <br><h2 > <%= count2 %></h2></a>
-                    <a  class="vote-favoured">Favoured <br><h2 > <%= count6 %></h2></a>
+                    <a class="vote-fund">Fund <br><h2 > <%= count7 %>&#8377;</h2></a>
+                    <a class="vote-expenses">Expenses <br><h2 > <%= count8 %>&#8377;</h2></a>
+                    
                    </div>
                </div>
                  
@@ -150,7 +148,7 @@
            ></gmp-advanced-marker>
            
          </gmp-map>
-         <button class="overview-btn " ><i class="fa-solid fa-download"></i><a  id="download-link" href="/squad4notvoted/generate-pdf/totalvote">Download List</a></button>
+         <button class="overview-btn "><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138expenses/generate-pdf/totalvote">Download List</a></button>
          
          
 
@@ -163,25 +161,16 @@
               
                 <% soildatas.forEach((row,index) => { %>
                
-                        <div class="data <%= row.votestatus %>" id="myUL">
-                          <div class="soilname-date">
-                          <p class="name-search"><span><%= row.votername %></span></p>
-                            <p id="serial-search" class="serial-search" ><span><%= row.serialno %></span></p>
-                            </div>
-                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
-                            <div class="soildata" style="display: none;" id="<%= index %>">
-                            
-                           
-                            <p>House no :<%= row.houseno %> </p>
-                            <p id="house-search" class="house-search">House name : <%= row.housename %> </p>
-                            <p>ID Card No : <%= row.idno %></p>
-                            <p>Booth no : <%= row.boothno %></p>
+                  <div class="data voted" id="myUL">
+                    <div class="soilname-date">
+                    <p class="name-search"><span><%= row.name %></span></p>
+                      <p id="serial-search" class="serial-search" ><span><%= row.amount %></span></p>
+                      </div>
                           
                           
                             </div>
                            
                             
-                          
                             
                            
                          
@@ -202,7 +191,7 @@
                <p > 	&copy; Gokuljith k</p>
            
         </div>
-  </section>
+      </section>
    <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
    defer></script>
@@ -279,7 +268,7 @@
   }
   var xValues = ["voted","Not voted"];
   
-    var yValues = [`<%= count1 %>`, `<%= count2 %>`];
+    
     var barColors = ["green", "red",];
     
    

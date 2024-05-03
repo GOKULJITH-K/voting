@@ -110,6 +110,9 @@
                     <a class="vote-availability">Unavailable <br><h2 > <%= count3 %></h2></a>
                     <a class="vote-open">Open Vote <br><h2 > <%= count5 %></h2></a>
                     <a class="vote-postal">Postal Vote <br><h2 > <%= count5 %></h2></a>
+                    <a class="vote-favoured">Favoured <br><h2 > <%= count6 %></h2></a>
+                    <a class="vote-fund">Fund <br><h2 > <%= count7 %>&#8377;</h2></a>
+                    <a class="vote-expenses">Expenses <br><h2 > <%= count8 %>&#8377;</h2></a>
                    </div>
                </div>
                  
@@ -124,7 +127,37 @@
        
          
            <section class="contact">
-          
+            <form id="fund" method="POST" enctype="multipart/form-data">
+                        
+                        
+              <span class="description"> Fund Management :</span>     
+              <div class="data savedata" style=" padding: 15px;">
+                 
+                  <div style="display: grid; grid-template-columns: auto auto;">
+           
+                  <p style="padding: 20 0;font-weight: semi-bold;">Name :</p>
+                  <input name="name" id="name-btn" placeholder="Name" required>
+                  <p style="padding: 20 0;font-weight: semi-bold;">Amount :</p>
+                  <input  name="amount" id="amount-btn" placeholder="Amount" required>
+                  <p style="padding: 20 0;font-weight: semi-bold;"> Type :</p>
+                  <select name="fundtype" class="selection-btn" id="type-btn">
+                    <option value="donation">Donation</option>
+                  <option value="expenses">Expenses</option>
+                </select>
+                  
+                  <input  type="hidden" name="squadno" id="squad-btn" placeholder="Squad No:" value="4" required>
+                  
+              
+                  </div>
+                 
+              
+              </div>
+                  <div class="save-delete">
+                  <button type="submit" class="btn btn2" >Save</button>
+                  <a class="delete" ><i class="fa-solid fa-download"></i></a>
+                </div>
+              
+          </form> 
                    <gmp-map
            id="marker-click-event-example"
            center="11.8309  ,   75.4372"
@@ -201,6 +234,17 @@
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
    defer></script>
     <script>
+      document.getElementById('fund').addEventListener('submit', function(event){
+
+const form = event.target;
+const squadno=document.getElementById("squad-btn").value.toLowerCase();
+const name=document.getElementById("name-btn").value.toLowerCase();
+const amount=document.getElementById("amount-btn").value.toLowerCase();
+const fundtype=document.getElementById("type-btn").value.toLowerCase();
+
+form.action = `/fund/${squadno}/${name}/${amount}/${fundtype}`;
+});
+
       function searchData() {
           
         var input = document.getElementById("myInput").value.toLowerCase();

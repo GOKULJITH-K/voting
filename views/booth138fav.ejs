@@ -25,16 +25,14 @@
          <link rel="manifest" href="/site.webmanifest">
          <style>
            .header{
-        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(Kerala.jpg);
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(kodiyeri.jpeg);
         height: 350px;
-        background-size: cover;
-       background-position: center;
         
     }
          </style>
         </head>
      <body>
-      <a  id="myBtn" href="/voterlist" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a> 
+      <a  id="myBtn"  class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a> 
      
         
          <section class="header">
@@ -98,16 +96,16 @@
              
             <div class="row">
                <div class="overview-col">
-                   <h1>NOT VOTED LIST</h1>
+                   <h1>FAVOUTED LIST</h1>
                    <span class="description"> Description </span>
                    <span class="overview-description">
-                    Manage elections more effectively with the comprehensive voter database feature for squad 4. Explore a detailed map with every house marked for easy navigation and identification. Access and download complete voter information for each house,
-                     streamlining your election planning and execution. Enhance your election strategy with precise, location-based data for squad 4.</span>
+                    Manage elections more effectively with the comprehensive voter database feature for booth 138. Explore a detailed map with every house marked, highlighting voters who have already cast their votes. Access and download complete information for each house with voters who have voted, streamlining your election planning and execution.
+                     Enhance your election strategy with precise, location-based data for voters who have already voted in booth 138     
+                </span>
                    <div class="votestat">
-                    <a  class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
-                    <a  class="vote-complete">Voted <br><h2 > <%= count1 %></h2></a>
-                    <a  class="vote-incomplete">Not Voted <br><h2 > <%= count2 %></h2></a>
+                    <a class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
                     <a  class="vote-favoured">Favoured <br><h2 > <%= count6 %></h2></a>
+                    
                    </div>
                </div>
                  
@@ -150,7 +148,7 @@
            ></gmp-advanced-marker>
            
          </gmp-map>
-         <button class="overview-btn " ><i class="fa-solid fa-download"></i><a  id="download-link" href="/squad4notvoted/generate-pdf/totalvote">Download List</a></button>
+         <button class="overview-btn "><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138fav/generate-pdf/totalvote">Download List</a></button>
          
          
 
@@ -181,7 +179,6 @@
                             </div>
                            
                             
-                          
                             
                            
                          
@@ -202,7 +199,7 @@
                <p > 	&copy; Gokuljith k</p>
            
         </div>
-  </section>
+      </section>
    <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
    defer></script>
@@ -279,7 +276,7 @@
   }
   var xValues = ["voted","Not voted"];
   
-    var yValues = [`<%= count1 %>`, `<%= count2 %>`];
+    
     var barColors = ["green", "red",];
     
    

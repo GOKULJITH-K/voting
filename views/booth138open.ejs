@@ -89,6 +89,7 @@
               <a href="/voterlist"><i class="fa-solid fa-address-book"></i></a>
               <a href="/squadlist"><i class="fa-solid fa-people-group"></i></a>
               <a href="/soilhealth"><i class="fa-solid fa-book"></i></a>
+              
           </div>
              </div>
          </section>
@@ -103,11 +104,9 @@
                      election planning and execution. Enhance your election strategy with precise, location-based data for open voting in booth 138.</span>
                    <div class="votestat">
                     <a  class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
-                    <a  class="vote-complete">Voted <br><h2 > <%= count1 %></h2></a>
-                    <a  class="vote-incomplete">Not Voted <br><h2 > <%= count2 %></h2></a>
-                    <a   class="vote-availability">Unavailable <br><h2 > <%= count3 %></h2></a>
-                    <a class="vote-open">Open Vote <br><h2 > <%= count5 %></h2></a>
-                    <a class="vote-postal">Postal Vote <br><h2 > <%= count5 %></h2></a>
+                   
+                    <a class="vote-open">Open Vote <br><h2 > <%= count4 %></h2></a>
+                    
                    </div>
                </div>
                  
@@ -279,8 +278,7 @@
   }
   var xValues = ["voted","Not voted"];
   
-    var yValues = [`<%= count1 %>`, `<%= count2 %>`];
-    var barColors = ["green", "red",];
+   
     
    
     new Chart("doughChart", {
