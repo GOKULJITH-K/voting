@@ -776,6 +776,8 @@ form .btn2:hover{
     .welcome-text{
         display: flex;
         justify-content: space-around;
+      
+
        
         
 
@@ -798,8 +800,8 @@ form .btn2:hover{
     }
     .overview-col img{
         display: inline;
-        width: 230px;
-        height: 230px;
+        width: 280px;
+        height: 280px;
       
       }
     .Date-time{
