@@ -33,6 +33,29 @@ const LoginSchema = new mongoose.Schema({
 // model users
 const loginmodel = mongoose.model("users",LoginSchema);
 
+const fundSchema = new mongoose.Schema({
+    name:{
+        type: String,
+        required: true
+    },
+    amount:{
+        type:Number,
+        required: true
+    },
+    fundtype:{
+        type: String,
+        required: true
+    },
+    squadno:{
+        type: String,
+        required:true
+    }
+   
+});
+
+// model users
+const fundmodel = mongoose.model("fund",fundSchema);
+
 
 // schema savedata
 const saveSchema = new mongoose.Schema({
@@ -98,6 +121,9 @@ const saveSchema = new mongoose.Schema({
         type: String,
         
     },
+    favoured:{
+        type:String,
+    },
    
    
 });
@@ -121,6 +147,7 @@ const savemodel = mongoose.model("voters_list",saveSchema);
 module.exports ={
     loginmodel,
     savemodel,
+    fundmodel,
     
 };
 

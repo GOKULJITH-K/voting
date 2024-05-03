@@ -3,15 +3,15 @@ const path = require('path');
 const { createObjectCsvStringifier } = require('csv-writer');
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-const {loginmodel,savemodel} = require("./config");
+const {loginmodel,savemodel,fundmodel} = require("./config");
 const csvtojson = require('csvtojson');
 const multer =require("multer");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const port=process.env.PORT || 3000 ;
-
-   
+ 
+    
 const app = express();
                     
 const secretKey =  process.env.SECRET_KEY || 'telinso';
@@ -104,7 +104,8 @@ app.get("/savedata",async(req,res)=>{
 
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
    
     
@@ -115,23 +116,53 @@ app.get("/admin",(req,res)=>{
 
 app.get("/booth138",async(req,res)=>{
     
-    res.render("booth138");
+    if(req.cookies.token){
+
+        res.render("booth138");
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    
 })
 app.get("/booth139",async(req,res)=>{
+    if(req.cookies.token){
+
+        res.render("booth139");
+    }else{
     
-    res.render("booth139");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   
 })
 app.get("/booth140",async(req,res)=>{
     
     res.render("booth140");
 })
 app.get("/votercreation",async(req,res)=>{
+    if(req.cookies.token){
+
+        res.render("votercreation");
+    }else{
     
-    res.render("votercreation");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   
 })
 app.get("/automatic",async(req,res)=>{
+    if(req.cookies.token){
+
+        res.render("automatic");
+    }else{
     
-    res.render("automatic");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    
+    
 })
 app.get("/format/generate-pdf",async(req,res)=>{
 
@@ -152,6 +183,7 @@ app.get("/format/generate-pdf",async(req,res)=>{
             {id:'availability',title:'availability'},
             {id:'openvote',title:'openvote'},
             {id:'postalvote',title:'postalvote'},
+            {id:'favoured',title:'favoured'},
         ],
     }); 
     const data = await savemodel.find().sort({_id:-1}).limit(1);
@@ -168,8 +200,15 @@ app.get("/format/generate-pdf",async(req,res)=>{
 
         res.send(csvData);    
     
+        if(req.cookies.token){
 
-    res.render("automatic");
+            res.render("automatic");
+        }else{
+        
+            const message="You have invalid login credential"
+        res.render("login",{message:message});
+        }
+    
 })
 app.post('/upload', upload.single('csvFile'), async (req, res) => {
  
@@ -178,16 +217,31 @@ app.post('/upload', upload.single('csvFile'), async (req, res) => {
       const jsonArray = await csvtojson().fromString(csvDataBuffer);
       console.log(jsonArray);
       await savemodel.insertMany(jsonArray);
+      if(req.cookies.token){
 
-      res.render("welcome");
+        res.render("welcome");
    
+      }else{
+      
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+      }
+      
      
   })
   
 app.get("/squadlist",async(req,res)=>{
     
-    res.render("squadlist");
-})
+    if(req.cookies.token){
+
+        res.render("squadlist");
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad1booth138/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -216,14 +270,23 @@ app.get("/squad1booth138/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,squadno:1}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:1}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad2booth138/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -252,14 +315,23 @@ app.get("/squad2booth138/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,squadno:2}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:2}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad4booth138/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -288,14 +360,23 @@ app.get("/squad4booth138/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,squadno:4}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:4}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad3booth138/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -324,14 +405,23 @@ app.get("/squad3booth138/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,squadno:3}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:3}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 
 app.get("/squad5booth138/generate-pdf/totalvote",async(req,res)=>{
 
@@ -361,14 +451,23 @@ app.get("/squad5booth138/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,squadno:5}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:5}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 
 app.get("/booth138/generate-pdf/totalvote",async(req,res)=>{
 
@@ -398,14 +497,23 @@ app.get("/booth138/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 
 app.get("/booth138voted/generate-pdf/totalvote",async(req,res)=>{
 
@@ -435,14 +543,23 @@ app.get("/booth138voted/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,votestatus:"voted"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138voted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("booth138voted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/booth138notvoted/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -471,14 +588,23 @@ app.get("/booth138notvoted/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("booth138notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 app.get("/booth138avail/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -507,14 +633,23 @@ app.get("/booth138avail/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,availability:"no"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138avail",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("booth138avail",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 app.get("/booth138open/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -543,14 +678,166 @@ app.get("/booth138open/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138open",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("booth138open",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
+app.get("/booth138fav/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'serialno', title: 'Serial No' },
+            { id: 'votername', title: 'Name' },
+            { id: 'housename', title: 'House Name' },
+        ],
+    });
+    const data = await savemodel.find({boothno:138,favoured:"yes"}).sort({ serialno: 1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138favoured.csv');
+
+        res.send(csvData);    
+    
+
+    const soildatas = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
+
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    if(req.cookies.token){
+
+        res.render("booth138fav",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
+app.get("/booth138donation/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'name', title: 'Name' },
+            { id: 'amount', title: 'Amount' },
+            { id: 'squadno', title: 'Squad No' },
+        
+        ],
+    });
+    const data = await fundmodel.find({fundtype:"donation"}).sort({ _id:1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138donation.csv');
+
+        res.send(csvData);    
+    
+
+
+    const soildatas = await fundmodel.find({fundtype:"donation"}).sort({ _id:1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
+    if(req.cookies.token){
+
+        res.render("booth138expenses",{soildatas:soildatas,count7:count7,count8:count8});
+    
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
+app.get("/booth138expenses/generate-pdf/totalvote",async(req,res)=>{
+
+    
+    
+    const csvStringifier = createObjectCsvStringifier({
+        header: [
+            { id: 'name', title: 'Name' },
+            { id: 'amount', title: 'Amount' },
+            { id: 'squadno', title: 'Squad No' },
+        
+        ],
+    });
+    const data = await fundmodel.find({fundtype:"expenses"}).sort({ _id:1 }).lean();
+
+      
+    const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
+    console.log('Data:', data);
+
+    // Log csvData to check if it is correctly generated
+    console.log('CSV Data:', csvData); 
+    
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=Booth138expenses.csv');
+
+        res.send(csvData);    
+    
+
+
+    const soildatas = await fundmodel.find({fundtype:"expenses"}).sort({ _id:1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
+    if(req.cookies.token){
+
+        res.render("booth138expenses",{soildatas:soildatas,count7:count7,count8:count8});
+    
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/booth138postal/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -579,14 +866,23 @@ app.get("/booth138postal/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({boothno:138,postalvote:"yes"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138postal",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("booth138postal",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/division33/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -616,112 +912,245 @@ app.get("/division33/generate-pdf/totalvote",async(req,res)=>{
 
     const soildatas = await savemodel.find({}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({}).countDocuments();
-    res.render("soilhealth",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("soilhealth",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 
 app.get("/booth138notvoted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("booth138notvoted",{soildatas:soildatas,count:count,count2:count2});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 app.get("/booth138voted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,votestatus:"voted"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138voted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("booth138voted",{soildatas:soildatas,count:count,count1:count1});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 app.get("/booth138avail",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,availability:"no"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138avail",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("booth138avail",{soildatas:soildatas,count:count,count3:count3});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 
 app.get("/booth138open",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138open",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("booth138open",{soildatas:soildatas,count:count,count4:count4});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 
 app.get("/booth138postal",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,postalvote:"yes"}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("booth138postal",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("booth138postal",{soildatas:soildatas,count:count,count5:count5});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
+app.get("/booth138fav",async(req,res)=>{
+    
+    const soildatas = await savemodel.find({boothno:138,favoured:"yes"}).sort({ serialno: 1 }).exec();
+
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
+    const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
+    const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+    const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
+    const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
+    const count = await savemodel.find({boothno:138}).countDocuments();
+    if(req.cookies.token){
+
+        res.render("booth138fav",{soildatas:soildatas,count:count,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
+app.get("/booth138donation",async(req,res)=>{
+    
+    const soildatas = await fundmodel.find({fundtype:"donation"}).sort({ _id:1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
+
+    if(req.cookies.token){
+
+        res.render("booth138donation",{soildatas:soildatas,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
+app.get("/booth138expenses",async(req,res)=>{
+    
+    const soildatas = await fundmodel.find({fundtype:"expenses"}).sort({ _id:1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
+
+    if(req.cookies.token){
+
+        res.render("booth138expenses",{soildatas:soildatas,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   }) 
 app.get("/voterlist",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138}).countDocuments();
-    res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 app.get("/voterlist2",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:139}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:139}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:139}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:139}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:139}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:139}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:139}).countDocuments();
-    res.render("voterlist2",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+    res.render("voterlist2",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
 }) 
 app.get("/voterlist3",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:140}).sort({ serialno: 1 }).exec();
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:140}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:140}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:140}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:140}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:140}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:140}).countDocuments();
-    res.render("voterlist3",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+    
+    res.render("voterlist3",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
 }) 
 app.get("/squad1notvoted/generate-pdf/totalvote",async(req,res)=>{
 
@@ -750,15 +1179,30 @@ app.get("/squad1notvoted/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:1,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:1});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:1});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
     const count  =  await savemodel.find({boothno:138,squadno:1}).countDocuments();
-    res.render("squad1notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("squad1notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 app.get("/squad2notvoted/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -786,15 +1230,30 @@ app.get("/squad2notvoted/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:2,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:2});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:2});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
     const count  =  await savemodel.find({boothno:138,squadno:2}).countDocuments();
-    res.render("squad2notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("squad2notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad3notvoted/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -822,15 +1281,30 @@ app.get("/squad3notvoted/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:3,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:3});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:3});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
     const count  =  await savemodel.find({boothno:138,squadno:3}).countDocuments();
-    res.render("squad3notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("squad3notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad4notvoted/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -858,15 +1332,30 @@ app.get("/squad4notvoted/generate-pdf/totalvote",async(req,res)=>{
     
  
     const soildatas = await savemodel.find({boothno:138,squadno:4,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:4});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:4});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
     const count  =  await savemodel.find({boothno:138,squadno:4}).countDocuments();
-    res.render("squad4notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("squad4notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/squad5notvoted/generate-pdf/totalvote",async(req,res)=>{
 
     
@@ -894,140 +1383,323 @@ app.get("/squad5notvoted/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:5,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:5});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:5});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
     const count  =  await savemodel.find({boothno:138,squadno:5}).countDocuments();
-    res.render("squad5notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("squad5notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 app.get("/squad1notvoted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:1,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:1});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:1});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:1}).countDocuments();
-    res.render("squad1notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("squad1notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 app.get("/squad2notvoted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:2,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:2});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:2});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:2}).countDocuments();
-    res.render("squad2notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("squad2notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   }) 
 app.get("/squad3notvoted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:3,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:3});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:3});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:3}).countDocuments();
-    res.render("squad3notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+
+        res.render("squad3notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   }) 
 app.get("/squad4notvoted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:4,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:4});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:4});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:4}).countDocuments();
-    res.render("squad4notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+    if(req.cookies.token){
+        res.render("squad4notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+  
 }) 
 app.get("/squad5notvoted",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:5,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+     const donation = await fundmodel.find({fundtype:"donation",squadno:5});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:5});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:5}).countDocuments();
-    res.render("squad5notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+        res.render("squad5notvoted",{soildatas:soildatas,count:count,count1:count1,count2:count2,count6:count6});
+
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    }) 
 app.get("/138squad1",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:1}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:1});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:1});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:1}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:1}).countDocuments();
-    res.render("138squad1",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-}) 
+    if(req.cookies.token){
+        res.render("138squad1",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })  
+function mode(array){
+
+    var sum = 0;
+    for (var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+
+    return sum ;
+}
 app.get("/138squad2",async(req,res)=>{
+
+    
     
     const soildatas = await savemodel.find({boothno:138,squadno:2}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:2});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:2});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:2}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:2}).countDocuments();
-    res.render("138squad2",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("138squad2",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/138squad3",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:3}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:3});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:3});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:3}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:3}).countDocuments();
-    res.render("138squad3",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+        res.render("138squad3",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+   })
 app.get("/138squad4",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:4}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:4});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:4});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
      
 
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:4}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:4}).countDocuments();
-    res.render("138squad4",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("138squad4",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/138squad5",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:138,squadno:5}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation",squadno:5});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses",squadno:5});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
     
-
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
     const count2 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "notvoted"});
     const count1 = await savemodel.find({boothno:138,squadno:5}).countDocuments({votestatus: "voted"});
     const count = await savemodel.find({boothno:138,squadno:5}).countDocuments();
-    res.render("138squad5",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
-})
+    if(req.cookies.token){
+
+        res.render("138squad5",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+
+    }else{
+    
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+    }
+    })
 app.get("/soilhealth",async(req,res)=>{
     
     const soildatas = await savemodel.find().sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
+
+    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find().countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find().countDocuments({openvote: "yes"});
     const count3 = await savemodel.find().countDocuments({availability: "no"});
@@ -1037,11 +1709,12 @@ app.get("/soilhealth",async(req,res)=>{
    
     if(req.cookies.token){
   
-        const count = await savemodel.countDocuments();
-        res.render("soilhealth", {soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+       
+        res.render("soilhealth", {soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
     
 })  
@@ -1052,7 +1725,8 @@ app.get("/selection",async(req,res)=>{
         res.render("selection");
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
 
     
@@ -1066,8 +1740,8 @@ app.get("/delete",async(req,res)=>{
 
         res.render("delete");
     }else{
-
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
     
 })
@@ -1082,7 +1756,9 @@ app.get("/alert",async(req,res)=>{
 
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
+        
     }
      
 })
@@ -1105,7 +1781,8 @@ app.get("/alert/:id",async(req,res)=>{
         
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
    
     
@@ -1129,7 +1806,8 @@ app.get("/alert/delete/:id",async(req,res)=>{
         
     }else{
  
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
      
 })
@@ -1166,7 +1844,8 @@ app.get("/voteredit1/:id",async(req,res)=>{
         
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
     
       
@@ -1175,7 +1854,7 @@ app.get("/voteredit1/:id",async(req,res)=>{
 }) 
    
 
-app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:idno/:availability/:postalvote/:openvote/:boothno/:squadno/:coordinates",async(req,res)=>{
+app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:idno/:availability/:postalvote/:openvote/:boothno/:squadno/:coordinates/:favoured",async(req,res)=>{
 
                       
     if(req.cookies.token){
@@ -1190,10 +1869,20 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let availability=req.params.availability;
         let openvote=req.params.openvote;
         let postalvote=req.params.postalvote;
-        let coordinates = req.params.coordinates;
         let squadno = req.params.squadno;
+        let favoured = req.params.favoured;
         
-   
+        let coordinates;
+
+        const locationdata= await savemodel.find({housename:req.params.housename});
+        if(req.params.coordinates==null)
+        {
+         coordinates=locationdata[0].coordinates;
+        }
+        else{
+         coordinates = req.params.coordinates;
+        }
+         
         await savemodel.findById(id).updateMany({
             serialno:serialno,
             votername:votername,
@@ -1206,22 +1895,25 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
             openvote:openvote,
             postalvote:postalvote,
             coordinates:coordinates,
+            favoured:favoured,
             
         });
         
  
         const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
+        const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
         const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
          const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
         const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
         const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
         const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
         const count = await savemodel.find({boothno:138}).countDocuments();
-        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
         
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
   
    
@@ -1237,17 +1929,19 @@ app.get("/archive/:id",async(req,res)=>{
 
         const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
 
+        const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
         const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
         const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-       const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
+        const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
         const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
         const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
         const count = await savemodel.find({boothno:138}).countDocuments();
-        res.render("soilhealth",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5});
+        res.render("soilhealth",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
         
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
 
 })
@@ -1265,7 +1959,8 @@ app.get("/archive1/:id",async(req,res)=>{
         
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
 
 })
@@ -1287,7 +1982,8 @@ app.get("/archive2/:id",async(req,res)=>{
         
     }else{
 
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
 
 })
@@ -1309,7 +2005,8 @@ app.get("/archive3/:id",async(req,res)=>{
         
     }else{
  
-        res.render("index");
+        const message="You have invalid login credential"
+        res.render("login",{message:message});
     }
 
 })
@@ -1395,7 +2092,36 @@ app.post("/signup", async(req,res) =>{
      res.render("signup");
     
 })
+app.post("/fund/:squadno/:name/:amount/:fundtype", async(req,res) =>{
+
+    
+        name=req.params.name;
+        amount=req.params.amount;
+        squadno=req.params.squadno;
+        fundtype=req.params.fundtype;
+        
  
+   
+    
+        const logindata=await fundmodel.insertMany({
+            name:name,
+            amount:amount,
+            squadno:squadno,
+            fundtype:fundtype,
+        });
+        console.log(logindata);
+        if(req.cookies.token){
+            res.render("squadlist");
+
+
+        }else{
+        
+            const message="You have invalid login credential"
+            res.render("login",{message:message});
+        }
+    
+        
+})
 // save data router
 
 app.post("/savedata", upload.single("image"), async(req,res) =>{
@@ -1415,17 +2141,36 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
         openvote:req.body.openvote,
         postalvote:req.body.postalvote,
         squadno : req.body.squadno,
-        coordinates : req.body.coordinates,
+        favoured:req.body.favoured,
+     
         //image: imageBuffer 
            
     }
    
-      
-        const savedata=await savemodel.insertMany(userdata);
+       let coordinates;
+
+       const locationdata= await savemodel.find({housename:req.body.housename})
+       if(req.body.coordinates==null)
+       {
+        coordinates=locationdata[0].coordinates;
+       }
+       else{
+        coordinates = req.body.coordinates;
+       }
+        userdata.coordinates= coordinates;
+        const savedata=await savemodel.insertMany([userdata]);
         console.log(savedata);
        
+        if(req.cookies.token){
+            res.render("welcome");
+
+
+        }else{
         
-        res.render("welcome");
+            const message="You have invalid login credential"
+            res.render("login",{message:message});
+        }
+        
   
   
     
