@@ -783,7 +783,7 @@ app.get("/booth138donation/generate-pdf/totalvote",async(req,res)=>{
     const count8=Number(mode(expensesval));
     if(req.cookies.token){
 
-        res.render("booth138expenses",{soildatas:soildatas,count7:count7,count8:count8});
+        res.render("booth138donation",{soildatas:soildatas,count7:count7,count8:count8});
     
 
     }else{
