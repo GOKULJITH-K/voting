@@ -1821,7 +1821,7 @@ app.get("/voteredit1/:id",async(req,res)=>{
      const voterdata = await savemodel.findById(id);
      const serialno= voterdata.serialno;
      const votername= voterdata.votername;
-     const houseno= voterdata.housename;
+     const houseno= voterdata.houseno;
      const housename=voterdata.housename;
      const idno=voterdata.idno;
      const boothno=voterdata.boothno;
@@ -1862,7 +1862,7 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let id=req.params.id;
         let serialno= req.params.serialnumber;
         let votername= req.params.votername;
-        let houseno= req.params.housename;
+        let houseno= req.params.houseno;
         let housename=req.params.housename;
         let idno=req.params.idno;
         let boothno=req.params.boothno;
