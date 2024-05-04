@@ -5,60 +5,53 @@
          
          <link rel="stylesheet" href="/soilhealth.css">
          <link rel="stylesheet" href="/overview.css">
-         <link rel="stylesheet" href="/nav.css">
          <script src="/navbar.js" defer></script>
+         <script src="/savedata.js" defer></script>
          <script src="/topbtn.js" defer></script>
-        <link rel="stylesheet" href="/footer.css">
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-        <script src="/soilhealth.js" defer></script>
+         <link rel="stylesheet" href="/footer.css">
+         <link rel="stylesheet" href="/nav.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
+         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
          <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+         <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
          <link rel="manifest" href="/site.webmanifest">
-         <style>
-           .header{
-        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(kodiyeri.jpeg);
-        height: 350px;
-        
-    }
-         </style>
         </head>
      <body>
-      <a  id="myBtn" href="/voterlist" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a> 
-     
-        
+       
+        <button onclick="topFunction()" id="myBtn" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
          <section class="header">
             
-            <div class="container">
+          
 
             <nav >
-             
-              <a href="/" class="logo" style="font-size: 20px;
+                
+              
+                <a href="/" class="logo" style="font-size: 20px;
                 font-family: 'Montserrat', sans-serif;
                 color: white;text-decoration: none;font-weight: 800;">CPIM KOSHORMOOLA</a>
              
                 
-              <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
-  
+                <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
+    
 
-             <div class="navbtn">
-             <a  class="hero-btn2 heronew"> Home </a>
-             <a class="hero-btn2 heronew"> Product </a>
-             <a class="hero-btn2 heronew"> About </a>
-             <a class="hero-btn2 heronew"> Contact </a>
-             <a class="hero-btn2 heronew"> Subscription </a>
-             <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
-             </div>
-                
-            
+               <div class="navbtn">
+               <a  class="hero-btn2 heronew"> Home </a>
+               <a class="hero-btn2 heronew"> Product </a>
+               <a class="hero-btn2 heronew"> About </a>
+               <a class="hero-btn2 heronew"> Contact </a>
+               <a class="hero-btn2 heronew"> Subscription </a>
+               <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
+               </div>
+               
                 <ul id="sidemenu">
                     <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
                     <hr>
@@ -74,141 +67,213 @@
                           Thank you for choosing my platform. I value your trust and support. Please free to Contact me anytime
                         </p>
                        
-                        <li><a href="login" class="login">Log out</a></li>
+                        <li><a href="login" class="login">Logout</a></li>
                         <li><a href="/" class="login join">Subscription</a></li>
                    
                         
                 </ul>
                 
+
                 
             </nav>
             <div class="icons-header">
-              <a href="/"><i class="fa-solid fa-house"></i></a>
-              <a href="/votercreation"><i class="fa-solid fa-user-plus"></i></a>
-              <a href="/booth138"><i class="fa-brands fa-slack"></i></a>
-              <a href="/voterlist"><i class="fa-solid fa-address-book"></i></a>
-              <a href="/squadlist"><i class="fa-solid fa-people-group"></i></a>
-              <a href="/soilhealth"><i class="fa-solid fa-book"></i></a>
-          </div>
-             </div>
+                <a href="/"><i class="fa-solid fa-house"></i></a>
+                <a href="/votercreation"><i class="fa-solid fa-user-plus"></i></a>
+                <a href="/booth138"><i class="fa-brands fa-slack"></i></a>
+                <a href="/voterlist"><i class="fa-solid fa-address-book"></i></a>
+                <a href="/squadlist"><i class="fa-solid fa-people-group"></i></a>
+                <a href="/soilhealth"><i class="fa-solid fa-book"></i></a>
+                
+                
+            </div>
+                
+           
          </section>
          <section class="overview" >
-             
+            <!--
+            <div class="popup-onload">
+                <div class="popup-inner">
+                    <div class="popup-content">
+                        <h2 id="timer"></h2>
+
+                        <p> </p>
+                        <span class="alert-description">
+                            <ul class="alert-description">
+
+                              <li> Read this message before using the sensor.</li>
+                              <li> Press the delete icon to clear previous soil data. After that, you can use the sensor.</li>
+                              <li> Do this each time before using the sensor. Click close to go back or wait for the timer.</li>
+                            </ul>
+                        </span>
+                        <a href="/delete-data" class="delete"><i class="fa-solid fa-trash"></i></a>
+                        <a href="" class="close">Close</a>
+                    </div>
+                </div>
+            </div>
+            -->
             <div class="row">
                <div class="overview-col">
                    <h1>VOTED LIST</h1>
                    <span class="description"> Description </span>
                    <span class="overview-description">
-                    Manage elections more effectively with the comprehensive voter database feature for booth 138. Explore a detailed map with every house marked, highlighting voters who have already cast their votes. Access and download complete information for each house with voters who have voted, streamlining your election planning and execution.
-                     Enhance your election strategy with precise, location-based data for voters who have already voted in booth 138     
-                </span>
-                   <div class="votestat">
-                    <a  class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
-                    <a  class="vote-complete">Voted <br><h2 > <%= count1 %></h2></a>
-                    <a class="vote-incomplete">Not Voted <br><h2 > <%= count2 %></h2></a>
-                    <a class="vote-availability">Unavailable <br><h2 > <%= count3 %></h2></a>
-                    <a class="vote-open">Open Vote <br><h2 > <%= count5 %></h2></a>
-                    <a class="vote-postal">Postal Vote <br><h2 > <%= count5 %></h2></a>
-                   </div>
+                    Manage elections more effectively with the comprehensive voter database feature for booth 138. Explore a detailed map with every house marked for postal voting, providing essential insights for remote voting needs. Access and download complete information for each house utilizing postal voting, streamlining your election planning and execution. 
+                    Enhance your election strategy with precise, location-based data for postal voting in booth 138.     </span>
+                
+                    <div class="votestat">
+                        <a  class="total-vote">Total Vote <br><h2 > <%= count %></h2></a>
+                        <a  class="vote-complete"> Voted <br><h2 > <%= count1 %></h2></a>
+                       
+                       </div>
+                   
+                   <P>
+                    Capture the essence of your soil's health journey with Telinso's innovative feature 
+                    data storage with soil detail pictures. Seamlessly record and preserve vital information about your soil, 
+                    accompanied by visual snapshots. Effortlessly track changes, monitor trends, and make informed decisions for
+                     optimal soil health. This powerful tool ensures a comprehensive archive for future reference, empowering users with 
+                     a visual timeline of their soil's evolution. Telinso simplifies the complexity of soil health monitoring, bringing
+                      precision and clarity to your agricultural practices. Enhance your farming experience by preserving the past for 
+                      a thriving future.
+                </P>
+                   
+                       
+                    
                </div>
                  
            </div>
-           
-           
           
-            
-        </div>
-        
-
-         
-         
-         
        </section>
+       <section class="contact">
+       <gmp-map
+       id="marker-click-event-example"
+       center="11.8309  ,   75.4372"
+       zoom="17"
+       map-id="TELINSO_MAP_ID"
+     >
+     <% soildatas.forEach((row,index) => { %>
+       <gmp-advanced-marker
+         position="<%= row.coordinates %>"
+         title="<%= row.housename %> "
+         
+         gmp-clickable
+       ></gmp-advanced-marker>
+       <% })  %>
+       <gmp-advanced-marker
+        id="current-location"
+        position = "0,0"
+        title="current Location"
+
+        gmp-clickable
+       ></gmp-advanced-marker>
        
-         
-           <section class="contact">
-          
-                   <gmp-map
-           id="marker-click-event-example"
-           center="11.8309  ,   75.4372"
-           zoom="17"
-           map-id="TELINSO_MAP_ID"
-         >
-         <% soildatas.forEach((row,index) => { %>
-           <gmp-advanced-marker
-             position="<%= row.coordinates %>"
-             title="<%= row.housename %> "
-             
-             gmp-clickable
-           ></gmp-advanced-marker>
-           <% })  %>
-           <gmp-advanced-marker
-            id="current-location"
-            position = "0,0"
-            title="current Location"
+     </gmp-map>
+     <button class="overview-btn " ><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138voted/generate-pdf/totalvote">Download List</a></button>
+     
+     
 
-            gmp-clickable
-           ></gmp-advanced-marker>
-           
-         </gmp-map>
-         <button class="overview-btn "><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138voted/generate-pdf/totalvote">Download List</a></button>
-         
-         
-
-            <div>
-                <input type="text" id="myInput" onkeyup="searchData()" placeholder="&#128269; Name | House name | Serial No" title="Type in a name">
-            </div>
-           
-               
-            <div class="contact-row" >
-              
-                <% soildatas.forEach((row,index) => { %>
-               
-                        <div class="data <%= row.votestatus %>" id="myUL">
-                          <div class="soilname-date">
-                          <p class="name-search"><span><%= row.votername %></span></p>
-                            <p id="serial-search" class="serial-search" ><span><%= row.serialno %></span></p>
-                            </div>
-                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
-                            <div class="soildata" style="display: none;" id="<%= index %>">
-                            
-                           
-                            <p>House no :<%= row.houseno %> </p>
-                            <p id="house-search" class="house-search">House name : <%= row.housename %> </p>
-                            <p>ID Card No : <%= row.idno %></p>
-                            <p>Booth no : <%= row.boothno %></p>
-                          
-                          
-                            </div>
-                           
-                            
-                            
-                           
-                         
-                        </div>
-                        
-                        <% })  %>
-              
-                   </div>
-                
-                   
-           
-       </section>
-
-       <section class="footer">
-          
-        <div class="footer-col" style="text-align: center;" >     
-         
-               <p > 	&copy; Gokuljith k</p>
-           
+        <div>
+            <input type="text" id="myInput" onkeyup="searchData()" placeholder="&#128269; Name | House name | Serial No" title="Type in a name">
         </div>
-      </section>
-   <script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
-   defer></script>
-    <script>
+       
+           
+       <div class="contact-row" >
+              
+        <% soildatas.forEach((row,index) => { %>
+       
+                <div class="data <%= row.votestatus %>" id="myUL">
+                  <div class="soilname-date">
+                  <p class="name-search"><span><%= row.votername %></span></p>
+                    <p id="serial-search" class="serial-search" ><span><%= row.serialno %></span></p>
+                    </div>
+                    <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
+                    <div class="soildata" style="display: none;" id="<%= index %>">
+                    
+                   
+                    <p>House no :<%= row.houseno %> </p>
+                    <p id="house-search" class="house-search">House name : <%= row.housename %> </p>
+                    <p>ID Card No : <%= row.idno %></p>
+                    <p>Booth no : <%= row.boothno %></p>
+                  
+                  
+                    </div>
+                   
+                    
+                   
+                    
+                   
+                 
+                </div>
+                
+                <% })  %>
+      
+           </div>
+</section>
+           <section class="footer">
+          
+            <div class="footer-col" style="text-align: center;" >     
+             
+                   <p > 	&copy; Gokuljith k</p>
+               
+            </div>
+          </section>
+   
+   <script>
+    // Get current date and time
+    var now = new Date();
+  
+    // Extract date, time, and day
+    var months = now.toLocaleDateString(undefined, { month: 'long', });
+    var dateNumber = now.getDate();
+    
+    
+  
+   
+  
+    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
+    var date = dateNumber + " " + months;
+   document.querySelector("input[name='date']").value = date;
+/*
+   remtime = 90;
+   const timer = document.getElementById('timer');
+   const interval = setInterval(() =>{
+    timer.textContent = `${remtime}`;
 
-     const downloadLink = document.getElementById('download-link');
+    if(remtime<=0){
+        clearInterval(interval);
+        timer.textContent="There you go!";
+    }
+    remtime--;
+   },1000);
+
+   $(function(){
+    
+    const overlay=$('<div id="overlay"></div>');
+    overlay.show();
+    overlay.appendTo(document.body);
+    $('.popup-onload').show();
+    $('.close').click(function(){
+        $('.popup-onload').hide();
+        overlay.appendTo(document.body).remove();
+        return false;
+    });
+    
+   
+    $('.x').click(function(){
+        $('.popup').hide();
+        overlay.appendTo(document.body).remove();
+        return false;
+
+    });
+    
+
+   });*/
+    
+  </script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
+  defer></script>
+  <script>
+
+const downloadLink = document.getElementById('download-link');
         downloadLink.addEventListener('click', function() {
           
         });
@@ -256,53 +321,8 @@
        
 
     }
-     
-      function showCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
+  </script>
 
-          const marker = document.createElement("gmp-advanced-marker");
-          marker.setAttribute("position", `${lat},${lng}`);
-          marker.setAttribute("title", "Current Location");
-          document.getElementById("marker-click-event-example").appendChild(marker);
-        },
-        () => {
-          alert("Error: The Geolocation service failed.");
-        }
-      );
-    } else {
-      alert("Error: Your browser doesn't support geolocation.");
-    }
-  }
-  var xValues = ["voted","Not voted"];
-  
-    var yValues = [`<%= count1 %>`, `<%= count2 %>`];
-    var barColors = ["green", "red",];
-    
-   
-    new Chart("doughChart", {
-    type: "doughnut",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: {display: false},
-        title: {
-          display: true,
-          text: "Visualization of Soil Sample - Doughnut Graph"
-        }
-      }
-    });
-  
-
-    </script>
-
+              
          </body>
 </html>
