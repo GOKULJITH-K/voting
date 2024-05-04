@@ -1871,17 +1871,9 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         let postalvote=req.params.postalvote;
         let squadno = req.params.squadno;
         let favoured = req.params.favoured;
-        
-        let coordinates;
+        let coordinates=req.params.coordinates;
 
-        const locationdata= await savemodel.find({housename:req.params.housename});
-        if(req.params.coordinates==null)
-        {
-         coordinates=locationdata[0].coordinates;
-        }
-        else{
-         coordinates = req.params.coordinates;
-        }
+        
          
         await savemodel.findById(id).updateMany({
             serialno:serialno,
@@ -1901,6 +1893,12 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         
  
         const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
+        const donation = await fundmodel.find({fundtype:"donation"});
+        const donationval=donation.map(fund=>fund.amount);
+        const count7=Number(mode(donationval));
+        const expenses = await fundmodel.find({fundtype:"expenses"});
+        const expensesval=expenses.map(fund=>fund.amount);
+        const count8=Number(mode(expensesval));
         const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
         const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
          const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
