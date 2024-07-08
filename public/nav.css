@@ -6,15 +6,30 @@
   position: fixed;
   bottom: 10px;
   right: 10px;
-  z-index: 5;
+  z-index: 200;
   border: none;
   outline: none;
-  background-color: #1d1233;
-  color: white;
+  background-color: #0acc78;
   cursor: pointer;
   padding: 10px;
   font-size: 15px;
-  border-radius: 4px;
+  
+}
+
+/* welcome page */
+
+#myBtn2 {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  z-index: 5;
+  border: none;
+  outline: none;
+  background-color: #0acc78;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 15px;
+  
 }
 
 #myBtn:hover {
@@ -31,17 +46,74 @@
     z-index:5;
     border: none;
     outline: none;
-    background-color: #1d1233;
-    color:white;
+    background-color: #0acc78;
     cursor: pointer;
     writing-mode: vertical-rl;
     font-family: system-ui;
     font-weight: 600;
     padding: 15px;
     font-size: 15px;
-    border-radius: 4px;
+    
   }
+  /* welcome page */
+  #myBtn2 {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    z-index:200;
+    display: flex;
+    justify-content: space-evenly;
+    border: none;
+    outline: none;
+    background-color: #e41c1c;
+    cursor: pointer;
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 10px;
+    
   
+  }
+  #myBtn2 a{
+    text-decoration: none;
+    color: white;
+    align-self: center;
+    padding-top: 5px;
+    
+  }
+  .topbtn2 p{
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px;
+   
+  }
+  .topbtn2 i{
+    text-align: center;
+    font-size: 20px;
+  }
+  .topbtn3 i{
+    text-align: center;
+    font-size: 20px;
+  }
+  .topbtn3 {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .topbtn3 p{
+    font-size: 11px;
+    padding-top: 3px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+  }
+  #morebtn{
+    font-size: 23px;
+    padding-bottom: 5px;
+  }
+  .topbtn2 {
+    display: grid;
+    grid-template-columns: auto;
+  }
   .icons-header{
  
 
@@ -60,18 +132,14 @@
       cursor: pointer;
 
   }
+  
+  /* welcome page */
+
   .header .icons-header a{
     text-decoration: none;
     color: white;
   }
   .header .icons-header .fa-solid{
-    padding: 10px;
-    position: sticky;
-    background: #1d1233;
-    border-radius: 50%;
-    
-  }
-  .header .icons-header .fa-brands{
     padding: 10px;
     position: sticky;
     background: #1d1233;

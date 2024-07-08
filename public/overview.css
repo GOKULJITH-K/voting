@@ -11,16 +11,8 @@
   width: auto;
   height: 30px;
 }
-nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 100%;
-  background: white;
   
-  
-}
+
 nav .navbtn{
   margin: 20px;
   top:10;
@@ -151,11 +143,11 @@ nav .navbtn{
     
     text-decoration: none;
     color: white;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(4, 54, 74);
     padding: 14px 34px;
     font-size: 18px;
     border-radius: 10px;
-    background: rgb(0, 0, 0);
+    background: rgb(4, 54, 74);
     text-align: center;
     position: relative;
     cursor: pointer;
@@ -163,7 +155,7 @@ nav .navbtn{
     
    
   }
-  
+ 
 
   .overview-col i{
     display:none;
@@ -180,11 +172,18 @@ nav .navbtn{
   }
   .logo img{
    
-    width: 150px;
-    height: 21.8px;
+    width: 140px;
+    height: 18.8px;
     filter: grayscale(100%) brightness(1000%);
   }
+  .overview img{
     
+      width: 300px;
+      height: 300px;
+      border-radius: 10px;
+    
+  
+  }
     .text-box{
         width:100%;
         color: white;
@@ -273,119 +272,53 @@ nav .navbtn{
     }
     
     
-   
-    nav{
-      background: transparent;
-    }
+  /* welcome page */ 
+  
+  #sidemenu2 {
+      position: fixed;
+      bottom: -100%; 
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      border-radius: 20px 20px 0 0;
+      background-color: #0acc78;
+      transition: top 0.5s; 
+      
     
-    nav ul{
-        display: block;
-      }
-      nav .fa-solid{
-        display: block;
-        font-size: 25px;
-        margin: 30px;  
-        padding-left: 80%; 
-        color: white;
-        z-index: 1;
-        cursor: pointer;
-    }
-   
-    nav .fa-times{
-      display: block;
-      font-size: 25px;
-      margin: 20px;  
-      color: white;
-      z-index: 2;
-      cursor: pointer;
-    }
-    nav .hero-btn2{
-      display: none;
-    }
-    nav ul{
-        background:linear-gradient(#251742,#482b7c) ;
-        position: fixed;
-        top: 0;
-        right: -80%;
-        width: 80%;
-        text-align: center;
-        height: 100vh;
-        padding-top: 10px;
-        z-index: 2;
-        transition: right 0.5s;
-        cursor: pointer;
-        text-align: left;
+  }
+  #sidemenu2 p{
+
+    padding: 5px;
+    margin: 10px;
+    color: white;
+    font-size: 18px;
+
+  }
+  #sidemenu2 a{
+
     
-    }
-    nav #sidemenu .fa-solid{
-        margin: 3px;
-    }
-    #sidemenu li i{
-        color: white;
-      }
-      #sidemenu hr{
-        color: white;
-        height: 1px;
-      }
-      #sidemenu p{
-        margin-top: 20px;
-        padding: 30px;
-        color: white;
-        text-align: left;
-        font-family: system-ui;
-        font-size: 20px;
-      }
+    margin: 5px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+
+  }
+  #sidemenu2 i{
+    font-size: 15px;
+    color: white;
+    margin: 0px;  
+    padding-left: 10px; 
+    display: inline-block;
+  }
+ 
+  
+   
       .loginpage{
         display: flex;
         flex-direction: row;
         margin: 10px;
         justify-content: space-evenly;
       }
-      #sidemenu .login{
-        background-color: white;
-        color: black;
-        font-size: 20px;
-        padding: 10px 25px;
-        border-radius: 10px;
-        text-align: center;
-        display: block;
-        font-weight: 600;
-      }
-      #sidemenu .join{
-        background:#1d1233;
-        color: white;
-      }
-    nav ul li{
-        display: block;
-        margin: 10px;
-        padding: 5px;
-        font-size: 10px;
-       
-        
-          
-    }
-    nav ul li a:hover::after{
-      width: 0%;
-    }
-    nav ul li :hover{
-   
-      color: black;
-    }
-    nav ul li a{
-         color: white;
-         font-weight: 400;
-         font-size: 20px;
-        font-family: system-ui;
-        
-    }
-    nav ul .fas{
-        position: absolute;
-        top: 25px;
-        padding: 20px;
-        left: 300px;
-        cursor: pointer;
-        color: white;
-    }
     
     #sidemenu form{
       padding-top: 60px;
@@ -441,6 +374,161 @@ nav .navbtn{
     font-size: 25px;
     
  }
+ nav ul{
+  display: block;
+}
+
+nav ul .fa-solid{
+  display: block;
+  font-size: 25px;
+  margin: 30px;  
+  padding-left: 80%; 
+  color: black;
+  z-index: 1;
+  cursor: pointer;
+}
+
+nav .fa-times{
+display: block;
+font-size: 25px;
+margin: 20px;  
+color: white;
+z-index: 2;
+cursor: pointer;
+}
+nav .hero-btn2{
+display: none;
+}
+
+nav ul li{
+display: block;
+margin: 15px 10px;
+padding: 5px;
+font-size: 10px;
+
+}
+nav ul{
+background:white;
+position: fixed;
+top: 0;
+right: -100%;
+width: 100%;
+text-align: center;
+height: 100vh;
+padding-top: 10px;
+z-index: 2;
+transition: right 0.5s;
+cursor: pointer;
+text-align: left;
+
+}
+#sidemenu{
+z-index: 500;
+}
+nav #sidemenu .fa-solid{
+margin: 3px;
+font-size: 17px;
+
+
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 5px;
+}
+th, td {
+  
+  padding: 8px;
+  text-align: center;
+}
+th {
+  background-color: #0a7c7c;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size:13px;
+  
+}
+td{
+  font-weight: 200;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: 0.1px solid rgb(85, 72, 72);
+  font-size: 12px;
+}
+td a i{
+  font-size: 13px;
+  color: black;
+
+}
+
+#sidemenu li i{
+color: rgb(59, 57, 57); 
+display: inline;
+padding-left: 0;
+padding: 5px;
+font-size: 18px;
+}
+#sidemenu hr{
+color: rgb(59, 57, 57);
+height: 0.5px;
+}
+#sidemenu p{
+margin-top: 20px;
+padding: 10px;
+color: rgb(59, 57, 57);
+text-align: left;
+font-family: 'Montserrat', sans-serif;
+font-size: 15px;
+}
+.loginpage{
+display: flex;
+flex-direction: row;
+margin: 10px;
+justify-content: space-evenly;
+}
+#sidemenu .login{
+background-color: rgba(246, 97, 97, 0.074);
+border: 1px solid red;
+color: red;
+padding: 10px 25px;
+border-radius: 10px;
+text-align: left;
+display: block;
+font-weight: 400;
+}
+#sidemenu .join{
+background:#1d1233;
+color: white;
+}
+
+nav ul li a{
+   color: rgb(59, 57, 57);
+   font-weight: 600;
+   font-size: 17px;
+   font-family: 'Montserrat', sans-serif;
+  
+}
+
+nav ul li a:hover::after{
+
+width: 0%;
+
+}
+nav ul li :hover{
+
+color: black;
+
+}
+nav ul .fas{
+  position: absolute;
+  top: 25px;
+  padding: 20px;
+  left: 300px;
+  cursor: pointer;
+  color: white;
+}
+
+
+
   
 }
 

@@ -362,7 +362,7 @@ form .btn2{
   border-radius: 10px;
   cursor: pointer;
   color: white;
-  background:linear-gradient(#251742,#482b7c) ;
+  background:rgb(4, 54, 74) ;
   border: none;
 }
 
@@ -389,7 +389,7 @@ form .btn2:hover{
   font-size: 18px;
   color: #fff;
   text-align: center;
-  background: #1d1233;
+  background: rgb(4, 54, 74);
   transition: 0.2s ;
 }
 .file-upload{
@@ -414,7 +414,9 @@ form .btn2:hover{
 
   .header{
     background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(store.jpeg);
-    height: 350px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
     
     
 }
@@ -516,6 +518,7 @@ form .btn2:hover{
     
     padding: 10;
    text-align: center;
+   margin-bottom: 60px;
   
 
   
@@ -550,115 +553,79 @@ form .btn2:hover{
  
  }
 
-  nav ul{
-      display: block;
-    }
-    nav .fa-solid{
-      display: block;
-      font-size: 25px;
-      margin: 30px;  
-      padding-left: 80%; 
-      color: white;
-      z-index: 1;
-      cursor: pointer;
-  }
- 
-  nav .fa-times{
-    display: block;
-    font-size: 25px;
-    margin: 20px;  
-    color: white;
-    z-index: 2;
-    cursor: pointer;
-  }
-  nav .hero-btn2{
-    display: none;
-  }
-  nav ul{
-      background:linear-gradient(#251742,#482b7c) ;
-      position: fixed;
-      top: 0;
-      right: -80%;
-      width: 80%;
-      text-align: center;
-      height: 100vh;
-      padding-top: 10px;
-      z-index: 2;
-      transition: right 0.5s;
-      cursor: pointer;
-      text-align: left;
-  
-  }
-  nav #sidemenu .fa-solid{
-      margin: 3px;
-  }
-  #sidemenu li i{
-      color: white;
-    }
-    #sidemenu hr{
-      color: white;
-      height: 1px;
-    }
-    #sidemenu p{
-      margin-top: 20px;
-      padding: 30px;
-      color: white;
-      text-align: left;
-      font-family: system-ui;
-      font-size: 20px;
-    }
-    .loginpage{
-      display: flex;
-      flex-direction: row;
-      margin: 10px;
-      justify-content: space-evenly;
-    }
-    #sidemenu .login{
-      background-color: white;
-      color: black;
-      font-size: 20px;
-      padding: 10px 25px;
-      border-radius: 10px;
-      text-align: center;
-      display: block;
-      font-weight: 600;
-    }
-    #sidemenu .join{
-      background:#1d1233;
-      color: white;
-    }
-  nav ul li{
-      display: block;
-      margin: 10px;
-      padding: 5px;
-      font-size: 10px;
-     
-      
-        
-  }
-  nav ul li a:hover::after{
-    width: 0%;
-  }
-  nav ul li :hover{
- 
-    color: black;
-  }
-  nav ul li a{
-       color: white;
-       font-weight: 400;
-       font-size: 20px;
-      font-family: system-ui;
-      
-  }
-  nav ul .fas{
-      position: absolute;
-      top: 25px;
-      padding: 20px;
-      left: 300px;
-      cursor: pointer;
-      color: white;
-  }
-  
+ nav ul{
+  display: block;
+}
+
+nav .fa-solid{
+  display: block;
+  font-size: 25px;
+  padding: 30px;  
+  padding-left: 85%; 
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+}
+nav .fa-times{
+display: block;
+font-size: 25px;
+margin: 20px;  
+color: white;
+z-index: 2;
+cursor: pointer;
+}
+nav .hero-btn2{
+display: none;
+}
+
+nav ul li{
+display: block;
+margin: 15px 10px;
+padding: 5px;
+font-size: 10px;
+
+}
+nav ul{
+background:white;
+position: fixed;
+top: 0;
+right: -100%;
+width: 100%;
+text-align: center;
+height: 100vh;
+padding-top: 10px;
+z-index: 2;
+transition: right 0.5s;
+cursor: pointer;
+text-align: left;
+
+}
+nav ul li a{
+color: rgb(59, 57, 57);
+font-weight: 600;
+font-size: 19px;
+font-family: 'Montserrat', sans-serif;
+
+}
+
+nav ul li a:hover::after{
+
+width: 0%;
+
+}
+nav ul li :hover{
+
+color: black;
+
+}
+nav ul .fas{
+position: absolute;
+top: 25px;
+padding: 20px;
+left: 300px;
+cursor: pointer;
+color: white;
+}
   #sidemenu form{
     padding-top: 60px;
   }
