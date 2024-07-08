@@ -220,7 +220,7 @@ form .btn2{
     border-radius: 5px;
     cursor: pointer;
     color: white;
-    background:linear-gradient(#251742,#482b7c) ;
+    background:rgb(4, 54, 74);
     border: none;
 }
 form .btn2:hover{
@@ -327,7 +327,7 @@ form .btn2:hover{
     .contact{
         width: auto;
         padding: 0 5 50 5;
-        height: 100nvh;
+        height: 100vh;
        text-align: center;
       
       
@@ -573,7 +573,7 @@ form .btn2:hover{
       font-size: 15px;
       padding: 20px;
       margin: 10px;
-      border: 2px solid #482b7c;
+      border: 2px solid rgb(4, 54, 74);
       border-radius: 5px;
       
   }
