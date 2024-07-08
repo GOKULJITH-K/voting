@@ -187,10 +187,7 @@ app.get("/format/generate-pdf",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=format.csv');
@@ -212,7 +209,7 @@ app.post('/upload', upload.single('csvFile'), async (req, res) => {
         
       const csvDataBuffer = req.file.buffer.toString();
       const jsonArray = await csvtojson().fromString(csvDataBuffer);
-      console.log(jsonArray);
+     
       await savemodel.insertMany(jsonArray);
       if(req.cookies.token){
 
@@ -254,10 +251,7 @@ app.get("/squad1booth138/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+   
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad1Booth138.csv');
@@ -305,11 +299,7 @@ app.get("/squad2booth138/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
-    
+   
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad2Booth138.csv');
 
@@ -356,11 +346,7 @@ app.get("/squad4booth138/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
-    
+  
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad4Booth138.csv');
 
@@ -407,10 +393,7 @@ app.get("/squad3booth138/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+   
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad3Booth138.csv');
@@ -459,10 +442,7 @@ app.get("/squad5booth138/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad5Booth138.csv');
@@ -511,10 +491,7 @@ app.get("/booth138/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138.csv');
@@ -563,10 +540,7 @@ app.get("/booth138voted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138voted.csv');
@@ -614,10 +588,6 @@ app.get("/booth138notvoted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138notvoted.csv');
@@ -665,10 +635,6 @@ app.get("/booth138avail/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138unavailable.csv');
@@ -716,10 +682,7 @@ app.get("/booth138open/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138open.csv');
@@ -767,10 +730,7 @@ app.get("/booth138fav/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138favoured.csv');
@@ -819,10 +779,7 @@ app.get("/booth138donation/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+     
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138donation.csv');
@@ -865,10 +822,7 @@ app.get("/booth138expenses/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+   
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138expenses.csv');
@@ -910,10 +864,7 @@ app.get("/booth138postal/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Booth138postal.csv');
@@ -962,10 +913,7 @@ app.get("/division33/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=Division33.csv');
@@ -1236,10 +1184,7 @@ app.get("/squad1notvoted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad1notvoted.csv');
@@ -1287,10 +1232,7 @@ app.get("/squad2notvoted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad2notvoted.csv');
@@ -1338,10 +1280,7 @@ app.get("/squad3notvoted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad3notvoted.csv');
@@ -1389,10 +1328,7 @@ app.get("/squad4notvoted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad4notvoted.csv');
@@ -1440,10 +1376,7 @@ app.get("/squad5notvoted/generate-pdf/totalvote",async(req,res)=>{
 
       
     const csvData = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data);
-    console.log('Data:', data);
-
-    // Log csvData to check if it is correctly generated
-    console.log('CSV Data:', csvData); 
+    
     
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename=squad5notvoted.csv');
@@ -2146,7 +2079,7 @@ app.post("/signup", async(req,res) =>{
 
         data.password = hashedPassword;
         const logindata=await loginmodel.insertMany(data);
-        console.log(logindata);
+        
  
     }
      res.render("signup");
@@ -2169,7 +2102,7 @@ app.post("/fund/:squadno/:name/:amount/:fundtype", async(req,res) =>{
             squadno:squadno,
             fundtype:fundtype,
         });
-        console.log(logindata);
+        
         if(req.cookies.token){
             res.render("squadlist");
 
@@ -2219,7 +2152,7 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
        }
         userdata.coordinates= coordinates;
         const savedata=await savemodel.insertMany([userdata]);
-        console.log(savedata);
+        
        
         if(req.cookies.token){
             res.render("welcome");
