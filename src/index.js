@@ -5,8 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const {loginmodel,savemodel,fundmodel} = require("./config");
 const csvtojson = require('csvtojson');
-const multer =require("multer");
-const axios = require("axios");
+const multer =require("multer"); 
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -132,47 +131,7 @@ app.get("/booth139",async(req,res)=>{
         res.render("booth139",{classname:"enter your text"});
     }
 })   
-app.post('/upload', upload.single('image'), async (req, res) => {
-   
-        // Ensure the file is uploaded
-      console.log(req.file.path);
- 
-      const image = fs.readFileSync(req.file.path, {
-        encoding: "base64"
-    }); 
-      
-    axios({
-        method: "POST",
-    url: "https://detect.roboflow.com/pest-detection-m0inx/1",
-    params: {
-        api_key: "dVbUXioOhtnfoCsVFylB"
-    },
-    data: image,
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
-})
-    .then(function(response) {
 
-        const classname = response.data.predictions[0].class;
-        console.log(response.data.predictions[0].class);
-        openai.completions.create({
-            model: 'gpt-3.5-turbo-instruct', // The engine to use for text generation
-            prompt: classname, // The prompt for text generation from req.body
-            maxTokens: 50 // Maximum number of tokens to generate
-          }).then((response) => {
-            const generatedText = response.data.choices[0].text;
-            res.json({ generatedText });
-          }) 
-               
-        
-    
-  
-    // Example completion request
-    
-   res.render("booth139",{classname:classname});
-})  
-}); 
  
 
 app.get("/booth140",async(req,res)=>{
