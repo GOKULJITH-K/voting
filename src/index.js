@@ -266,6 +266,12 @@ app.get("/squad1booth138/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:1}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval)); 
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
@@ -311,6 +317,12 @@ app.get("/squad2booth138/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:2}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
@@ -356,6 +368,12 @@ app.get("/squad4booth138/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:4}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
@@ -401,6 +419,12 @@ app.get("/squad3booth138/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:3}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
@@ -447,6 +471,12 @@ app.get("/squad5booth138/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,squadno:5}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
@@ -493,6 +523,12 @@ app.get("/booth138/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
@@ -539,6 +575,12 @@ app.get("/booth138voted/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,votestatus:"voted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
@@ -584,6 +626,12 @@ app.get("/booth138notvoted/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,votestatus:"notvoted"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
@@ -629,6 +677,12 @@ app.get("/booth138avail/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,availability:"no"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
@@ -674,6 +728,12 @@ app.get("/booth138open/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,openvote:"yes"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
@@ -862,6 +922,12 @@ app.get("/booth138postal/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({boothno:138,postalvote:"yes"}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
@@ -908,6 +974,12 @@ app.get("/division33/generate-pdf/totalvote",async(req,res)=>{
     
 
     const soildatas = await savemodel.find({}).sort({ serialno: 1 }).exec();
+    const donation = await fundmodel.find({fundtype:"donation"});
+    const donationval=donation.map(fund=>fund.amount);
+    const count7=Number(mode(donationval));
+    const expenses = await fundmodel.find({fundtype:"expenses"});
+    const expensesval=expenses.map(fund=>fund.amount);
+    const count8=Number(mode(expensesval));
 
     const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({}).countDocuments({postalvote: "yes"});
@@ -1909,6 +1981,12 @@ app.get("/archive/:id",async(req,res)=>{
     if(req.cookies.token){
 
         const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
+        const donation = await fundmodel.find({fundtype:"donation"});
+        const donationval=donation.map(fund=>fund.amount);
+        const count7=Number(mode(donationval));
+        const expenses = await fundmodel.find({fundtype:"expenses"});
+        const expensesval=expenses.map(fund=>fund.amount);
+        const count8=Number(mode(expensesval));
 
         const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
         const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
