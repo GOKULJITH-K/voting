@@ -8,7 +8,6 @@
          <link rel="stylesheet" href="/nav.css">
          <script src="/navbar.js" defer></script>
          <script src="/topbtn.js" defer></script>
-        <link rel="stylesheet" href="/footer.css">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script src="/soilhealth.js" defer></script>
          <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,79 +18,58 @@
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-         <link rel="manifest" href="/site.webmanifest">
          <style>
            .header{
         background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(kodiyeri.jpeg);
-        height: 350px;
+        background-size: cover;
+        background-position: center;
         
     }
          </style>
         </head>
      <body>
-      <a  id="myBtn" href="/voterlist" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a> 
-     
-        
-         <section class="header">
-            
-            <div class="container">
+      
+      <div id="sidemenu2">
 
-            <nav >
-             
-              <a href="/" class="logo" style="font-size: 20px;
-                font-family: 'Montserrat', sans-serif;
-                color: white;text-decoration: none;font-weight: 800;">CPIM KOSHORMOOLA</a>
-             
-                
-              <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
-  
+        <p>Support</p>
+        <a href="tel:+919447140767"><i class="fa-solid fa-headset"></i> Contact Us  </a>
+        <a href="mailto:gokuljithk@gmail.com"><i class="fa-solid fa-circle-info"></i> About Us </a>
+      </div>
+    
+    <div id="myBtn2">
 
-             <div class="navbtn">
-             <a  class="hero-btn2 heronew"> Home </a>
-             <a class="hero-btn2 heronew"> Product </a>
-             <a class="hero-btn2 heronew"> About </a>
-             <a class="hero-btn2 heronew"> Contact </a>
-             <a class="hero-btn2 heronew"> Subscription </a>
-             <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
-             </div>
-                
+        <a  href="/" class="topbtn3" title="more"><i class="fa-solid fa-house"></i>  <p>Home</p></a>  
+        <a  href="/profile" class="topbtn3" title="more"><i class="fa-solid fa-user"></i><p>Profile</p></a>
+        <a  href="/voterlist" class="topbtn3" title="more"><i class="fa-solid fa-user-pen"></i><p>Edit</p></a>
+        <a href="/soilhealth"  class="topbtn3" title="more"><i class="fa-solid fa-snowflake"></i></i><p>List</p></a>
+
+    </div>
+    <section class="header">
             
-                <ul id="sidemenu">
-                    <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
-                    <hr>
-                    <li><a href="/">Home</a></li>
-                    <hr>
-                        <li><a href="/votercreation">Voter Creation</a></li>
-                    <hr>
-                        <li><a href="/booth138">Booth 138</a></li>
-                    <hr>
-                        <li><a href="/soilhealth">Voters List</a></li>
-                    <hr>
-                        <p>
-                          Thank you for choosing my platform. I value your trust and support. Please free to Contact me anytime
-                        </p>
-                       
-                        <li><a href="login" class="login">Log out</a></li>
-                        <li><a href="/" class="login join">Subscription</a></li>
-                   
+          <nav >
+            
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            <ul id="sidemenu">
+                
+                <li ><a style="background: whitesmoke;border-radius: 5px;padding: 5px;"  onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+
+                    <p>General</p>
+                    <li><a href="/profile"><i class="fa-solid fa-user"></i> Profile</a></li>
+                    <li><a href="/"><i class="fa-solid fa-bell"></i> Notification</a></li>
+                    <li><a href="/soilhealth"><i class="fa-solid fa-snowflake"></i> Voter list </a></li>
+                    <li><a href="/138squad1"><i class="fa-solid fa-gear"></i> Squad 1 </a></li>
+                    <li><a href="/138squad2"><i class="fa-solid fa-compass"></i> Squad 2</a></li>
+                    <li><a href="/138squad3"><i class="fa-solid fa-earth-americas"></i> Squad 3 </a></li>
+                    <li><a href="/138squad4"><i class="fa-solid fa-gauge"></i> Squad 4 </a></li>
+                    <li><a href="/138squad5"><i class="fa-solid fa-diamond"></i> Squad 5</a></li>
+                    <li><a href="/logout" class="login"><i class="fa-solid fa-right-from-bracket"></i>LogOut</a></li>
                         
-                </ul>
-                
-                
-            </nav>
-            <div class="icons-header">
-              <a href="/"><i class="fa-solid fa-house"></i></a>
-              <a href="/votercreation"><i class="fa-solid fa-user-plus"></i></a>
-              <a href="/booth138"><i class="fa-brands fa-slack"></i></a>
-              <a href="/voterlist"><i class="fa-solid fa-address-book"></i></a>
-              <a href="/squadlist"><i class="fa-solid fa-people-group"></i></a>
-              <a href="/soilhealth"><i class="fa-solid fa-book"></i></a>
-          </div>
-             </div>
-         </section>
+                <p style="text-align: center;">Terms of Use | Privacy Policy</p>
+                            
+            </ul>
+            
+        </nav>
+</section>
          <section class="overview" >
              
             <div class="row">
@@ -109,87 +87,45 @@
                </div>
                  
            </div>
-           
-           
-          
-            
-        </div>
-        
-
-         
-         
-         
+        </div>    
        </section>
-       
-         
-           <section class="contact">
-          
-                   <gmp-map
-           id="marker-click-event-example"
-           center="11.8309  ,   75.4372"
-           zoom="17"
-           map-id="TELINSO_MAP_ID"
-         >
-         <% soildatas.forEach((row,index) => { %>
-           <gmp-advanced-marker
-             position="<%= row.coordinates %>"
-             title="<%= row.housename %> "
-             
-             gmp-clickable
-           ></gmp-advanced-marker>
-           <% })  %>
-           <gmp-advanced-marker
-            id="current-location"
-            position = "0,0"
-            title="current Location"
-
-            gmp-clickable
-           ></gmp-advanced-marker>
-           
-         </gmp-map>
-         <button class="overview-btn " ><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138notvoted/generate-pdf/totalvote">Download List</a></button>
-         
-         
-
-            <div>
+       <section class="contact">
+           <button class="overview-btn " ><i class="fa-solid fa-download"></i><a  id="download-link" href="/booth138notvoted/generate-pdf/totalvote">Download List</a></button>
+           <div>
                 <input type="text" id="myInput" onkeyup="searchData()" placeholder="&#128269; Name | House name | Serial No" title="Type in a name">
             </div>
            
                
             <div class="contact-row" >
-              
-                <% soildatas.forEach((row,index) => { %>
-               
-                        <div class="data <%= row.votestatus %>" id="myUL">
-                          <div class="soilname-date">
-                          <p class="name-search"><span><%= row.votername %></span></p>
-                            <p id="serial-search" class="serial-search" ><span><%= row.serialno %></span></p>
-                            </div>
-                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
-                            <div class="soildata" style="display: none;" id="<%= index %>">
-                            
-                           
-                            <p>House no :<%= row.houseno %> </p>
-                            <p id="house-search" class="house-search">House name : <%= row.housename %> </p>
-                            <p>ID Card No : <%= row.idno %></p>
-                            <p>Booth no : <%= row.boothno %></p>
-                          
-                          
-                            </div>
-                           
-                            
-                          
-                            
-                           
-                         
-                        </div>
-                        
-                        <% })  %>
+              <table>
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 40%;">
+                    <col style="width: 40%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>House name</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <% soildatas.forEach((row,index) => { %>
+               <tr>
+               <td class="serial-search"><%= row.serialno %></td>
+               <td class="name-search"><%= row.votername %></td> 
+               <td class="house-search"><%= row.housename %></td>
+             </tr>
+           
+             <% })  %>
+           
+                </tbody>
+            </table>
               
                    </div>
                 
-                   
-           
        </section>
 
        <section class="footer">
@@ -200,9 +136,7 @@
            
         </div>
       </section>
-   <script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
-   defer></script>
+  
     <script>
 
      const downloadLink = document.getElementById('download-link');
@@ -211,32 +145,23 @@
         });
 
 
-      function searchData() {
-          
-        var input = document.getElementById("myInput").value.toLowerCase();
-          var elements = document.getElementsByClassName("serial-search");
-          var elements2 = document.getElementsByClassName("name-search");
-          var elements3 = document.getElementsByClassName("house-search");
-
          
-          for (var i = 0; i < elements.length; i++) {
-              
-              var textContent = elements[i].textContent.toLowerCase();
-              var textContent2 = elements2[i].textContent.toLowerCase();
-              var textContent3 = elements3[i].textContent.toLowerCase();
-              var searchRegex = new RegExp(`\\b${input}\\b`);
-              var matchFound = searchRegex.test(textContent) ;
-
-
-              if (matchFound || textContent2.includes(input)||textContent3.includes(input)) {
-                  
-                  elements[i].parentElement.parentElement.style.display = "flex";
-              } else {
-                  
-                  elements[i].parentElement.parentElement.style.display = "none";
-              }
-          }
-      }
+        function searchData() {
+            var input = document.getElementById("myInput").value.toLowerCase();
+            var rows = document.querySelectorAll("table tbody tr");
+            
+            rows.forEach(row => {
+                var serialSearch = row.querySelector(".serial-search").textContent.toLowerCase();
+                var nameSearch = row.querySelector(".name-search").textContent.toLowerCase();
+                var houseSearch = row.querySelector(".house-search").textContent.toLowerCase();
+                
+                if (serialSearch.includes(input) || nameSearch.includes(input) || houseSearch.includes(input)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
     function Showmore(id){
 
       const showdata = document.getElementById(id);
@@ -248,55 +173,9 @@
         showdata.style.display = 'none';
         showdata.previousElementSibling.innerHTML="Show more <stron>&#x25BD;</strong>";
     }
-     
-      
-       
-
+    
     }
      
-      function showCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
-
-          const marker = document.createElement("gmp-advanced-marker");
-          marker.setAttribute("position", `${lat},${lng}`);
-          marker.setAttribute("title", "Current Location");
-          document.getElementById("marker-click-event-example").appendChild(marker);
-        },
-        () => {
-          alert("Error: The Geolocation service failed.");
-        }
-      );
-    } else {
-      alert("Error: Your browser doesn't support geolocation.");
-    }
-  }
-  var xValues = ["voted","Not voted"];
-  
-   
-   
-    new Chart("doughChart", {
-    type: "doughnut",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: {display: false},
-        title: {
-          display: true,
-          text: "Visualization of Soil Sample - Doughnut Graph"
-        }
-      }
-    });
-  
-
     </script>
 
          </body>

@@ -1,14 +1,12 @@
 <html>
-     <head>
+    <head>
          <meta name="viewport" content="width=device-width,initial-scale=1.0">
-         <title>CPM ELECTION</title>
+         <title>TELINSO</title>
          
          <link rel="stylesheet" href="/welcome.css">
-         <link rel="stylesheet" href="/farmer.css">
-         <link rel="stylesheet" href="/anime.css">
+         <link rel="stylesheet" href="/overview.css">
+         <link rel="stylesheet" href="/nav.css">
          <script src="/navbar.js" defer></script>
-         <script src="/anime.js" defer></script>
-         <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -16,282 +14,171 @@
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
-         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-         <link rel="manifest" href="/site.webmanifest">
-        </head>
-     <body>
+    </head>
+    <body>
        
-        
-         <section class="header" >
-            
-            <div class="container">
+        <div id="sidemenu2">
 
-            <nav >
-                
-                
-               
-                    
-                <a href="/" class="logo" style="font-size: 20px;
-                font-family: 'Montserrat', sans-serif;
-                color: black;text-decoration: none;font-weight: 800;">CPIM KOSHORMOOLA</a>
+            <p>Support</p>
+            <a href="tel:+919447140767"><i class="fa-solid fa-headset"></i> Contact Us  </a>
+            <a href="mailto:gokuljithk@gmail.com"><i class="fa-solid fa-circle-info"></i> About Us </a>
+          </div>
         
-                
-                        <i class="fa-solid fa-bars  fas" onclick="openmenu()"></i>
-            
+        <div id="myBtn2">
     
-                       <div class="navbtn">
-                       <a  class="hero-btn2 heronew"> Home </a>
-                       <a class="hero-btn2 heronew"> Product </a>
-                       <a class="hero-btn2 heronew"> About </a>
-                       <a class="hero-btn2 heronew"> Contact </a>
-                       <a class="hero-btn2 heronew"> Subscription </a>
-                       <a href="/logout" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Logout</a>
-                       </div>
+            <a  href="/" class="topbtn3" title="more"><i class="fa-solid fa-house"></i>  <p>Home</p></a>  
+            <a  href="/profile" class="topbtn3" title="more"><i class="fa-solid fa-user"></i><p>Profile</p></a>
+            <a  href="/voterlist" class="topbtn3" title="more"><i class="fa-solid fa-user-pen"></i><p>Edit</p></a>
+            <a href="/soilhealth"  class="topbtn3" title="more"><i class="fa-solid fa-snowflake"></i></i><p>List</p></a>
     
+        </div>
+        <section class="header">
                 
+              <nav >
                 
-            
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
                 <ul id="sidemenu">
-                    <li><a  onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
-                    <hr>
-                    <li><a href="/">Home</a></li>
-                    <hr>
-                        <li><a href="/votercreation">Voter Creation</a></li>
-                    <hr>
-                        <li><a href="/booth138">Booth 138</a></li>
-                    <hr>
-                        <li><a href="/soilhealth">Voters List</a></li>
-                    <hr>
-                        <p>
-                            Thank you for choosing my platform. I value your trust and support. Please free to Contact me anytime
-                        </p>
-                       
-                        <li><a href="/logout" class="login">Logout</a></li>
-                        <li><a href="" class="login join">Subscription</a></li>
-                   
-                               
+                    
+                    <li ><a style="background: whitesmoke;border-radius: 5px;padding: 5px;"  onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+    
+                        <p>General</p>
+                        <li><a href="/profile"><i class="fa-solid fa-user"></i> Profile</a></li>
+                        <li><a href="/"><i class="fa-solid fa-bell"></i> Notification</a></li>
+                        <li><a href="/soilhealth"><i class="fa-solid fa-snowflake"></i> Voter list </a></li>
+                        <li><a href="/138squad1"><i class="fa-solid fa-gear"></i> Squad 1 </a></li>
+                        <li><a href="/138squad2"><i class="fa-solid fa-compass"></i> Squad 2</a></li>
+                        <li><a href="/138squad3"><i class="fa-solid fa-earth-americas"></i> Squad 3 </a></li>
+                        <li><a href="/138squad4"><i class="fa-solid fa-gauge"></i> Squad 4 </a></li>
+                        <li><a href="/138squad5"><i class="fa-solid fa-diamond"></i> Squad 5</a></li>
+                        <li><a href="/logout" class="login"><i class="fa-solid fa-right-from-bracket"></i>LogOut</a></li>
+                            
+                    <p style="text-align: center;">Terms of Use | Privacy Policy</p>
+                                
                 </ul>
                 
-                
             </nav>
+    </section>
+    <section class="product">
             
-             
-         </section>
-         
-            <section class="overview" >
-             
-                <div class="row">
-                   <div class="overview-col">
-                      <img src="welcome2.png"  >
-                     
-                
-                    <div class="welcome-text">
-                        <h1>WELCOME TO TELINSO</h1>
-                         <h2>Hello <span>Comrade</span></h2>
-                        <h2 id="greeting"></h2>
-                        
-                        </div>
-                       <h2>Workers of the world, unite! <i class="fa-solid fa-heart-circle-plus"></i></h2>
-                       
-                       <div class="Date-time">
-                       <div class="location">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div class="location-date">
-                            <h2 >Location</h2>
-                            <h2>Kannur</h2>
-                        </div>
-                        
-                       </div>
-                       <hr>
-                       <div class="location">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <div class="location-date">
-                            <h2 >Date</h2>
-                            <h2 id="dateNumber"></h2>
-                        </div>
-                       </div>
-
-                        </div>
-                        
-                       
-
+        <div class="welcome-text">
         
-                       
-                      
-                       
-                    <P>
-   
-                        Soil health and crop productivity are crucial factors in agriculture, playing a pivotal role in maintaining a sustainable environment.
-                         The primary cause of soil degradation is the excessive use of fertilizers. Therefore, it is essential to conduct soil testing before 
-                         initiating agriculture. Soil testing holds significance for various reasons: optimizing crop production, improving the nutritional 
-                         balance of the growing media, and saving money and energy by applying only the necessary amount of fertilizer. Our solution is designed 
-                         to assist farmers comprehensively, including monitoring soil conditions and nutrients. Data collected from the monitoring system will be
-                          stored on a cloud server for analysis. The primary objective is to keep track of nutrient levels in the soil.
-                         Having knowledge of their soil before commencing farming will aid farmers in precise cultivation planning.
-                    </P>
-                           
-                        
-                   </div>
-                     
-               </div>
-              
-           </section>
-           
-              
-              <section class="product">
-               <div class="row1">
-                <a href="/votercreation" class="class1">
-                    <div class="product-col " >
-                        
-                        <i class="fa-solid fa-user-plus"></i>
-                            <div>
-                                <h3>Voters Creation</h3>
-                                
-                            <p>Function to store and retrieve voters.</p>
-                                        
-                            </div>
-                                
-                            </div>
-                         </a>
-                   <a href="/booth138" class="class2">
-                   <div class="product-col" >
-                       
-                    <i class="fa-brands fa-slack"></i>
-                            <div>
-                            <h3>Booth 138</h3>
-                            
-                            <p>The voting pattern and management of voters.</p>
-                            </div>        
-                        
-                               
-                           </div>
-                           </a>
-                           <a  class="class3">    
-                            <div class="product-col"  >
-                                <i class="fa-brands fa-algolia"></i>
-                                    <div>
-                                    <h3>Booth 139</h3>
-                                    
-                                    <p>The voting pattern and management of voters.</p>
-                                    </div>      
-                                        
-                            </div>
-                         </a>   
-                       
+            <h2 style="font-size: 16px;font-family: 'Montserrat', sans-serif;" id="greeting"></h2>
+            <h2><span>GOKULJITH</span></h2>
+            
+        </div>
+
+        <div class="Date-time2">
+            <div class="balance2">
+                <p>Squad</p>
+                <p>1</p>
+            </div>
+            <hr>
+            <div class="balance">
+                <a  href="/voterlist" class="topbtn2 bal1" title="more"><i class="fa-solid fa-user-pen"></i>  <p>Edit</p></a> 
+                <a  href="/soilhealth" class="topbtn2 bal2" title="more"><i class="fa-solid fa-snowflake"></i>  <p>List</p></a> 
+                <a  href="/automatic" class="topbtn2 bal3" title="more"><i class="fa-solid fa-user-plus"></i>  <p>Group</p></a> 
+                <a  href="/savedata" class="topbtn2 bal4" title="more"><i class="fa-solid fa-sun"></i>  <p>Add</p></a> 
+            </div>
+            
+        </div>
+                 
                 
-                  
-               </div>
-              <div class="row2">
-               
-              <a  class="class4">
-               <div class="product-col "  >
-                <i class="fa-brands fa-stack-overflow"></i>
+        <div class="row1">
+            <a href="/138squad1" id="morebtn"   >
+                <div class="product-col " >
+                    
+                    <i class="fa-solid fa-gear"></i>
                         <div>
-                        <h3>Booth 140</h3>
-                        
-                        <p>The voting pattern and management of voters..</p>
-                        
-                    </div>   
+                            <h3>Squad 1</h3>
+                        </div>
                 </div>
             </a>
-            <a href="/soilhealth" class="class5">    
-                <div class="product-col"  >
-                    <i class="fa-solid fa-book"></i>
+            <a href="/138squad2" >
+                <div class="product-col" >
+                    
+                    <i class="fa-solid fa-compass"></i>
                         <div>
-                        <h3>Voters List </h3>
-                        
-                        <p>Review complete voters details and improve outcomes.</p>
+                            <h3>Squad 2</h3>
+                        </div>        
+                               
+                </div>
+            </a>
+            <a href="/138squad3" >    
+                <div class="product-col"  >
+                    <i class="fa-solid fa-earth-americas"></i>
+                        <div>
+                            <h3>Squad 3</h3>
+                        </div>      
+                                
+                </div>
+            </a>   
+                  
+        </div>
+        <div class="row2">
+               
+            <a href="/138squad4" >
+               <div class="product-col"  >
+                <i class="fa-solid fa-gauge"></i>
+                        <div>
+                            <h3>Squad 4</h3>
+                        </div>   
+                </div>
+            </a>
+            <a href="/138squad5" >    
+                <div class="product-col"  >
+                    <i class="fa-solid fa-diamond"></i>
+                        <div>
+                            <h3>Squad 5</h3>
                         </div>     
                             
                 </div>
              </a>  
-             
-                
-                
-            
-              
-              </div>
-               </section>
-              
-         
-           <section class="contact">
-            <div class="row">
-               <div class="contact-col">
-                  
-                   
-                  
-                   <h1>Contact us</h1>
-                
-                    <form action="/feedback" method="POST">
-                        
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your email" required>
-                        <textarea name="message" rows="6" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn btn2">Send</a></button>
-                    </form> 
-
-                 
+             <a href="/" >    
+                <div class="product-col"  >
+                    <i class="fa-solid fa-headset"></i>
+                        <div>
+                            <h3>About</h3>
+                        </div>      
+                            
                 </div>
-                <div class="contact-col">
-                  
-                    <p>We are a team of electronics and communication engineering students who are
-                     passionate about internet of things and agriculture. Our project, Telinso, 
-                     is an IoT-based solution that aims to provide soil health data to farmers and agriculture enthusiasts. Telinso consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, farmers can access real-time and accurate information about their soil health, and get customized recommendations on how to improve their crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help farmers
-                     optimize their farming practices and achieve sustainable agriculture.
-                </p>
-                   
-                     </div>
-                  
-           </div>
-           
-       </section>
-
-       <section class="footer">
-          
-        <div class="footer-col" style="text-align: center;" >     
-         
-               <p > 	&copy; Gokuljith k</p>
-           
+             </a>    
         </div>
-      </section>
-   <script>
-    // Get current date and time
-    var now = new Date();
+        <div class="Date-time">
+            <div class="visit">
+                <div class="visit-schedule">
+                    <a>UPDATES</a>
+                </div> 
+                <p>Booth committe will commence on 18 july 24</p>
+            </div>
+        </div>
+    </section>
+              
+         
+
+<script>
+    
+    const now = new Date();
   
-    // Extract date, time, and day
-    var months = now.toLocaleDateString(undefined, { month: 'long', });
-    var time = now.toLocaleTimeString();
-    var dateNumber = now.getDate();
-    var day = now.toLocaleDateString(undefined, { weekday: 'long' });
+    const months = now.toLocaleDateString(undefined, { month: 'long', });
+    const time = now.toLocaleTimeString();
+    const dateNumber = now.getDate();
+    const day = now.toLocaleDateString(undefined, { weekday: 'long' });
   
-    // Get hour to determine the greeting
-    var hour = now.getHours();
-    var greeting = "";
+    const hour = now.getHours();
+    let greeting = "";
   
     if (hour < 12) {
-      greeting = "Good Morning";
+      greeting = "Good Morning,";
     } else if (hour < 18) {
-      greeting = "Good Afternoon";
+      greeting = "Good Afternoon,";
     } else {
-      greeting = "Good Evening";
+      greeting = "Good Evening,";
     }
   
-   
     document.getElementById("greeting").innerHTML = greeting;
-    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
-    document.getElementById("day").innerHTML = "Let's Make "+day+" Fruitfull";
-
     
-
-  </script>
-  
-                         
-                       
-                
-              
-         </body>
+   
+   
+</script>
+</body>
 </html>
