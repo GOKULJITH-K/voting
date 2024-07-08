@@ -244,18 +244,7 @@ nav ul{
   align-self: center;
   text-align: center;
 }
-.Date-time{
-  background-color: #71f0b9;
-  color: black;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-around;
-  margin: 5px 15px;
-  padding: 10px;
-  margin-bottom: 70px;
-  
-  
-}
+
 
 .date-time hr{
   display: inline;
@@ -621,10 +610,8 @@ nav #sidemenu .fa-solid{
       background-color: whitesmoke;
       color: black;
       border-radius: 10px;
-      display: flex;
-      justify-content: space-around;
       margin: 50px 15px;
-      padding: 10px;
+      padding: 25px 15px;
       margin-bottom: 100px;
       position: relative;
       box-shadow: 0px 0px 10px rgb(86, 78, 78,0.3);
@@ -660,6 +647,10 @@ nav #sidemenu .fa-solid{
       padding:0px 15px;
       margin: 5px;
       font-family: 'Montserrat', sans-serif;
+      
+  }
+  .visit{
+    padding: 0 10px;
   }
   .visit-schedule a{
  
