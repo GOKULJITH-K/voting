@@ -6,11 +6,12 @@ const jwt = require('jsonwebtoken');
 const {loginmodel,savemodel,fundmodel} = require("./config");
 const csvtojson = require('csvtojson');
 const multer =require("multer");
+const axios = require("axios");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const port=process.env.PORT || 3000 ;
- 
+    
     
 const app = express();
                     
@@ -47,18 +48,17 @@ const extractToken = (req,res)=>{
     
 };
 
-const storage=multer.diskStorage ({
-        destination:function(req,file,cb)
-        {cb(null, './uploads'); 
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads'); // Specify the destination directory
     },
-    filename:function(req,file,cb){
-        cb(null,`${file.originalname}`);
+    filename: function(req, file, cb) {
+        cb(null, `${file.originalname}`); // Use the original file name
     },
-    });
+});
 
-    const upload = multer({ storage: multer.memoryStorage() });
-
-
+const upload = multer({ storage: storage });
+ 
    
 
 app.get("/",(req,res)=>{
@@ -92,6 +92,7 @@ app.get("/logout", (req, res) => {
 app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
 
  
+   
     res.render("welcome");
   
 })  
@@ -128,15 +129,52 @@ app.get("/booth138",async(req,res)=>{
 })
 app.get("/booth139",async(req,res)=>{
     if(req.cookies.token){
-
-        res.render("booth139");
-    }else{
-    
-        const message="You have invalid login credential"
-        res.render("login",{message:message});
+        res.render("booth139",{classname:"enter your text"});
     }
+})   
+app.post('/upload', upload.single('image'), async (req, res) => {
    
+        // Ensure the file is uploaded
+      console.log(req.file.path);
+ 
+      const image = fs.readFileSync(req.file.path, {
+        encoding: "base64"
+    }); 
+      
+    axios({
+        method: "POST",
+    url: "https://detect.roboflow.com/pest-detection-m0inx/1",
+    params: {
+        api_key: "dVbUXioOhtnfoCsVFylB"
+    },
+    data: image,
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
 })
+    .then(function(response) {
+
+        const classname = response.data.predictions[0].class;
+        console.log(response.data.predictions[0].class);
+        openai.completions.create({
+            model: 'gpt-3.5-turbo-instruct', // The engine to use for text generation
+            prompt: classname, // The prompt for text generation from req.body
+            maxTokens: 50 // Maximum number of tokens to generate
+          }).then((response) => {
+            const generatedText = response.data.choices[0].text;
+            res.json({ generatedText });
+          }) 
+               
+        
+    
+  
+    // Example completion request
+    
+   res.render("booth139",{classname:classname});
+})  
+}); 
+ 
+
 app.get("/booth140",async(req,res)=>{
     
     res.render("booth140");
@@ -516,7 +554,7 @@ app.get("/booth138/generate-pdf/totalvote",async(req,res)=>{
    })
 
 app.get("/booth138voted/generate-pdf/totalvote",async(req,res)=>{
-
+  
     
     
     const csvStringifier = createObjectCsvStringifier({
@@ -1129,7 +1167,7 @@ app.get("/voterlist2",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:139}).sort({ serialno: 1 }).exec();
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:139}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:139}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:139}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:139}).countDocuments({availability: "no"});
@@ -1142,7 +1180,7 @@ app.get("/voterlist3",async(req,res)=>{
     
     const soildatas = await savemodel.find({boothno:140}).sort({ serialno: 1 }).exec();
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:140}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:140}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:140}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:140}).countDocuments({availability: "no"});
@@ -1186,7 +1224,7 @@ app.get("/squad1notvoted/generate-pdf/totalvote",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:1}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
@@ -1237,7 +1275,7 @@ app.get("/squad2notvoted/generate-pdf/totalvote",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:2}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
@@ -1288,7 +1326,7 @@ app.get("/squad3notvoted/generate-pdf/totalvote",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:3}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
@@ -1339,7 +1377,7 @@ app.get("/squad4notvoted/generate-pdf/totalvote",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:4}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
@@ -1390,7 +1428,7 @@ app.get("/squad5notvoted/generate-pdf/totalvote",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:5}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
@@ -1417,7 +1455,7 @@ app.get("/squad1notvoted",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:1}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
@@ -1444,7 +1482,7 @@ app.get("/squad2notvoted",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:2}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
@@ -1471,7 +1509,7 @@ app.get("/squad3notvoted",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:3}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
@@ -1498,7 +1536,7 @@ app.get("/squad4notvoted",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:4}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
@@ -1525,7 +1563,7 @@ app.get("/squad5notvoted",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:5}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
@@ -1552,7 +1590,7 @@ app.get("/138squad1",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:1}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:1}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:1}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:1}).countDocuments({availability: "no"});
@@ -1590,7 +1628,7 @@ app.get("/138squad2",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:2}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:2}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:2}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:2}).countDocuments({availability: "no"});
@@ -1617,7 +1655,7 @@ app.get("/138squad3",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:3}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:3}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:3}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:3}).countDocuments({availability: "no"});
@@ -1645,7 +1683,7 @@ app.get("/138squad4",async(req,res)=>{
     const count8=Number(mode(expensesval));
      
 
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:4}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:4}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:4}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:4}).countDocuments({availability: "no"});
@@ -1672,7 +1710,7 @@ app.get("/138squad5",async(req,res)=>{
     const expensesval=expenses.map(fund=>fund.amount);
     const count8=Number(mode(expensesval));
     
-    const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
+    const count6 = await savemodel.find({boothno:138,squadno:5}).countDocuments({favoured: "yes"});
     const count5 = await savemodel.find({boothno:138,squadno:5}).countDocuments({postalvote: "yes"});
     const count4 = await savemodel.find({boothno:138,squadno:5}).countDocuments({openvote: "yes"});
     const count3 = await savemodel.find({boothno:138,squadno:5}).countDocuments({availability: "no"});
@@ -1892,21 +1930,7 @@ app.post("/voteredit1/update/:id/:serialnumber/:votername/:houseno/:housename/:i
         });
         
  
-        const soildatas = await savemodel.find({boothno:138}).sort({ serialno: 1 }).exec();
-        const donation = await fundmodel.find({fundtype:"donation"});
-        const donationval=donation.map(fund=>fund.amount);
-        const count7=Number(mode(donationval));
-        const expenses = await fundmodel.find({fundtype:"expenses"});
-        const expensesval=expenses.map(fund=>fund.amount);
-        const count8=Number(mode(expensesval));
-        const count6 = await savemodel.find({boothno:138}).countDocuments({favoured: "yes"});
-        const count5 = await savemodel.find({boothno:138}).countDocuments({postalvote: "yes"});
-         const count4 = await savemodel.find({boothno:138}).countDocuments({openvote: "yes"});
-        const count3 = await savemodel.find({boothno:138}).countDocuments({availability: "no"});
-        const count2 = await savemodel.find({boothno:138}).countDocuments({votestatus: "notvoted"});
-        const count1 = await savemodel.find({boothno:138}).countDocuments({votestatus: "voted"});
-        const count = await savemodel.find({boothno:138}).countDocuments();
-        res.render("voterlist",{soildatas:soildatas,count:count,count1:count1,count2:count2,count3:count3,count4:count4,count5:count5,count6:count6,count7:count7,count8:count8});
+        res.redirect("/voterlist");
         
     }else{
 
@@ -1943,6 +1967,7 @@ app.get("/archive/:id",async(req,res)=>{
     }
 
 })
+
 app.get("/archive1/:id",async(req,res)=>{
     
     let id=req.params.id;
@@ -1953,7 +1978,7 @@ app.get("/archive1/:id",async(req,res)=>{
     if(req.cookies.token){
 
         
-        res.render("booth138");
+        res.redirect("/voterlist");
         
     }else{
 
@@ -1961,7 +1986,7 @@ app.get("/archive1/:id",async(req,res)=>{
         res.render("login",{message:message});
     }
 
-})
+})            
 app.get("/archive2/:id",async(req,res)=>{
     
     let id=req.params.id;
@@ -2169,9 +2194,9 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
             res.render("login",{message:message});
         }
         
-  
-  
-    
+   
+      
+     
 })
 
  
