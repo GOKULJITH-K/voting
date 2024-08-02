@@ -17,7 +17,12 @@
         </head>
      <body>
        
-        
+        <div id="loader-container" class="loader-container">
+            <div class="loader">
+                <div class="spinner"></div>
+                
+            </div>
+        </div>
          <section class="header">
             
             <div class="container">
@@ -106,6 +111,12 @@
                 function auth(element){
                     element.parentElement.style.display = "none";
                 }
+                document.addEventListener("DOMContentLoaded", function() {
+                setTimeout(function() {
+                    
+                    document.getElementById('loader-container').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                }, 3000); })
               </script>
          </body>
 </html>
